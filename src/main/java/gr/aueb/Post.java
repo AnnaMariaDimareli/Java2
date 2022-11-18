@@ -7,11 +7,7 @@ public class Post {
     
     private String creator ; 
     
-    public Post(){
-    
-        this.creator = emp.getName() +" "+ emp.getSurname() ;
-    
-    }
+    this.creator = emp.getName() +" "+ emp.getSurname() ;
     
     private int likeCount = 0 ;
     
