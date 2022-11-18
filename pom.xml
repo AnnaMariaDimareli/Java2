@@ -35,7 +35,7 @@
     </dependency>
 
     <dependency>
-	<scope>test</scope>
+	    <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -54,27 +54,51 @@
   </dependencies>
 
   <build>
- 
- <plugins>
-	
-   <plugin>
-     <groupId>org.apache.maven.plugins</groupId>
-     <artifactId>maven‐checkstyle‐plugin</artifactId> 
-     <version>2.13</version>
-     <reportSets>
-      <reportSet>
-	<reports>
-           <report>checkstyle</report>
-        </reports>
-      </reportSet>
-     </reportSets>
-  </plugin>
    
-    <plugin>
-      <groupId>org.codehaus.mojo</groupId>
-      <artifactId>spotbugs‐maven‐plugin</artifactId>
-      <version>3.0.1‐SNAPSHOT</version>
-    </plugin>
+    <pluginManagement>
+
+      <plugins>
+
+        <plugin>
+         <groupId>org.apache.maven.plugins</groupId>
+         <artifactId>maven‐checkstyle‐plugin</artifactId> 
+         <version>2.13</version>
+         <reportSets>
+            <reportSet>
+	            <reports>
+                <report>checkstyle</report>
+              </reports>
+            </reportSet>
+          </reportSets>
+        </plugin>
+
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>spotbugs‐maven‐plugin</artifactId>
+          <version>3.0.1‐SNAPSHOT</version>
+        </plugin>
+
+        <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                    implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>gr.aueb.App</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
        
  <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
         <plugin>
@@ -125,6 +149,8 @@
         </plugin>
 
       </plugins>
+
+    </pluginManagement>
 
   </build>
 
