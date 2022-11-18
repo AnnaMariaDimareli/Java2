@@ -9,7 +9,7 @@ public class Post {
     
     public Post(){
     
-        this.creator = usr.getName() +" "+ usr.getSurname() ;
+        this.creator = emp.getName() +" "+ emp.getSurname() ;
     
     }
     
@@ -56,7 +56,7 @@ public class Post {
     
             this.available = true ;
 
-            emp.addUploadedPosts(this);
+            emp.addUploadedPosts(this); //CHECK THE ARGUMENT.
     
         } else if ( answer == "NO") {
     
@@ -69,7 +69,7 @@ public class Post {
      * If they just want to create a post to share their ideas about the labor market they choose the second option
     */
     public String createPost() {
-        System.out.println("Do you want to create a job offering post or something else ?. Type 1 or 2");
+        System.out.println("Do you want to create a job offering post or share your thoughts about the labor market ?. Type 1 or 2");
         this.creationDate = dt.toString();
     
         Scanner input = new Scanner(System.in);
