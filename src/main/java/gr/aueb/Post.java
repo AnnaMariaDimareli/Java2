@@ -7,9 +7,8 @@ import java.util.Scanner;
 public class Post {
     Employer emp = new Employer();
     Date dt = new Date(System.currentTimeMillis());
-    
-    this.creator =emp.getName()+" "+emp.getSurname();//FIXME unexpected token
     private String creator;
+    creator =emp.getName()+" "+emp.getSurname();//FIXME unexpected token
     private int likeCount = 0;
     private boolean available = false;
     private String creationDate; //The creation date of the certain post
