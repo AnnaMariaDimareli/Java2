@@ -1,8 +1,6 @@
 import java.util.Scanner ;
 import java.util.Date;
 public class Post {
-    User usr = new User();
-    
     Employer emp = new Employer();
     
     private String creator ; 
@@ -27,6 +25,9 @@ public class Post {
     
     this.likeCount++;
     
+    }
+    public String getCreator(){
+        return creator;
     }
     
     public void getAvailable() {
