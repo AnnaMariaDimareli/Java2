@@ -7,8 +7,7 @@ import java.util.Scanner;
 public class Post {
     Employer emp = new Employer();
     Date dt = new Date(System.currentTimeMillis());
-    private String creator;
-    creator =emp.getName()+" "+emp.getSurname();//FIXME unexpected token
+    private String creator =emp.getName()+" "+emp.getSurname();
     private int likeCount = 0;
     private boolean available = false;
     private String creationDate; //The creation date of the certain post
@@ -72,7 +71,7 @@ public class Post {
 
         Scanner input = new Scanner(System.in);
         if (input.nextInt() == 1) {
-            return String.format("Job Title : %s /n Company : %s /n Workplace type(On-site , Hybrid , Remote) : %s /n Job Location : %s /n Salary Range : %d - %d /n Description : %s /n", input.nextLine(), input.nextLine(), , input.nextLine(), input.nextLine(), input.nextInt(), input.nextInt(), input.nextLine());
+            return String.format("Job Title : %s /n Company : %s /n Workplace type(On-site , Hybrid , Remote) : %s /n Job Location : %s /n Salary Range : %d - %d /n Description : %s /n", input.nextLine(), input.nextLine(), input.nextLine(), input.nextLine(), input.nextInt(), input.nextInt(), input.nextLine());
         } else if (input.nextInt() == 2) {
             return String.format("Share your thoughts with your network . /n %s", input.nextLine());
         }
