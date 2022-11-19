@@ -1,4 +1,4 @@
-package com.example;
+package gr.aueb;
 
 import static org.junit.Assert.assertTrue;
 
