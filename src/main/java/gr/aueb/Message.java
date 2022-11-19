@@ -1,3 +1,5 @@
+package gr.aueb;
+
 import java.util.Scanner;
 
 public class Message {
