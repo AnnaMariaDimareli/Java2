@@ -37,7 +37,8 @@ public class User {
 	public void login(String username, String password ) {
 		System.out.println("You have logged into your account!");
 	}
-	
+
+	//FIXME Class User doesn't have a constructor. Maybe register() should be renamed to User()
 	public void register(String username, String password, String name, String surname, String email, String dateOfBirth) {
 		this.username = username;
 		this.password = password;
@@ -54,7 +55,7 @@ public class User {
 	}
 	
 	//HAVE TO CHECK
-	public void signout() {
+	public void signOut() {
 		System.out.println("You have signed out of your account!");
 	}
 	
