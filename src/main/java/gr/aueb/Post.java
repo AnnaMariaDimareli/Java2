@@ -5,12 +5,16 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Post {
+    //FIXME Why are we creating an empty Employer object
     Employer emp = new Employer();
     Date dt = new Date(System.currentTimeMillis());
-    private String creator =emp.getName()+" "+emp.getSurname();
+    //FIXME creator is set as strings from default Employer object. Both will be null
+    private String creator = emp.getName() + " " + emp.getSurname();
     private int likeCount = 0;
     private boolean available = false;
     private String creationDate; //The creation date of the certain post
+
+    //FIXME missing a constructor
 
     public int getLikeCount() {
 
@@ -20,7 +24,7 @@ public class Post {
 
     public void like() { //if an employee wants to like a post then Employee class calls setLikeCount method to increase post's number of likes//
 
-        this.likeCount++;
+        likeCount++;
 
     }
 
@@ -30,7 +34,7 @@ public class Post {
 
     public void getAvailable() {
 
-        if (this.available) {
+        if (available) {
 
             System.out.print("The post is available");
 
@@ -46,17 +50,18 @@ public class Post {
     /* if the employer wants to make the post available then calls setAvailable with argument YES
      * if he wants to set it as unavailable then calls setAvailable with argument NO
      */
+    //FIXME employer must be specified while calling method. Using object emp must be incorrect
     public void setAvailable(String answer) {
 
         if (Objects.equals(answer, "YES")) {
 
-            this.available = true;
+            available = true;
 
             emp.addUploadedPosts(this); //CHECK THE ARGUMENT.
 
         } else if (Objects.equals(answer, "NO")) {
 
-            this.available = false;
+            available = false;
 
         }
 
@@ -67,7 +72,7 @@ public class Post {
      */
     public String createPost() {
         System.out.println("Do you want to create a job offering post or share your thoughts about the labor market ?. Type 1 or 2");
-        this.creationDate = dt.toString();
+        creationDate = dt.toString();
 
         Scanner input = new Scanner(System.in);
         if (input.nextInt() == 1) {
@@ -82,7 +87,7 @@ public class Post {
 
     public String toString() {
 
-        return String.format("This post was created on %s by %s", this.creationDate, this.creator);
+        return String.format("This post was created on %s by %s", creationDate, creator);
 
     }
 
