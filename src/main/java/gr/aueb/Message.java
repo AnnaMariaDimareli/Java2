@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Message {
 
-    private int messageNumber;
+    private static int numberOfMessages;
+    private int messageNumber = numberOfMessages;
     private String receiver;
     private String sender;
     private boolean seen;
@@ -14,16 +15,16 @@ public class Message {
         this.receiver = receiver;
         this.sender = sender;
         seen = false; 
-        messageNumber++;
+        numberOfMessages++;
         this.contents = contents;
     }
-    /* The second contructor should be used for Automated messages
+    /* The second constructor should be used for Automated messages
      */
     public Message(String receiver, String sender, String creator, String email) { 
         this.receiver = receiver;
         this.sender = sender;
         seen = false;
-        messageNumber++;
+        numberOfMessages++;
         contents = this.sendAutomatedMessage(creator, email);
     }
 
@@ -71,4 +72,7 @@ public class Message {
     }
 
 
+    public int getMessageNumber() {
+        return messageNumber;
+    }
 }
