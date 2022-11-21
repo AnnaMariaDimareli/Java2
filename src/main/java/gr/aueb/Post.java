@@ -5,16 +5,15 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Post {
-    //FIXME Why are we creating an empty Employer object
-    Employer emp = new Employer();
     Date dt = new Date(System.currentTimeMillis());
-    //FIXME creator is set as strings from default Employer object. Both will be null
-    private String creator = emp.getName() + " " + emp.getSurname();
+    private String creator;
+    public Post(Employer emp){
+  
+        creator = emp.getName() + " " + emp.getSurname();
+    }
     private int likeCount = 0;
     private boolean available = false;
     private String creationDate; //The creation date of the certain post
-
-    //FIXME missing a constructor
 
     public int getLikeCount() {
 
@@ -50,14 +49,13 @@ public class Post {
     /* if the employer wants to make the post available then calls setAvailable with argument YES
      * if he wants to set it as unavailable then calls setAvailable with argument NO
      */
-    //FIXME employer must be specified while calling method. Using object emp must be incorrect
     public void setAvailable(String answer) {
 
         if (Objects.equals(answer, "YES")) {
 
             available = true;
 
-            emp.addUploadedPosts(this); //CHECK THE ARGUMENT.
+            emp.addUploadedPosts(this); //TODO CHECK THE ARGUMENT.
 
         } else if (Objects.equals(answer, "NO")) {
 
