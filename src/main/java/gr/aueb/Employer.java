@@ -27,7 +27,6 @@ public class Employer extends User {
 		return uploadedPosts;
 	}
 
-	//HAVE TO CHECK
 	@Override
 	public String toString() {
 		return String.format(super.toString(), "and you are an employer-type user.");
