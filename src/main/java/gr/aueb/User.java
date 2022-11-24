@@ -57,7 +57,6 @@ public class User {
 		System.out.println("You have signed out of your account!");
 	}
 	
-	//HAVE TO CHECK
 	@Override
 	public String toString() {
 		return String.format("Your username is %s.", username);
