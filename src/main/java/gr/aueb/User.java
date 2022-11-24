@@ -9,6 +9,16 @@ public class User {
 	private String email;
 	private String dateOfBirth;
 
+	public User(String username, String password, String name, String surname, String email, String dateOfBirth) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
+		this.dateOfBirth = dateOfBirth;
+		System.out.println("You have created an account!");
+	}
+	
 	public String getUsername() {
 		return username;
 	}
@@ -33,28 +43,16 @@ public class User {
 		return dateOfBirth;
 	}
 	
-	//HAVE TO CHECK
 	public void login(String username, String password ) {
 		System.out.println("You have logged into your account!");
 	}
 
-	//FIXME Class User doesn't have a constructor. Maybe register() should be renamed to User()
-	public void register(String username, String password, String name, String surname, String email, String dateOfBirth) {
-		this.username = username;
-		this.password = password;
-		this.name = name;
-		this.surname = surname;
-		this.email = email;
-		this.dateOfBirth = dateOfBirth;
-		System.out.println("You have created an account!");
-	}
-	
-	//HAVE TO CHECK
+	//TODO CHECK
 	public void seeNewMessages() {
 		
 	}
 	
-	//HAVE TO CHECK
+	//TODO CHECK
 	public void signOut() {
 		System.out.println("You have signed out of your account!");
 	}
