@@ -47,6 +47,7 @@ public class Message {
 	    }
 
 	    public void showMessage() {
+            System.out.println(sender);
 	        System.out.println(contents);
     }
 
