@@ -12,7 +12,7 @@ public class Employer extends User {
 	//ArrayList containing post-type objects
 	private ArrayList<Post> uploadedPosts = new ArrayList<Post>();
 	
-	//Create a post
+	//Creates a post
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
 	}
