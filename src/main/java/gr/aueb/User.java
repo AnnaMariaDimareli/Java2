@@ -2,6 +2,9 @@ package gr.aueb;
 
 public class User {
 	
+	/* Username and Password are the UID's (the username is unique)
+	 * The rest are required for creating the account
+	 */
 	private String username;
 	private String password;
 	private String name;
@@ -9,6 +12,7 @@ public class User {
 	private String email;
 	private String dateOfBirth;
 
+	// Constructor used to create object User (only useful when used through the two subclasses)
 	public User(String username, String password, String name, String surname, String email, String dateOfBirth) {
 		this.username = username;
 		this.password = password;
@@ -52,11 +56,12 @@ public class User {
 		
 	}
 	
-	//TODO CHECK
+	//Disconnect from account without terminating the programm 
 	public void signOut() {
 		System.out.println("You have signed out of your account!");
 	}
 	
+	//Used for informing the User of their UID 
 	@Override
 	public String toString() {
 		return String.format("Your username is %s.", username);
