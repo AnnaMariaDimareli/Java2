@@ -1,5 +1,7 @@
 package gr.aueb;
 
+import java.util.ArrayList;
+
 public class User {
 	
 	/* Username and Password are the UID's (the username is unique)
@@ -11,6 +13,9 @@ public class User {
 	private String surname;
 	private String email;
 	private String dateOfBirth;
+
+	//List of messages sent to user
+	ArrayList<Message> unseenMessages = new ArrayList<Message>();
 
 	// Constructor used to create object User (only useful when used through the two subclasses)
 	public User(String username, String password, String name, String surname, String email, String dateOfBirth) {
@@ -51,17 +56,19 @@ public class User {
 		System.out.println("You have logged into your account!");
 	}
 
-	//TODO CHECK
+	//Shows user their messages and then empties it
 	public void seeNewMessages() {
-		
+		System.out.println("Your unseen messages are: ");
+		System.out.println(unseenMessages);
+		unseenMessages.clear();
 	}
 	
-	//Disconnect from account without terminating the programm 
+	//Disconnects user from account without terminating the programm 
 	public void signOut() {
 		System.out.println("You have signed out of your account!");
 	}
 	
-	//Used for informing the User of their UID 
+	//Informs user of their UID 
 	@Override
 	public String toString() {
 		return String.format("Your username is %s.", username);
