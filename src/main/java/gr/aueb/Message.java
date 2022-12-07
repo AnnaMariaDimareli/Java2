@@ -6,48 +6,43 @@ public class Message {
 
     private static int numberOfMessages;
     private int messageNumber = numberOfMessages;
-    private String receiver;
-    private String sender;
-    private boolean seen;
+    private User receiver;
+    private User sender;
     private String contents;
 
-    public Message(String receiver, String sender, String contents) {
-        this.receiver = receiver;
-        this.sender = sender;
-        seen = false;
-        numberOfMessages++;
-        this.contents = contents;
+    public Message(User receiver, User sender, String contents) {
+            this.receiver = receiver;
+            this.sender = sender;
+            numberOfMessages++;
+            this.contents = contents;
     }
     /* The second constructor should be used for Automated messages
      */
-    public Message(String receiver, String sender, String creator, String email) {
-        this.receiver = receiver;
-        this.sender = sender;
-        seen = false;
-        numberOfMessages++;
-        contents = this.sendAutomatedMessage(creator, email);
+    public Message(User receiver, User sender, String creator, String email) {
+            this.receiver = receiver;
+            this.sender = sender;
+            numberOfMessages++;
+            contents = this.sendAutomatedMessage(creator, email);
     }
 
-      public Message(String receiver, String sender) {
+    public Message(User receiver, User sender) {
 	        this.receiver = receiver;
 	        this.sender = sender;
-	        seen = false;
 	        numberOfMessages++;
     }
 
     public String toString() {
-            return  "The receiver is " + receiver + ",  the sender is " + sender + " and the message is " + contents;
-
+            return  "The receiver is " + this.getReceiver() + ",  the sender is " + this.getSender() + " and the message is " + contents;
     }
 
-    public void enterMessage(String sender, String receiver) {
+    public void enterMessage() {
 	        Scanner input = new Scanner(System.in);
 	        System.out.println("Please enter your message:");
 	        contents = input.nextLine();
-	    }
+	}
 
-	    public void showMessage() {
-            System.out.println(sender);
+	public void showMessage() {
+            System.out.println(this.getSender);
 	        System.out.println(contents);
     }
 
@@ -55,30 +50,33 @@ public class Message {
      * after an employee likes a post.
      * sendAutomatedMessage requires as a parameter the name and email of the post's creator.
      */
+
     public String sendAutomatedMessage(String creator, String email) {
-        String x = "Thank you for your interest in our job offering. You can send your cv in Mr/Mrs " + creator + " email: " + email;
-        System.out.println(x);
-        return x;
+            String x = "Thank you for your interest in our job offering. You can send your cv in Mr/Mrs " + creator + " email: " + email;
+            System.out.println(x);
+            return x;
     }
 
-    public void setSeen(boolean seen) {
-        this.seen = seen;
-    }
-
-    public boolean getSeen() {
-        return seen;
+    public void addUnseenMessage() {
+            receiver.UnseenMessages.add(this);
     }
 
     public String getSender() {
-        return sender;
+            return sender.getUsername();
     }
 
     public String getReceiver() {
-        return receiver;
+            return receiver.getUsername();
     }
 
-
     public int getMessageNumber() {
-        return messageNumber;
+            return messageNumber;
+    }
+
+    public String getContents() {
+            return contents;
+    }
+    public static int getNumberOfMessages() {
+        return numberOfMessages;
     }
 }
