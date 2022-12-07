@@ -26,9 +26,9 @@ public class Message {
     }
 
     public Message(User receiver, User sender) {
-	        this.receiver = receiver;
-	        this.sender = sender;
-	        numberOfMessages++;
+            this.receiver = receiver;
+	    this.sender = sender;
+	    numberOfMessages++;
     }
 
     public String toString() {
@@ -36,14 +36,14 @@ public class Message {
     }
 
     public void enterMessage() {
-	        Scanner input = new Scanner(System.in);
-	        System.out.println("Please enter your message:");
-	        contents = input.nextLine();
-	}
+	    Scanner input = new Scanner(System.in);
+	    System.out.println("Please enter your message:");
+	    contents = input.nextLine();
+    }
 
-	public void showMessage() {
+    public void showMessage() {
             System.out.println(this.getSender);
-	        System.out.println(contents);
+            System.out.println(contents);
     }
 
     /* sendAutomatedMessage method creates an automated message,
@@ -58,7 +58,7 @@ public class Message {
     }
 
     public void addUnseenMessage() {
-            receiver.UnseenMessages.add(this);
+            receiver.unseenMessages.add(this);
     }
 
     public String getSender() {
@@ -77,6 +77,6 @@ public class Message {
             return contents;
     }
     public static int getNumberOfMessages() {
-        return numberOfMessages;
+            return numberOfMessages;
     }
 }
