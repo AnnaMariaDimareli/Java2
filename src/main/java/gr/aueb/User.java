@@ -1,13 +1,16 @@
 package gr.aueb;
 
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 
 public class User {
 	
 	/* Username and Password are the UID's (the username is unique)
 	 * The rest are required for creating the account
 	 */
-	private String username;
+	private final String username; //usernames cant change. set as final
 	private String password;
 	private String name;
 	private String surname;
@@ -15,7 +18,10 @@ public class User {
 	private String dateOfBirth;
 
 	//List of messages sent to user
-	ArrayList<Message> unseenMessages = new ArrayList<Message>();
+	protected ArrayList<Message> unseenMessages = new ArrayList<>();
+
+	//HashMap of users
+	private static HashMap<String, User> createdUsers = new HashMap<>();
 
 	// Constructor used to create object User (only useful when used through the two subclasses)
 	public User(String username, String password, String name, String surname, String email, String dateOfBirth) {
@@ -25,15 +31,42 @@ public class User {
 		this.surname = surname;
 		this.email = email;
 		this.dateOfBirth = dateOfBirth;
+		createdUsers.put(username,this);
 		System.out.println("You have created an account!");
 	}
-	
+
+	//When called upon with a set of credentials this method will return the object which relates to the user.
+	//If no such user exists it will return null. If an incorrect password is given it will throw a GeneralSecurityException
+	public static User login(String username, String password) throws GeneralSecurityException {
+		User currentUser= createdUsers.get(username);
+		if (currentUser == null){
+			System.out.println("Username "+username+" is incorrect");
+		}else{
+			if (currentUser.getPasswordValidity(password)){
+				System.out.println("Wellcome "+username);
+			} else{
+				System.out.println();
+				throw new GeneralSecurityException("Password `"+password+"` is incorrect for user "+username);
+			}
+		}
+		return currentUser;
+	}
+
 	public String getUsername() {
 		return username;
 	}
 
-	public String getPassword() {
-		return password;
+	//checks if password given is valid used for logging in
+	public boolean getPasswordValidity(String password) {
+		return Objects.equals(password, this.password);
+	}
+
+	public void setPassword(String oldPassword, String newPassword) throws GeneralSecurityException {
+		if (Objects.equals(oldPassword, password)) {
+			password = newPassword;
+		} else {
+			throw new GeneralSecurityException("Password `"+oldPassword+"` is incorrect for user "+oldPassword);
+		}
 	}
 
 	public String getName() {
@@ -51,10 +84,7 @@ public class User {
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
-	
-	public void login(String username, String password ) {
-		System.out.println("You have logged into your account!");
-	}
+
 
 	//Shows user their messages and then empties it
 	public void seeNewMessages() {
@@ -62,11 +92,7 @@ public class User {
 		System.out.println(unseenMessages);
 		unseenMessages.clear();
 	}
-	
-	//Disconnects user from account without terminating the programm 
-	public void signOut() {
-		System.out.println("You have signed out of your account!");
-	}
+
 	
 	//Informs user of their UID 
 	@Override
