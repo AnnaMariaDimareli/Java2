@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class User {
-	
+
 	/* Username and Password are the UID's (the username is unique)
 	 * The rest are required for creating the account
 	 */
@@ -18,7 +18,7 @@ public class User {
 	private String dateOfBirth;
 
 	//List of messages sent to user
-	protected ArrayList<Message> unseenMessages = new ArrayList<>();
+	private ArrayList<Message> unseenMessages = new ArrayList<>();
 
 	//HashMap of users
 	private static HashMap<String, User> createdUsers = new HashMap<>();
@@ -65,7 +65,7 @@ public class User {
 		if (Objects.equals(oldPassword, password)) {
 			password = newPassword;
 		} else {
-			throw new GeneralSecurityException("Password `"+oldPassword+"` is incorrect for user "+oldPassword);
+			throw new GeneralSecurityException("Password `"+oldPassword+"` is incorrect for user "+username);
 		}
 	}
 
@@ -93,11 +93,16 @@ public class User {
 		unseenMessages.clear();
 	}
 
-	
-	//Informs user of their UID 
+	//Adds a new message directed towards the User
+	public void addNewMessage(Message directedMessage) {
+		unseenMessages.add(directedMessage);
+	}
+
+	//Informs user of their UID
 	@Override
 	public String toString() {
 		return String.format("Your username is %s.", username);
 	}
+
 
 }
