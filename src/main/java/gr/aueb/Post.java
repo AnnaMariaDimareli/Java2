@@ -6,15 +6,20 @@ import java.util.Scanner;
 
 public class Post {
     Date dt = new Date(System.currentTimeMillis());
-    private String creator;
+    private final String creator;
     Employer reftoemp;
     Scanner input = new Scanner(System.in);
     private int likeCount = 0;
     private boolean available = false;
     private String creationDate;
+
     public Post(Employer emp) {
         reftoemp = emp;
         creator = reftoemp.getName() + " " + emp.getSurname();
+    }
+
+    public Employer getReftoemp() {
+        return reftoemp;
     }
 
     public int getLikeCount() {
@@ -36,6 +41,7 @@ public class Post {
             System.out.print("The post is not available");
         }
     }
+
     /* if the employer wants to make the post available then calls setAvailable with argument YES
      * if he wants to set it as unavailable then calls setAvailable with argument NO
      */
@@ -47,10 +53,12 @@ public class Post {
             available = false;
         }
     }
+
     public String jobOfferingPost() {
         creationDate = dt.toString();
         return String.format("Job Title : %s /nCompany : %s /nWorkplace type(On-site , Hybrid , Remote) : %s /nJob Location : %s /nSalary Range : %d - %d /nDescription : %s /n", input.nextLine(), input.nextLine(), input.nextLine(), input.nextLine(), input.nextInt(), input.nextInt(), input.nextLine());
     }
+
     public String thoughtsSharingPost() {
         creationDate = dt.toString();
         return String.format("Share your thoughts with your network . /n %s", input.nextLine());
