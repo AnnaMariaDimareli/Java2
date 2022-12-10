@@ -1,14 +1,12 @@
 package gr.aueb;
 
-import java.util.Scanner;
-
 public class Message {
 
     private static int numberOfMessages;
     private final int messageNumber = numberOfMessages;
     private final User receiver;
     private final User sender;
-    private String contents;
+    private final String contents;
 
     public Message(User receiver, User sender, String contents) {
             this.receiver = receiver;
@@ -18,20 +16,13 @@ public class Message {
     }
 
     public String toString() {
-            return  "The receiver is " + this.getReceiver() + ",  the sender is " + this.getSender() + " and the message is " + contents;
+            return  "The receiver is " + this.getReceiver() + ",  the sender is " + this.getSender() + " and the message is " + this.getContents();
     }
-
-    public void enterMessage() {
-	    Scanner input = new Scanner(System.in);
-	    System.out.println("Please enter your message:");
-	    contents = input.nextLine();
-    }// FIXME delete this?
 
     public void showMessage() {
             System.out.println(this.getSender());
-            System.out.println(contents);
+            System.out.println(this.getContents());
     }
-
 
     public void addUnseenMessage() {
             receiver.addNewMessage(this);
