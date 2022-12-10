@@ -1,5 +1,7 @@
 package gr.aueb;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,20 +37,26 @@ public class User {
 		System.out.println("You have created an account!");
 	}
 
+	//Method takes a username and checks if a user with that username exists
+	public static void checkUserExistence(String Username) throws GeneralSecurityException{
+		User checkedUser = createdUsers.get(Username);
+		if (checkedUser==null){
+			throw new GeneralSecurityException("Username "+Username+" is incorrect");
+		}
+	}
+
 	//When called upon with a set of credentials this method will return the object which relates to the user.
 	//If no such user exists it will return null. If an incorrect password is given it will throw a GeneralSecurityException
+	@NotNull
 	public static User login(String username, String password) throws GeneralSecurityException {
+		checkUserExistence(username);
 		User currentUser= createdUsers.get(username);
-		if (currentUser == null){
-			System.out.println("Username "+username+" is incorrect");
-		}else{
 			if (currentUser.getPasswordValidity(password)){
 				System.out.println("Wellcome "+username);
 			} else{
 				System.out.println();
 				throw new GeneralSecurityException("Password `"+password+"` is incorrect for user "+username);
 			}
-		}
 		return currentUser;
 	}
 
