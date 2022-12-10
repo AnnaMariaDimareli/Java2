@@ -17,13 +17,15 @@ public class ExecutingClass {
 
     Scanner input = new Scanner(System.in);
 
+    //prints welcome message in command line
     public void welcome() {
         System.out.println("Welcome to our brand new Application. /n "+
                             "Are you interested in finding a new job? /n "+
                             "Are you looking for young aspiring employees? /n "+
                             "If your answer was positive, then we are here to help you!");
     }
-
+    
+    //prints main menu in command line
     public int printMainMenu() {
         System.out.println("Input your choice to continue: /n" +
                             "1.Sign up /n"+
@@ -33,40 +35,53 @@ public class ExecutingClass {
 
     }
 
+    //sign-up process
     public User signup() {
         System.out.println("Thanks for your interest in signing up /n " +
                 "We just need some basic info /n /n");
 
+        //asks for the user type and checks if the input is correct
         System.out.println("First of all, what type of user are you; (Employee or Employer)");
         String userType = selectTypeOfUser();
 
+        //if the input above is acceptable, asks for username
         System.out.println("Next input your Username");
         String username = createUserName();
 
+        //asks user for password and then it validates
         System.out.println("Input your Password");
         String password = createPassword();
 
+        //asks for user's name, no check needed
         System.out.println("Input your First Name");
         String name = input.nextLine();
 
+        //asks for user's surname, no check needed
         System.out.println("Input your Surname");
         String surname = input.nextLine();
 
+        //asks for user's password and checks if it is acceptable
         System.out.println("Input your Surname");
         String email = createEmail();
-
+        
+        //asks for user's date of birth, no check needed
         System.out.println("Input your Date of Birth");
         String dateOfBirth = input.nextLine();
 
+        //checks the user type
+        //depending on the type it creates the right object subclass (Employee-Employer)
         User currentUser;
         if (userType.equals("Employer")) {
             currentUser = new Employer(username, password, name, surname, email, dateOfBirth);
         } else {
             currentUser = new Employee(username, password, name, surname, email, dateOfBirth);
         }
+
+        //returns the new user
         return currentUser;
     }
 
+    //checks if the user's input type is acceptable and returns the chosen type
     public String selectTypeOfUser() {
 
         boolean flag;
@@ -81,9 +96,12 @@ public class ExecutingClass {
                 System.out.println("Type Employer or Employee!");
             }
         } while (!flag);
+        //the loop ends when the user gives an acceptable type (Employee or Employer)
         return type;
     }
 
+    //checks if the username is already taken
+    //when a correct username is given the method ends and returns it
     public String createUserName() {
         boolean flag;
         String username;
@@ -106,10 +124,14 @@ public class ExecutingClass {
         boolean flag;
         String password;
         do {
+            //creates new password
             password = input.nextLine();
+            //The user inputs the password twice 
             System.out.println("please repeat the password imputed");
             String repeatPassword = input.nextLine();
+            //if it matches then the password is accepted and the method returns it
             flag = !Objects.equals(password, repeatPassword);
+             //else the user is asked to input again
             if (flag) {
                 System.out.println("The passwords dont seem to match please repeat both inputs");
             }
@@ -117,6 +139,7 @@ public class ExecutingClass {
         return password;
     }
 
+    //makes sure that the email adress follows the correct email format
     public String createEmail() {
         boolean flag;
         String email;
@@ -133,25 +156,29 @@ public class ExecutingClass {
         return email;
     }
 
+    //login process
     public User login() {
         System.out.println("Lets get you logged in. We will just need some info!");
         User currentUser;
         do {
             currentUser = null;
+            //asks for user's credentials
             System.out.println("Input your username");
             String username = input.nextLine();
             System.out.println("Input your password");
             String password = input.nextLine();
+            //calls login method from User class
             try {
                 currentUser = User.login(username, password);
             } catch (GeneralSecurityException e) {
                 System.out.println(e.getMessage());
             }
         } while (currentUser == null);
-
+        
         return currentUser;
     }
 
+    //print the user's home screen menu/the actions he can make depending on his type
     public int printUserHomeScreen(User currentUser) {
 
         System.out.println("Input your choice to continue: /n" +
@@ -159,14 +186,18 @@ public class ExecutingClass {
                 "2. Read your new Messages /n" +
                 "3. Log out /n" +
                 "4. Change your profile info /n");
+        //Employees can interact with posts, but not create        
         if (currentUser instanceof Employee) {
             System.out.println("5. Read new Posts");
+        //Employers can create new posts
         } else {
             System.out.println("5. Create a new Post");
         }
+        //returns user's selection 
         return input.nextInt();
     }
 
+    //exits the app
     public void exit() {
         exitScreen();
         try {
@@ -177,6 +208,7 @@ public class ExecutingClass {
         }
     }
 
+    //prints some messages before exiting
     public void exitScreen() {
         System.out.println("Thanks for using our application");
         System.out.println("All relevant data has been saved");
