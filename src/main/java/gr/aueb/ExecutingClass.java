@@ -1,4 +1,6 @@
 package gr.aueb;
+import java.security.GeneralSecurityException;
+import java.util.Scanner;
 
 public class ExecutingClass {
     /**
@@ -7,34 +9,32 @@ public class ExecutingClass {
      * It should not be viewed as stand-alone class
      *
      */
-    import java.util.Scanner;
 
-public class Shit {
     
     Scanner input = new Scanner(System.in);
 
     public void welcome() {
-        System.out.printf("Welcome to our brand new Application. /n "+
+        System.out.println("Welcome to our brand new Application. /n "+
                             "Are you interested in finding a new job? /n "+ 
                             "Are you looking for young aspiring employees? /n "+ 
                             "If your answer was positive, then we are here to help you!");
     }
 
     public int printMainMenu() {
-        System.out.prinf("Input your choice to continue: /n" +
+        System.out.println("Input your choice to continue: /n" +
                             "1.Sign up /n"+
                             "2.Log in /n"+
                             "3.Abbort Mission /n");
-        return int answer = input.nextInt();
-        input.clear();
+        return input.nextInt();
+
     }
 
     public void loginScreen() throws GeneralSecurityException {
         System.out.println("Input your username");
-        String name = input.nextLine();
+        String username = input.nextLine();
         System.out.println("Input your password");
-        String pass = input.nextLine();
-        User currentUser = User.login(name,password);
+        String password = input.nextLine();
+        User currentUser = User.login(username,password);
     }
 
     public void signUpScreen() {
@@ -50,6 +50,6 @@ public class Shit {
         String mail = input.nextLine();
         System.out.println("Input your Date of Birth");
         String dateOfBirth = input.nextLine();
-        User currentUser = User(username, password, name, surname, mail, dateOfBirth);
+        User currentUser = new User(username, password, name, surname, mail, dateOfBirth);
     }
 }
