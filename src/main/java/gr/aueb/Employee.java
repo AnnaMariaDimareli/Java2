@@ -17,8 +17,12 @@ public class Employee extends User {
 	}
 
 
-	public void addLikedPosts(Post x) {
-		likedPosts.add(x);
+	public void addLikedPosts(Post likedPost) {
+		likedPosts.add(likedPost);
+		likedPost.like(); //Post's like count increased
+		super.addNewMessage(new Message(likedPost.getReftoemp(),this,
+				"Thank you for your interest in our job offering. You can send your cv to " +
+						likedPost.getCreator() + " email: " + likedPost.getReftoemp().getEmail())); // Automated message sent
 	}
 
 
@@ -27,9 +31,7 @@ public class Employee extends User {
 	}
 
 
-	public void unlike(Post x) {
-		likedPosts.remove(x);
-	}
+
 
 
 	public ArrayList<Post> getLikedPosts() {
