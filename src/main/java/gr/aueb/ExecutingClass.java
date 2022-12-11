@@ -19,26 +19,27 @@ public class ExecutingClass {
 
     //prints welcome message in command line
     public void welcome() {
-        System.out.println("Welcome to our brand new Application. /n "+
-                            "Are you interested in finding a new job? /n "+
-                            "Are you looking for young aspiring employees? /n "+
+        System.out.println("Welcome to our brand new Application. \n "+
+                            "Are you interested in finding a new job? \n "+
+                            "Are you looking for young aspiring employees? \n "+
                             "If your answer was positive, then we are here to help you!");
     }
     
     //prints main menu in command line
     public int printMainMenu() {
-        System.out.println("Input your choice to continue: /n" +
-                            "1.Sign up /n"+
-                            "2.Log in /n"+
-                            "3.Abort Mission /n");
+        System.out.println("Input your choice to continue: \n" +
+                            "1.Sign up \n"+
+                            "2.Log in \n"+
+                            "3.Abort Mission \n");
         return input.nextInt();
 
     }
 
     //sign-up process
     public User signup() {
-        System.out.println("Thanks for your interest in signing up /n " +
-                "We just need some basic info /n /n");
+        input.nextLine(); //clear console
+        System.out.println("Thanks for your interest in signing up \n " +
+                "We just need some basic info \n");
 
         //asks for the user type and checks if the input is correct
         System.out.println("First of all, what type of user are you; (Employee or Employer)");
@@ -158,6 +159,7 @@ public class ExecutingClass {
 
     //login process
     public User login() {
+        input.nextLine(); //clear console
         System.out.println("Lets get you logged in. We will just need some info!");
         User currentUser;
         do {
@@ -181,11 +183,11 @@ public class ExecutingClass {
     //print the user's home screen menu/the actions he can make depending on his type
     public int printUserHomeScreen(User currentUser) {
 
-        System.out.println("Input your choice to continue: /n" +
-                "1. Send a new Message /n" +
-                "2. Read your new Messages /n" +
-                "3. Log out /n" +
-                "4. Change your profile info /n");
+        System.out.println("Input your choice to continue: \n" +
+                "1. Send a new Message \n" +
+                "2. Read your new Messages \n" +
+                "3. Log out \n" +
+                "4. Change your profile info");
         //Employees can interact with posts, but not create        
         if (currentUser instanceof Employee) {
             System.out.println("5. Read new Posts");
