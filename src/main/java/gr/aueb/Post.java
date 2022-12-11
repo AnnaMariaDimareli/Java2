@@ -14,11 +14,12 @@ public class Post {
     private int likeCount = 0;
     private boolean available = false;
     private String creationDate;
-    //FIXME POST DOESN'T STORE ITS OWN CONTENT!
+    private String postContent;
 
     public Post(Employer emp) {
         referenceToEmployer = emp;
         creator = referenceToEmployer.getName() + " " + emp.getSurname();
+        jobOfferingPost();
         //TODO post must be added to draft posts upon creation as available is false
     }
 
@@ -41,12 +42,13 @@ public class Post {
         return creator;
     }
 
-    // TODO explain what this dose. maybe getAvailable() is not a correct name as the method returns void!
-    public void getAvailable() {
+    //This method returns if the post is available in human readable form 
+    public String getAvailable() {
         if (available) {
-            System.out.print("The post is available");
+            return "The post is available";
+            
         } else {
-            System.out.print("The post is not available");
+            return "The post is not available";
         }
     }
 
@@ -57,7 +59,7 @@ public class Post {
         if (Objects.equals(answer, "YES")) {
             available = true;
             referenceToEmployer.addUploadedPosts(this);
-            // TODO draftPosts removal method from Employer when it's available
+            //TODO draftPosts removal method from Employer when it's available
         } else if (Objects.equals(answer, "NO")) {
             available = false;
             //TODO uploadedPosts removal method from Employer when it's available
@@ -65,32 +67,32 @@ public class Post {
         }
     }
 
-    public String jobOfferingPost() { // FIXME method is not storing post contents! maybe this can be merged with the constructor
+    public void jobOfferingPost() {
         creationDate = dt.toString();
-        return String.format("Job Title : %s /nCompany : %s /nWorkplace type(On-site , Hybrid , Remote) : %s /nJob Location : %s /nSalary Range : %d - %d /nDescription : %s /n", input.nextLine(), input.nextLine(), input.nextLine(), input.nextLine(), input.nextInt(), input.nextInt(), input.nextLine());
-    }
-
-    public String thoughtsSharingPost() {//TODO SAFE REMOVAL. NO OTHER POSTS EXCEPT JOB OFFERINGS
-        creationDate = dt.toString();
-        return String.format("Share your thoughts with your network . /n %s", input.nextLine());
+        System.out.print("Job Title : ");
+        String jobTitle = "Job Title : " + input.nextLine();
+        System.out.println();
+        System.out.print("Workplace(On-site , Hybrid , Remote) : ");
+        String workPlace = "Workplace type(On-site , Hybrid , Remote) : " + input.nextLine() + " ";
+        System.out.println();
+        System.out.print("Job Location : ");
+        String jobLocation = "Job Location : " + input.nextLine() + " ";
+        System.out.println();
+        System.out.println("Salary Range ");
+        System.out.print("   From: ");
+        String salaryRange = "Salary Range : " + Integer.toString(input.nextInt()) + "-"; 
+        System.out.print("   To: ");
+        salaryRange=salaryRange + Integer.toString(input.nextInt()) + " ";
+        System.out.println();
+        System.out.print("Description : ");
+        String description = "Description : " + input.next() + " ";
+        System.out.println();
+        postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
     }
 
     @Override
 
     public String toString() {
-        return String.format("This post was created on %s by %s/n", creationDate, creator);
+        return String.format("This post was created on %s by %s\n %s", creationDate, creator, postContent);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
