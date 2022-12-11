@@ -46,7 +46,3 @@ public class App {
         } while (true);
     }
 }
-
-class Interface {
-
-}

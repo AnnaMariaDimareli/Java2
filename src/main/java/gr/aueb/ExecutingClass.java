@@ -61,7 +61,7 @@ public class ExecutingClass {
         String surname = input.nextLine();
 
         //asks for user's password and checks if it is acceptable
-        System.out.println("Input your Surname");
+        System.out.println("Input your Email");
         String email = createEmail();
         
         //asks for user's date of birth, no check needed
