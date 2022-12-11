@@ -20,9 +20,9 @@ public class Employee extends User {
 	public void addLikedPosts(Post likedPost) {
 		likedPosts.add(likedPost);
 		likedPost.like(); //Post's like count increased
-		super.addNewMessage(new Message(likedPost.getReftoemp(),this,
+		super.addNewMessage(new Message(likedPost.getReferenceToEmployer(),this,
 				"Thank you for your interest in our job offering. You can send your cv to " +
-						likedPost.getCreator() + " email: " + likedPost.getReftoemp().getEmail())); // Automated message sent
+						likedPost.getCreator() + " email: " + likedPost.getReferenceToEmployer().getEmail())); // Automated message sent
 	}
 
 
