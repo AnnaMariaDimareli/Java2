@@ -3,12 +3,17 @@ package gr.aueb;
 import java.util.ArrayList;
 
 public class Employer extends User {
-	//ArrayList containing post-type objects
+
+	//ArrayList containing uploaded post-type objects
 	private ArrayList<Post> uploadedPosts = new ArrayList<>();
+	
+	//ArrayList containing draft post-type objects
+	private ArrayList<Post> draftPosts = new ArrayList<>();
 
 	/**
-	 * Hello world!
-	 * FIXME Info about Employer class needed
+	 * Employer-type users offer job positions to Employee-type users
+	 * They upload posts referring to available positions
+	 * Then Employee-type users show interest via liking their posts
 	 */
 
 	//Creates User through superclass constructor
@@ -21,10 +26,10 @@ public class Employer extends User {
 		uploadedPosts.add(x);
 	}
 
-	//Empties user's account from posts
-	public void clearUploadedPosts() {
-		uploadedPosts.clear();
-		System.out.println("Your posts have been deleted!");
+	//Deletes post at given index from the account
+	public void deleteUploadedPost(int i) {
+		uploadedPosts.remove(i);
+		System.out.println("Your post at index " + i + " has been deleted!");
 	}
 
 	//Shows how many posts have been created by the user
@@ -35,6 +40,27 @@ public class Employer extends User {
 	//Shows the user's posts
 	public ArrayList<Post> getUploadedPosts() {
 		return uploadedPosts;
+	}
+
+	//Creates a draft post
+	public void addDraftPosts(Post x) {
+		draftPosts.add(x);
+	}
+
+	//Deletes draft post at given index from the account
+	public void deleteDraftPost(int i) {
+		draftPosts.remove(i);
+		System.out.println("Your draft post at index " + i + " has been deleted!");
+	}
+
+	//Shows how many draft posts have been created by the user
+	public void sizeOfDraftPosts() {
+		System.out.println("You have uploaded " + draftPosts.size() + " draft posts!");
+	}
+
+	//Shows the user's draft posts
+	public ArrayList<Post> getDraftPosts() {
+		return draftPosts;
 	}
 
 	//Used for informing the user about their UID and their user type
