@@ -38,25 +38,26 @@ public class User {
 	}
 
 	//Method takes a username and checks if a user with that username exists
-	public static void checkUserExistence(String Username) throws GeneralSecurityException{
+	public static void checkUserExistence(String Username) throws GeneralSecurityException {
 		User checkedUser = createdUsers.get(Username);
-		if (checkedUser==null){
+		if (checkedUser==null) {
 			throw new GeneralSecurityException("Username "+Username+" is incorrect");
 		}
 	}
 
-	//When called upon with a set of credentials this method will return the object which relates to the user.
-	//If no such user exists it will return null. If an incorrect password is given it will throw a GeneralSecurityException
+	//When called upon with a set of credentials this method will return the object which relates to the user
+	//If no such user exists it will return null
+	//If an incorrect password is given it will throw a GeneralSecurityException
 	@NotNull
 	public static User login(String username, String password) throws GeneralSecurityException {
 		checkUserExistence(username);
-		User currentUser= createdUsers.get(username);
-			if (currentUser.getPasswordValidity(password)){
-				System.out.println("Wellcome "+username);
-			} else{
-				System.out.println();
-				throw new GeneralSecurityException("Password `"+password+"` is incorrect for user "+username);
-			}
+		User currentUser = createdUsers.get(username);
+		if (currentUser.getPasswordValidity(password)) {
+			System.out.println("Wellcome " +username + "!");
+		} else {
+			System.out.println();
+			throw new GeneralSecurityException("Password `" + password + "` is incorrect for user " + username);
+		}
 		return currentUser;
 	}
 
@@ -64,7 +65,7 @@ public class User {
 		return username;
 	}
 
-	//checks if password given is valid used for logging in
+	//Checks if password given is valid (used for logging in)
 	public boolean getPasswordValidity(String password) {
 		return Objects.equals(password, this.password);
 	}
@@ -73,7 +74,7 @@ public class User {
 		if (Objects.equals(oldPassword, password)) {
 			password = newPassword;
 		} else {
-			throw new GeneralSecurityException("Password `"+oldPassword+"` is incorrect for user "+username);
+			throw new GeneralSecurityException("Password `" + oldPassword + "` is incorrect for user " + username);
 		}
 	}
 
@@ -94,7 +95,7 @@ public class User {
 	}
 
 
-	//Shows user their messages and then empties it
+	//Shows user their messages and then empties the ArrayList that contains them
 	public void seeNewMessages() {
 		System.out.println("Your unseen messages are: ");
 		System.out.println(unseenMessages);
