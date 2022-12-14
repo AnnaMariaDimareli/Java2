@@ -34,14 +34,14 @@ public class User {
 		this.email = email;
 		this.dateOfBirth = dateOfBirth;
 		createdUsers.put(username,this);
-		System.out.println("You have created an account!");
+		System.out.println("You have created an account! \n");
 	}
 
 	//Method takes a username and checks if a user with that username exists
 	public static void checkUserExistence(String Username) throws GeneralSecurityException {
 		User checkedUser = createdUsers.get(Username);
 		if (checkedUser==null) {
-			throw new GeneralSecurityException("Username "+Username+" is incorrect");
+			throw new GeneralSecurityException("Username "+Username+" is incorrect \n");
 		}
 	}
 
@@ -56,7 +56,7 @@ public class User {
 			System.out.println("Wellcome " +username + "!");
 		} else {
 			System.out.println();
-			throw new GeneralSecurityException("Password `" + password + "` is incorrect for user " + username);
+			throw new GeneralSecurityException("Password `" + password + "` is incorrect for user " + username+"\n");
 		}
 		return currentUser;
 	}
@@ -113,5 +113,7 @@ public class User {
 		return String.format("Your username is %s.", username);
 	}
 
-
+	protected ArrayList<Message> getGetUnseenMessages() {
+		return unseenMessages;
+	}
 }
