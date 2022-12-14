@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 public class ExecutingClass {
     /**
      * This class helps with the layout of App.java
-     * Its considered an integral part of it
+     * Its considered an integral part of it.
      * It should not be viewed as stand-alone class
      */
 
@@ -140,7 +140,7 @@ public class ExecutingClass {
         return password;
     }
 
-    //makes sure that the email adress follows the correct email format
+    //makes sure that the email address follows the correct email format
     public String createEmail() {
         boolean flag;
         String email;
@@ -151,7 +151,7 @@ public class ExecutingClass {
             Matcher matcher = pattern.matcher(email);
             flag = matcher.matches();
             if (!flag) {
-                System.out.println("That email dosent seem right! make sure its formated as [...]@[domain].[topLevenDomain] you entered: " + email);
+                System.out.println("That email doesn't seem right! make sure its formatted as [...]@[domain].[topLevenDomain] you entered: " + email);
             }
         } while (!flag);
         return email;
