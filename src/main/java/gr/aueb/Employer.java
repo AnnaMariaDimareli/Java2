@@ -17,19 +17,20 @@ public class Employer extends User {
 	 */
 
 	//Creates User through superclass constructor
-	public Employer(String username, String password, String name, String surname, String email, String dateOfBirth) {
+	public Employer(String username, String password, String name,
+					String surname, String email, String dateOfBirth) {
 		super(username, password, name, surname, email, dateOfBirth);
 	}
 
-	//Creates a post
+	//Uploads a post
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
 	}
 
-	//Deletes post at given index from the account
-	public void deleteUploadedPost(int i) {
-		uploadedPosts.remove(i);
-		System.out.println("Your post at index " + i + " has been deleted!");
+	//Deletes an Uploaded post from the ArrayList<Post>
+	public void deleteUploadedPost(Post postForDeletion) {
+		uploadedPosts.remove(postForDeletion);
+		System.out.println("Your post has been deleted!");
 	}
 
 	//Shows how many posts have been created by the user
@@ -37,20 +38,20 @@ public class Employer extends User {
 		System.out.println("You have uploaded " + uploadedPosts.size() + " posts!");
 	}
 
-	//Shows the user's posts
+	//Returns the users draft posts
 	public ArrayList<Post> getUploadedPosts() {
 		return uploadedPosts;
 	}
 
-	//Creates a draft post
+	//Stores a draft post
 	public void addDraftPosts(Post x) {
 		draftPosts.add(x);
 	}
 
-	//Deletes draft post at given index from the account
-	public void deleteDraftPost(int i) {
-		draftPosts.remove(i);
-		System.out.println("Your draft post at index " + i + " has been deleted!");
+	//Deletes a draft post
+	public void deleteDraftPost(Post postForDeletion) {
+		draftPosts.remove(postForDeletion);
+		System.out.println("Your draft post has been deleted!");
 	}
 
 	//Shows how many draft posts have been created by the user
@@ -58,7 +59,7 @@ public class Employer extends User {
 		System.out.println("You have uploaded " + draftPosts.size() + " draft posts!");
 	}
 
-	//Shows the user's draft posts
+	//Returns the users draft posts
 	public ArrayList<Post> getDraftPosts() {
 		return draftPosts;
 	}
