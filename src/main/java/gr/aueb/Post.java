@@ -20,7 +20,7 @@ public class Post {
         referenceToEmployer = emp;
         creator = referenceToEmployer.getName() + " " + emp.getSurname();
         jobOfferingPost();
-        //TODO post must be added to draft posts upon creation as available is false
+        referenceToEmployer.addDraftPosts(this);
     }
 
     public Employer getReferenceToEmployer() {
@@ -46,7 +46,6 @@ public class Post {
     public String getAvailable() {
         if (available) {
             return "The post is available";
-            
         } else {
             return "The post is not available";
         }
@@ -59,11 +58,11 @@ public class Post {
         if (Objects.equals(answer, "YES")) {
             available = true;
             referenceToEmployer.addUploadedPosts(this);
-            //TODO draftPosts removal method from Employer when it's available
+            referenceToEmployer.deleteDraftPost(this);
         } else if (Objects.equals(answer, "NO")) {
             available = false;
-            //TODO uploadedPosts removal method from Employer when it's available
-            //TODO draftPosts adder method from Employer when it's available
+            referenceToEmployer.addDraftPosts(this);
+            referenceToEmployer.deleteUploadedPost(this);
         }
     }
 
