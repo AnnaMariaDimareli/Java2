@@ -25,7 +25,7 @@ public class MessageTest {
         assertEquals("failure - does not assign correct Receiver!", "panos1b", testMessage.getReceiver());
         assertEquals("failure - does not assign correct Sender!", "Greg", testMessage.getSender());
         assertEquals("failure - does not assign correct Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
-        assertEquals("failure - does not add up correctly the NumberOfMessages!", 2, testMessage.getNumberOfMessages())
+        assertEquals("failure - does not add up correctly the NumberOfMessages!", 2, testMessage.getNumberOfMessages());
 
     }
 
@@ -47,28 +47,28 @@ public class MessageTest {
     
     @Test
     public void getSenderTest() {
-        assertEquals("Method not returning Sender!", "Greg", testMessage.getSender());
+        assertEquals("Method is not returning Sender!", "Greg", testMessage.getSender());
     }
 
     @Test
     public void getReceiverTest() {
-        assertEquals("Method not returning Receiver!", "panos1b", testMessage.getReceiver());
+        assertEquals("Method is not returning Receiver!", "panos1b", testMessage.getReceiver());
     }
     
     @Test
     public void getContentsTest() {
-        assertEquals("Method not returning Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
+        assertEquals("Method is not returning Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
     }
 
     @Test
     public void getMessageNumberTest() {
-        assertEquals("Method not returning MessageNumber!", 2, testMessage2.getMessageNumber());
-        assertEquals("Method not returning MessageNumber!", 1, testMessage.getMessageNumber());
+        assertEquals("Method is not returning MessageNumber!", 2, testMessage2.getMessageNumber());
+        assertEquals("Method is not returning MessageNumber!", 1, testMessage.getMessageNumber());
     }
 
     @Test
     public void getNumberOfMessagesTest() {
-        assertEquals("Method not returning NumberOfMessages!", 2, testMessage2.getNumberOfMessages());
-        assertEquals("Method not returning NumberOfMessages!", 2, testMessage.getNumberOfMessages());
+        assertEquals("Method is not returning NumberOfMessages!", 2, testMessage2.getNumberOfMessages());
+        assertEquals("Method is not returning NumberOfMessages!", 2, testMessage.getNumberOfMessages());
     }
 }
