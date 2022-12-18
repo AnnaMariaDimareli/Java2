@@ -38,7 +38,7 @@ public class Employer extends User {
 		System.out.println("You have uploaded " + uploadedPosts.size() + " posts!");
 	}
 
-	//Returns the users draft posts
+	//Returns the users posts
 	public ArrayList<Post> getUploadedPosts() {
 		return uploadedPosts;
 	}
