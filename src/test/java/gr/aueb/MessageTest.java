@@ -2,7 +2,9 @@ package gr.aueb;
 
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.After;
 import java.util.ArrayList;
+
 
 import static org.junit.Assert.*;
 
@@ -15,6 +17,7 @@ public class MessageTest {
 
     private Message testMessage;
     private Message testMessage2;
+    private static int counter = 0;
 
     @Before
     public void setUp() {
@@ -36,7 +39,7 @@ public class MessageTest {
     @Test 
     public void toStringTest() {
         assertEquals("Wrong toString!", 
-        "The receiver is panos1b the sender is Greg and the message is L + Ratio + You fell off + maidenless", 
+        "The receiver is panos1b,  the sender is Greg and the message is L + Ratio + You fell off + maidenless", 
         testMessage.toString());
     }
 
@@ -66,13 +69,17 @@ public class MessageTest {
 
     @Test
     public void getMessageNumberTest() {
-        assertEquals("Method is not returning MessageNumber!", 2, testMessage2.getMessageNumber());
-        assertEquals("Method is not returning MessageNumber!", 1, testMessage.getMessageNumber());
+        assertEquals("Method is not returning MessageNumber!", 2 * counter + 1, testMessage2.getMessageNumber());
+        assertEquals("Method is not returning MessageNumber!", 2 * counter, testMessage.getMessageNumber());
     }
 
     @Test
     public void getNumberOfMessagesTest() {
-        assertEquals("Method is not returning NumberOfMessages!", 2, Message.getNumberOfMessages());
-        assertEquals("Method is not returning NumberOfMessages!", 2, Message.getNumberOfMessages());
+        assertEquals("Method is not returning NumberOfMessages!", 2 * counter + 2, Message.getNumberOfMessages());
+    }
+
+    @After
+    public void Counter() {
+        counter++;
     }
 }
