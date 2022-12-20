@@ -1,8 +1,9 @@
-package test.java.gr.aueb;
+package gr.aueb;
 
 import org.junit.Test;
 import org.junit.Before;
 import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class MessageTest {
@@ -12,12 +13,15 @@ public class MessageTest {
     private final User testUser2 = new User("Greg", "gfsdrdfg", "Gregory", 
         "Terzidis", "gregterzidis@gmail.com", "19-04-20003");
 
+    private Message testMessage;
+    private Message testMessage2;
+
     @Before
     public void setUp() {
-        Message testMessage = new Message(testUser1, testUser2, 
-            "L + Ratio + You fell off + maidenless");
-        Message testMessage2 = new Message(testUser2, testUser1,
-            "Welcome to the Jungle");
+        testMessage = new Message(testUser1, testUser2,
+                "L + Ratio + You fell off + maidenless");
+        testMessage2 = new Message(testUser2, testUser1,
+                "Welcome to the Jungle");
     }
 
     @Test
@@ -25,7 +29,7 @@ public class MessageTest {
         assertEquals("failure - does not assign correct Receiver!", "panos1b", testMessage.getReceiver());
         assertEquals("failure - does not assign correct Sender!", "Greg", testMessage.getSender());
         assertEquals("failure - does not assign correct Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
-        assertEquals("failure - does not add up correctly the NumberOfMessages!", 2, testMessage.getNumberOfMessages());
+        assertEquals("failure - does not add up correctly the NumberOfMessages!", 2, Message.getNumberOfMessages());
 
     }
 
@@ -68,7 +72,7 @@ public class MessageTest {
 
     @Test
     public void getNumberOfMessagesTest() {
-        assertEquals("Method is not returning NumberOfMessages!", 2, testMessage2.getNumberOfMessages());
-        assertEquals("Method is not returning NumberOfMessages!", 2, testMessage.getNumberOfMessages());
+        assertEquals("Method is not returning NumberOfMessages!", 2, Message.getNumberOfMessages());
+        assertEquals("Method is not returning NumberOfMessages!", 2, Message.getNumberOfMessages());
     }
 }
