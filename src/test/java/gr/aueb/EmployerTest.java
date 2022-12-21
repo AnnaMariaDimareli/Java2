@@ -11,8 +11,8 @@ public class EmployerTest {
         "Egglezou", "t8210039@aueb.gr", "21-02-2003");
     private Post testPost1;
     private Post testPost2;
-	private ArrayList<Post> uploadedPostsTest = new ArrayList<Post>();
-    private ArrayList<Post> draftPostsTest = new ArrayList<String>();
+	private ArrayList<Post> uploadedPostsTest = new ArrayList<>();
+    private ArrayList<Post> draftPostsTest = new ArrayList<>();
 
     @Test
     public void addDraftPostsTest() {
