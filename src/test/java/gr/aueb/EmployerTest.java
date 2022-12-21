@@ -30,15 +30,16 @@ public class EmployerTest {
 
     @Test
     public void sizeOfDraftPostsTest() {
-        //Size of ArrayList should be 1
-        assertEquals("Method does not return 1!", 1, testEmployer.getDraftPosts().size()); 
+        //Size of ArrayList should be the same as size of draftPostsTest
+        assertEquals("Method does not return 1!", draftPostsTest.size(), testEmployer.getDraftPosts().size()); 
     }
 
     @Test 
     public void deleteDraftPostTest() {
-        //Size of ArrayList should be 0
+        //Size of ArrayList should be the same as size of draftPostsTest
         testEmployer.deleteDraftPost(testPost1);
-        assertEquals("Method does not delete post!", 0, testEmployer.getDraftPosts().size());
+        draftPostsTest.remove(testPost1);
+        assertEquals("Method does not delete post!", draftPostsTest.size(), testEmployer.getDraftPosts().size());
     }
 
     @Test
@@ -58,15 +59,16 @@ public class EmployerTest {
 
     @Test
     public void sizeOfUploadedPostsTest() {
-        //Size of ArrayList should be 1
-        assertEquals("Method does not return 1!", 1, testEmployer.getUploadedPosts().size());
+        //Size of ArrayList should be the same as size of uploadedPostsTest
+        assertEquals("Method does not return 1!", uploadedPostsTest.size(), testEmployer.getUploadedPosts().size());
     }
 
     @Test 
     public void deleteUploadedPostTest() {
-        //Size of ArrayList should be 0
+        //Size of ArrayList should be the same as size of uploadedPostsTest
         testEmployer.deleteUploadedPost(testPost2);
-        assertEquals("Method does not delete post!", 0, testEmployer.getUploadedPosts().size());
+        uploadedPostsTest.remove(testPost2);
+        assertEquals("Method does not delete post!", uploadedPostsTest.size(), testEmployer.getUploadedPosts().size());
     }
     
 }
