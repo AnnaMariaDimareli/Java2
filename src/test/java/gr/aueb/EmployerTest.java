@@ -17,7 +17,7 @@ public class EmployerTest {
     @Test
     public void addDraftPostsTest() {
         //Post should be added in ArrayList
-        testPost1 = new Post(testEmployer);
+        testPost1 = new Post(testEmployer,"This is the content's of the post");
         draftPostsTest.add(testPost1);
         assertEquals("Method has not added the draft post!", testPost1, testEmployer.getDraftPosts().get(0));
     }
@@ -44,7 +44,7 @@ public class EmployerTest {
     @Test
     public void addUploadedPostsTest() {
         //Post should be added in ArrayList
-        testPost2 = new Post(testEmployer);
+        testPost2 = new Post(testEmployer,"This is the content's of the post");
         testPost2.setAvailable("YES");
         uploadedPostsTest.add(testPost2);
         assertEquals("Method has not added the uploaded post!", testPost2, testEmployer.getUploadedPosts().get(0));

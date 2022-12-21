@@ -13,13 +13,21 @@ public class Post {
 
     private int likeCount = 0;
     private boolean available = false;
-    private String creationDate;
+    private final String creationDate=dt.toString();
     private String postContent;
 
     public Post(Employer emp) {
         referenceToEmployer = emp;
         creator = referenceToEmployer.getName() + " " + emp.getSurname();
         jobOfferingPost();
+        referenceToEmployer.addDraftPosts(this);
+    }
+
+    //This constructor is only used for testing
+    protected Post(Employer emp, String postContent) {
+        referenceToEmployer = emp;
+        creator = referenceToEmployer.getName() + " " + emp.getSurname();
+        this.postContent=postContent;
         referenceToEmployer.addDraftPosts(this);
     }
 
@@ -67,7 +75,6 @@ public class Post {
     }
 
     public void jobOfferingPost() {
-        creationDate = dt.toString();
         System.out.print("Job Title : ");
         String jobTitle = "Job Title : " + input.nextLine();
         System.out.println();
