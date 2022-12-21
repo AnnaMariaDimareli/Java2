@@ -1,23 +1,22 @@
 package gr.aueb;
 
-import org.junit.Test;
-import org.junit.Before;
 import org.junit.After;
-import java.util.ArrayList;
+import org.junit.Before;
+import org.junit.Test;
 
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
 public class MessageTest {
 
+    private static int counter = 0;
     private final User testUser1 = new User("panos1b", "rdeolzcaq", "Panos",
             "Daskalopoulos", "alexdask1@icloud.com", "16-10-2003");
-    private final User testUser2 = new User("Greg", "gfsdrdfg", "Gregory", 
-        "Terzidis", "gregterzidis@gmail.com", "19-04-20003");
-
+    private final User testUser2 = new User("Greg", "gfsdrdfg", "Gregory",
+            "Terzidis", "gregterzidis@gmail.com", "19-04-20003");
     private Message testMessage;
     private Message testMessage2;
-    private static int counter = 0;
 
     @Before
     public void setUp() {
@@ -36,14 +35,14 @@ public class MessageTest {
 
     }
 
-    @Test 
+    @Test
     public void toStringTest() {
-        assertEquals("Wrong toString!", 
-        "The receiver is panos1b,  the sender is Greg and the message is L + Ratio + You fell off + maidenless", 
-        testMessage.toString());
+        assertEquals("Wrong toString!",
+                "The receiver is panos1b,  the sender is Greg and the message is L + Ratio + You fell off + maidenless",
+                testMessage.toString());
     }
 
-    @Test 
+    @Test
     public void addUnseenMessageTest() {
         testMessage.addUnseenMessage();
 
@@ -51,7 +50,7 @@ public class MessageTest {
         assertFalse("ArrayList of messages empty! Even though a message was added", unseenMessages.isEmpty()); //array should not be empty
         assertTrue("Message was not added to ArrayList", unseenMessages.contains(testMessage));//array should contain message
     }
-    
+
     @Test
     public void getSenderTest() {
         assertEquals("Method is not returning Sender!", "Greg", testMessage.getSender());
@@ -61,7 +60,7 @@ public class MessageTest {
     public void getReceiverTest() {
         assertEquals("Method is not returning Receiver!", "panos1b", testMessage.getReceiver());
     }
-    
+
     @Test
     public void getContentsTest() {
         assertEquals("Method is not returning Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
