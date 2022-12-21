@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 public class PostTest {
     private Employer employer = new Employer("simosathan9", "jhnksxj", "Simos", "Athanasiadis", "simosathan03@gmail.com",
         "9-11-2003");
-    private Post post = new Post(employer);
+    private Post post = new Post(employer,"This is a test post");
 
     @Test
     public void testGetReferenceToEmployer() {
