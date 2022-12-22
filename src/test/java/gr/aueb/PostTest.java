@@ -3,8 +3,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class PostTest {
-    private Employer employer = new Employer("simosathan9", "jhnksxj", "Simos", "Athanasiadis", "simosathan03@gmail.com",
-        "9-11-2003");
+    private Employer employer = new Employer("simosathan9", "jhnksxj", "Simos",
+            "Athanasiadis", "simosathan03@gmail.com", "9-11-2003");
     private Post post = new Post(employer,"This is a test post");
 
     @Test
@@ -31,4 +31,5 @@ public class PostTest {
         post.setAvailable("NO");
         assertEquals("The post is not available", post.getAvailable());
     }
+    //TODO METHODS toString(), getLikeCount() and getAvailable() test methods needed
 }
