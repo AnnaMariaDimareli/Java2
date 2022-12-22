@@ -146,7 +146,8 @@ public class ExecutingClass {
         String email;
         do {
             email = input.nextLine();
-            String emailPattern = "^(.+)@(.+)$";
+            //TODO consider using regex in accordance with RFC 5322 Official Standard. Ask if its ok!
+            String emailPattern = "^(.+)@(.+)\\.(.+)$";
             Pattern pattern = Pattern.compile(emailPattern);
             Matcher matcher = pattern.matcher(email);
             flag = matcher.matches();
