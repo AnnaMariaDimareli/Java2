@@ -8,8 +8,8 @@ public class Employee extends User {
 	private ArrayList<Post> likedPosts = new ArrayList<>();
 
 	/**
-	 * Hello world!
-	 * FIXME Info about Employee class needed
+	 * Employee-type users like posts of Employer-type users for job positions
+	 * Then an automated message of interest is sent to Employer-type users
 	 */
 
 	//Creates Employee type User through superclass constructor
@@ -17,39 +17,29 @@ public class Employee extends User {
 		super(username, password, name, surname, email, dateOfBirth);
 	}
 
-
 	//Likes a post
-	public void addLikedPosts(Post likedPost) {
+	public void addLikedPost(Post likedPost) {
 		likedPosts.add(likedPost);
 		likedPost.like(); //Post's like count increased
 		super.addNewMessage(new Message(likedPost.getReferenceToEmployer(),this,
 				"Thank you for your interest in our job offering. You can send your cv to " +
 						likedPost.getCreator() + " email: " + likedPost.getReferenceToEmployer().getEmail())); // Automated message sent
 	}
-	
-	public void unlikePost() {
-		//TODO
-	}
 
-    
 	//Shows how many posts have been liked by the user
-	public void sizeOfLikedPosts() {
-		System.out.println("You have liked " + likedPosts.size() + " posts!");
+	public int sizeOfLikedPosts() {
+		return likedPosts.size();
 	}
-
-
-
 
     //Shows the user's likes
 	public ArrayList<Post> getLikedPosts() {
 		return likedPosts;
 	}
-
 	
 	//Used for informing the user about their UID and their user type
 	@Override
 	public String toString() {
-		return (super.toString() + " and you are an employee-type user.");
+		return (super.toString() + " You are an employee-type user.");
 	}
 
 }
