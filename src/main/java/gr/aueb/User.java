@@ -2,8 +2,6 @@ package gr.aueb;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.sun.xml.internal.ws.api.message.Message;
-
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,9 +15,9 @@ public class User {
 	private final String username; //usernames cant change. set as final
 	private String password;
 	private String name;
-	private String surname;
-	private String email;
-	private String dateOfBirth;
+	private final String surname;
+	private final String email;
+	private final String dateOfBirth;
 
 	//List of messages sent to user
 	private ArrayList<Message> unseenMessages = new ArrayList<>();
@@ -58,7 +56,6 @@ public class User {
 		} else {
 			throw new GeneralSecurityException("Password `" + password + "` is incorrect for user " + username+"\n");
 		}
-		return null;
 	}
 
 	public String getUsername() {
@@ -71,11 +68,21 @@ public class User {
 	}
 
 	public void setPassword(String oldPassword, String newPassword) throws GeneralSecurityException {
-		if (Objects.equals(oldPassword, password)) {
+		if (getPasswordValidity(password)) {
 			password = newPassword;
 		} else {
 			throw new GeneralSecurityException("Password `" + oldPassword + "` is incorrect for user " + username);
 		}
+	}
+
+	//Validates password and then changes the name
+	public void setName(String newName, String givenPassword) throws GeneralSecurityException {
+		if (getPasswordValidity(password)) {
+			name = newName;
+		} else {
+			throw new GeneralSecurityException("Password `" + givenPassword + "` is incorrect for user " + username);
+		}
+
 	}
 
 	public String getName() {
@@ -96,8 +103,8 @@ public class User {
 
 
 	//Empties the ArrayList that contains the messages and returns them
-	public ArrayList<Message> seeNewMessages() {
-		ArrayList<Message> unseenMessagesCopy = unseenMessages.clone();
+	public ArrayList<Message> getNewMessages() {
+		ArrayList<Message> unseenMessagesCopy = new ArrayList<>(unseenMessages);
 		unseenMessages.clear();
 		return unseenMessagesCopy;
 	}
