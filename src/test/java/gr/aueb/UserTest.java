@@ -4,7 +4,6 @@ import org.junit.Test;
 
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -71,9 +70,13 @@ public class UserTest {
         ArrayList<Message> myUnseenMessages = new ArrayList<>();
 
         myUnseenMessages.add(testMessage1);
+        myUnseenMessages.add(testMessage2);
         myUnseenMessages.add(testMessage3);
 
-        assertEquals("Method not getting the unseen messages correctly", testUser.getNewMessages(), myUnseenMessages);
-    }
+        ArrayList<Message> correctUnseenMessages = testUser.getNewMessages();
 
+        assertEquals("First Unseen Message is okay", myUnseenMessages.get(0), correctUnseenMessages.get(0));
+        assertEquals("Second Unseen Message is okay", myUnseenMessages.get(1), correctUnseenMessages.get(1));
+        assertEquals("Third Unseen Message is okay", myUnseenMessages.get(2), correctUnseenMessages.get(2));
+    }
 }
