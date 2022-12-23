@@ -5,12 +5,11 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Post {
+
     private static final Scanner input = new Scanner(System.in);
     private static final Date dt = new Date(System.currentTimeMillis());
-
     private final String creator;
     private final Employer referenceToEmployer;
-
     private int likeCount = 0;
     private boolean available = false;
     private final String creationDate = dt.toString();
@@ -20,7 +19,7 @@ public class Post {
     protected Post(Employer emp, String postContent) {
         referenceToEmployer = emp;
         creator = referenceToEmployer.getName() + " " + emp.getSurname();
-        this.postContent=postContent;
+        this.postContent = postContent;
         referenceToEmployer.addDraftPosts(this);
     }
 
@@ -32,8 +31,8 @@ public class Post {
         return likeCount;
     }
 
-    //if an employee wants to like a post then the Employee class makes a call to
-    //the setLikeCount() method to increase post's number of likes
+    //If an employee wants to like a post then the Employee class makes a call to
+    //The setLikeCount() method to increase post's number of likes
     public void like() {
         likeCount++;
     }
