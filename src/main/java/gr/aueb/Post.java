@@ -42,28 +42,18 @@ public class Post {
         return creator;
     }
 
-    //This method returns if the post is available in human readable form 
-    public String getAvailable() {
-        if (available) {
-            return "The post is available";
-        } else {
-            return "The post is not available";
-        }
+    //This method returns if the post is available FIXME maybe this method is useless
+    public Boolean getAvailable() {
+        return available;
     }
 
     /* If the employer wants to make the post available then calls setAvailable with argument YES
      * If he wants to set it as unavailable then he calls setAvailable with argument NO
      */
-    public void setAvailable(String answer) {
-        if (Objects.equals(answer, "YES")) {
+    public void setAvailable() {
             available = true;
             referenceToEmployer.addUploadedPosts(this);
             referenceToEmployer.deleteDraftPost(this);
-        } else if (Objects.equals(answer, "NO")) {
-            available = false;
-            referenceToEmployer.addDraftPosts(this);
-            referenceToEmployer.deleteUploadedPost(this);
-        }
     }
 
 

@@ -27,11 +27,8 @@ public class PostTest {
 
     @Test
     public void testSetAvailable() {
-        post.setAvailable("YES");
-        assertEquals("The post is available", post.getAvailable());
-
-        post.setAvailable("NO");
-        assertEquals("The post is not available", post.getAvailable());
+        post.setAvailable();
+        assertTrue("setAvailable is not changing post status to Available", post.getAvailable());
     }
     @Test
     public void testToString() {
