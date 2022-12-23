@@ -199,6 +199,55 @@ public class ExecutingClass {
         return input.nextInt();
     }
 
+    public int printUserChangeInfoScreen() {
+        System.out.println("Input your choice to continue: \n" +
+                "1. Change Password \n" +
+                "2. Change your Name \n" +
+                "3. Cancel  \n"
+        );
+        return input.nextInt();
+    }
+
+    public void changePassword(User currentUser) {
+        boolean flag;
+        do {
+            flag = false;
+            String oldPassword;
+            String newPassword;
+            input.nextLine();
+            System.out.println("Please input your old password");
+            oldPassword = input.nextLine();
+            System.out.println("Please input your new password");
+            newPassword = input.nextLine();
+            try {
+                currentUser.setPassword(oldPassword, newPassword);
+            } catch (GeneralSecurityException e) {
+                flag=true;
+                System.out.println(e.getMessage());
+            }
+        }while(flag);
+    }
+
+    public void changeName(User currentUser) {
+        boolean flag;
+        input.nextLine();
+        do {
+            flag = false;
+            String password;
+            String newName;
+            System.out.println("Please input your password");
+            password = input.nextLine();
+            System.out.println("Please input your new name");
+            newName = input.nextLine();
+            try {
+                currentUser.setName(newName,password);
+            } catch (GeneralSecurityException e) {
+                flag=true;
+                System.out.println(e.getMessage());
+            }
+        }while(flag);
+    }
+
     //Exits the app
     public void exit() {
         exitScreen();

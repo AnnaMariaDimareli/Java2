@@ -68,7 +68,7 @@ public class User {
 	}
 
 	public void setPassword(String oldPassword, String newPassword) throws GeneralSecurityException {
-		if (getPasswordValidity(password)) {
+		if (getPasswordValidity(oldPassword)) {
 			password = newPassword;
 		} else {
 			throw new GeneralSecurityException("Password `" + oldPassword + "` is incorrect for user " + username);
@@ -77,7 +77,7 @@ public class User {
 
 	//Validates password and then changes the name
 	public void setName(String newName, String givenPassword) throws GeneralSecurityException {
-		if (getPasswordValidity(password)) {
+		if (getPasswordValidity(givenPassword)) {
 			name = newName;
 		} else {
 			throw new GeneralSecurityException("Password `" + givenPassword + "` is incorrect for user " + username);
