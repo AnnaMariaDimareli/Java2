@@ -3,6 +3,7 @@ package gr.aueb;
 import java.security.GeneralSecurityException;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -207,6 +208,15 @@ public class ExecutingClass {
         System.out.println("Give message contents: ");
         String contents = input.nextLine();
         Message message = new Message(receiver, currentUser, contents);
+    }
+
+    //Reads the unseen messages
+    public void readNewMessages(User currentUser) {
+        System.out.println("You have new Messages"); 
+        ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
+        for (int i=0; i < myUnseenMessages.size(); i++) {
+            System.out.println(myUnseenMessages.get(i).toString());
+        }
     }
 
     //Creates a post
