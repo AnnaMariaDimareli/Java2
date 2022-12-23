@@ -42,14 +42,9 @@ public class PostTest {
     }
     @Test
     public void testGetLikeCount() {
+        assertEquals(0, post.getLikeCount());
         post.like();
         int expectedlikes = 1;
         assertEquals(expectedlikes, post.getLikeCount());
-    }
-    @Test
-    public void testGetAvailable() {
-        post.setAvailable("YES");
-        String expectedAvailability = "The post is available";
-        assertEquals(expectedAvailability, post.getAvailable());
     }
 }
