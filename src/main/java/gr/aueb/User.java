@@ -120,7 +120,8 @@ public class User {
 		return String.format("Your username is %s.", username);
 	}
 
-	protected ArrayList<Message> getGetUnseenMessages() {
-		return unseenMessages;
+	//Gives User object using hashmap
+	protected User getUserFromUsername(String username) {
+		return createdUsers.get(username);
 	}
 }

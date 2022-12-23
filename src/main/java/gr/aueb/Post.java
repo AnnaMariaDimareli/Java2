@@ -5,22 +5,21 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Post {
+
     private static final Scanner input = new Scanner(System.in);
     private static final Date dt = new Date(System.currentTimeMillis());
-
     private final String creator;
     private final Employer referenceToEmployer;
-
     private int likeCount = 0;
     private boolean available = false;
-    private final String creationDate=dt.toString();
+    private final String creationDate = dt.toString();
     private String postContent;
 
     //This constructor is only used for testing
     protected Post(Employer emp, String postContent) {
         referenceToEmployer = emp;
         creator = referenceToEmployer.getName() + " " + emp.getSurname();
-        this.postContent=postContent;
+        this.postContent = postContent;
         referenceToEmployer.addDraftPosts(this);
     }
 
@@ -32,8 +31,8 @@ public class Post {
         return likeCount;
     }
 
-    //if an employee wants to like a post then the Employee class makes a call to
-    //the setLikeCount() method to increase post's number of likes
+    //If an employee wants to like a post then the Employee class makes a call to
+    //The setLikeCount() method to increase post's number of likes
     public void like() {
         likeCount++;
     }
@@ -52,8 +51,8 @@ public class Post {
         }
     }
 
-    /* if the employer wants to make the post available then calls setAvailable with argument YES
-     * if he wants to set it as unavailable then he calls setAvailable with argument NO
+    /* If the employer wants to make the post available then calls setAvailable with argument YES
+     * If he wants to set it as unavailable then he calls setAvailable with argument NO
      */
     public void setAvailable(String answer) {
         if (Objects.equals(answer, "YES")) {
@@ -90,7 +89,6 @@ public class Post {
     }
 
     @Override
-
     public String toString() {
         return String.format("This post was created on %s by %s\n %s", creationDate, creator, postContent);
     }
