@@ -26,14 +26,9 @@ public class Employer extends User {
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
 		ArrayList<Employee> currentEmployees = Employee.getEmployees();
-		for(Employee e : currentEmployees) {
+		for(Employee e : currentEmployees) { //Adds the new post to all employees unseen posts
 			e.addNewPost(x);
 		}
-	}
-
-	//Deletes an Uploaded post from the ArrayList<Post>
-	public void deleteUploadedPost(Post postForDeletion) {
-		uploadedPosts.remove(postForDeletion);
 	}
 
 	//Returns how many posts have been created by the user

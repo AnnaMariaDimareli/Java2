@@ -46,7 +46,7 @@ public class EmployerTest {
     public void addUploadedPostsTest() {
         //Post should be added in ArrayList
         testPost2 = new Post(testEmployer,"This is the content's of the post");
-        testPost2.setAvailable("YES");
+        testPost2.setAvailable();
         uploadedPostsTest.add(testPost2);
         assertEquals("Method has not added the uploaded post!", testPost2, testEmployer.getUploadedPosts().get(0));
     }
@@ -61,14 +61,6 @@ public class EmployerTest {
     public void sizeOfUploadedPostsTest() {
         //Size of ArrayList should be the same as size of uploadedPostsTest
         assertEquals("Method does not return 1!", uploadedPostsTest.size(), testEmployer.sizeOfUploadedPosts());
-    }
-
-    @Test 
-    public void deleteUploadedPostTest() {
-        //Size of ArrayList should be the same as size of uploadedPostsTest
-        testEmployer.deleteUploadedPost(testPost2);
-        uploadedPostsTest.remove(testPost2);
-        assertEquals("Method does not delete post!", uploadedPostsTest.size(), testEmployer.sizeOfUploadedPosts());
     }
 
     @Test
