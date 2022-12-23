@@ -199,6 +199,17 @@ public class ExecutingClass {
         return input.nextInt();
     }
     
+    //Sends a new Message
+    public void sendNewMessage(User currentUser) {
+        System.out.println("Give receiver username: ");
+        String username = input.nextLine();
+        User receiver = getUserFromUsername(username);
+        System.out.println("Give message contents: ");
+        String contents = input.nextLine();
+        Message message = new Message(receiver, currentUser, contents);
+    }
+
+    //Creates a post
     public void postCreator(Employer currentUser) {
         System.out.print("Job Title : ");
         String jobTitle = "Job Title : " + input.nextLine();
@@ -221,6 +232,7 @@ public class ExecutingClass {
         String postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
         Post post = new Post(currentUser, postContent);
     }
+    
     //Exits the app
     public void exit() {
         exitScreen();
