@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Employer extends User {
 
 	//ArrayList containing uploaded post-type objects
-	private ArrayList<Post> uploadedPosts = new ArrayList<>();
+	private final ArrayList<Post> uploadedPosts = new ArrayList<>();
 	
 	//ArrayList containing draft post-type objects
-	private ArrayList<Post> draftPosts = new ArrayList<>();
+	private final ArrayList<Post> draftPosts = new ArrayList<>();
 
 	/**
 	 * Employer-type users offer job positions to Employee-type users
@@ -25,7 +25,7 @@ public class Employer extends User {
 	//Uploads a post
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
-		ArrayList<Employee> currentEmployees = getEmployees();
+		ArrayList<Employee> currentEmployees = Employee.getEmployees();
 		for(Employee e : currentEmployees) {
 			e.addNewPost(x);
 		}
