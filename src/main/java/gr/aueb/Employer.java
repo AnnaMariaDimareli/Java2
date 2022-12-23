@@ -30,12 +30,11 @@ public class Employer extends User {
 	//Deletes an Uploaded post from the ArrayList<Post>
 	public void deleteUploadedPost(Post postForDeletion) {
 		uploadedPosts.remove(postForDeletion);
-		System.out.println("Your post has been deleted!");
 	}
 
-	//Shows how many posts have been created by the user
-	public void sizeOfUploadedPosts() {
-		System.out.println("You have uploaded " + uploadedPosts.size() + " posts!");
+	//Returns how many posts have been created by the user
+	public int sizeOfUploadedPosts() {
+		return uploadedPosts.size();
 	}
 
 	//Returns the users posts
@@ -51,12 +50,11 @@ public class Employer extends User {
 	//Deletes a draft post
 	public void deleteDraftPost(Post postForDeletion) {
 		draftPosts.remove(postForDeletion);
-		System.out.println("Your draft post has been deleted!");
 	}
 
-	//Shows how many draft posts have been created by the user
-	public void sizeOfDraftPosts() {
-		System.out.println("You have uploaded " + draftPosts.size() + " draft posts!");
+	//Returns how many draft posts have been created by the user
+	public int sizeOfDraftPosts() {
+		return draftPosts.size();
 	}
 
 	//Returns the users draft posts
