@@ -15,9 +15,9 @@ public class User {
 	private final String username; //usernames cant change. set as final
 	private String password;
 	private String name;
-	private String surname;
-	private String email;
-	private String dateOfBirth;
+	private final String surname;
+	private final String email;
+	private final String dateOfBirth;
 
 	//List of messages sent to user
 	private ArrayList<Message> unseenMessages = new ArrayList<>();
@@ -68,11 +68,21 @@ public class User {
 	}
 
 	public void setPassword(String oldPassword, String newPassword) throws GeneralSecurityException {
-		if (Objects.equals(oldPassword, password)) {
+		if (getPasswordValidity(password)) {
 			password = newPassword;
 		} else {
 			throw new GeneralSecurityException("Password `" + oldPassword + "` is incorrect for user " + username);
 		}
+	}
+
+	//Validates password and then changes the name
+	public void setName(String newName, String givenPassword) throws GeneralSecurityException {
+		if (getPasswordValidity(password)) {
+			name = newName;
+		} else {
+			throw new GeneralSecurityException("Password `" + givenPassword + "` is incorrect for user " + username);
+		}
+
 	}
 
 	public String getName() {
