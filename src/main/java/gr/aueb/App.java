@@ -49,7 +49,7 @@ public class App {
                         break;
                     //Initiate the process if selection is 2
                     case 2:
-
+                        runner.readNewMessages(currentUser);
                         break;
                     //Terminate the app if selection is 3
                     case 3:
