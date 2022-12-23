@@ -63,6 +63,8 @@ public class App {
                     case 5:
                         if (currentUser instanceof Employer) {
                             runner.postCreator((Employer) currentUser);
+                        } else {
+                            runner.readNewPosts(currentUser);
                         }
                 }
             } while (selection != 3);

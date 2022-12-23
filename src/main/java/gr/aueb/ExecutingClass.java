@@ -209,6 +209,12 @@ public class ExecutingClass {
         Message message = new Message(receiver, currentUser, contents);
     }
 
+    //Reads new posts
+    public void readNewPosts(User currentUser) {
+        System.out.println("The posts you have not seen are: ");
+        currentUser.getNewPosts();
+    }
+
     //Creates a post
     public void postCreator(Employer currentUser) {
         System.out.print("Job Title : ");
