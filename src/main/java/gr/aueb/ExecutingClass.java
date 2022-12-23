@@ -217,7 +217,7 @@ public class ExecutingClass {
         ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
         for (int i=0; i < myUnseenMessages.size(); i++) {
             System.out.println(myUnseenMessages.get(i).toString());
-        }
+    }
 
     //Reads new posts
     public void readNewPosts(User currentUser) {
