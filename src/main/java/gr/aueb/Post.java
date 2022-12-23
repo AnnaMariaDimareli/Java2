@@ -16,13 +16,6 @@ public class Post {
     private final String creationDate=dt.toString();
     private String postContent;
 
-    public Post(Employer emp) {
-        referenceToEmployer = emp;
-        creator = referenceToEmployer.getName() + " " + emp.getSurname();
-        jobOfferingPost();
-        referenceToEmployer.addDraftPosts(this);
-    }
-
     //This constructor is only used for testing
     protected Post(Employer emp, String postContent) {
         referenceToEmployer = emp;
