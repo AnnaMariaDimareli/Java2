@@ -210,6 +210,7 @@ public class ExecutingClass {
         Message message = new Message(receiver, currentUser, contents);
     }
 
+<<<<<<< HEAD
     //Reads the unseen messages
     public void readNewMessages(User currentUser) {
         System.out.println("You have new Messages"); 
@@ -217,6 +218,12 @@ public class ExecutingClass {
         for (int i=0; i < myUnseenMessages.size(); i++) {
             System.out.println(myUnseenMessages.get(i).toString());
         }
+=======
+    //Reads new posts
+    public void readNewPosts(User currentUser) {
+        System.out.println("The posts you have not seen are: ");
+        currentUser.getNewPosts();
+>>>>>>> c5643056003206dd80f9d08057e52be9755e5b2d
     }
 
     //Creates a post

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 public class Employee extends User {
 
+	private static ArrayList<Employee> employees = new ArrayList<>();
 	private ArrayList<Post> likedPosts = new ArrayList<>();
+	private ArrayList<Post> unseenPosts = new ArrayList<>();
 
 	/**
 	 * Employee-type users like posts of Employer-type users for job positions
@@ -15,6 +17,24 @@ public class Employee extends User {
 	//Creates Employee type User through superclass constructor
 	public Employee(String username, String password, String name, String surname, String email, String dateOfBirth) {
 		super(username, password, name, surname, email, dateOfBirth);
+		employees.add(this);
+	}
+
+	//Empties the ArrayList that contains the posts and returns them
+	public ArrayList<Post> getNewPosts() {
+		ArrayList<Post> unseenPostsCopy = new ArrayList<>(unseenPosts);
+		unseenPosts.clear();
+		return unseenPostsCopy;
+	}
+
+	//Adds a new post
+	public void addNewPost(Post post) {
+		unseenPosts.add(post);
+	}
+
+	//Returns all employees
+	public static ArrayList<Employee> getEmployees() {
+		return employees;
 	}
 
 	//Likes a post

@@ -25,6 +25,10 @@ public class Employer extends User {
 	//Uploads a post
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
+		ArrayList<Employee> currentEmployees = getEmployees();
+		for(Employee e : currentEmployees) {
+			e.addNewPost(x);
+		}
 	}
 
 	//Deletes an Uploaded post from the ArrayList<Post>
