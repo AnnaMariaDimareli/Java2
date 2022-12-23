@@ -1,9 +1,9 @@
 package gr.aueb;
 
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
-import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -204,7 +204,7 @@ public class ExecutingClass {
     public void sendNewMessage(User currentUser) {
         System.out.println("Give receiver username: ");
         String username = input.nextLine();
-        User receiver = getUserFromUsername(username);
+        User receiver = User.getUserFromUsername(username);
         System.out.println("Give message contents: ");
         String contents = input.nextLine();
         Message message = new Message(receiver, currentUser, contents);
@@ -215,12 +215,13 @@ public class ExecutingClass {
     public void readNewMessages(User currentUser) {
         System.out.println("You have new Messages");
         ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
-        for (int i=0; i < myUnseenMessages.size(); i++) {
-            System.out.println(myUnseenMessages.get(i).toString());
+        for (Message myUnseenMessage : myUnseenMessages) {
+            System.out.println(myUnseenMessage.toString());
+        }
     }
 
     //Reads new posts
-    public void readNewPosts(User currentUser) {
+    public void readNewPosts(Employee currentUser) {
         System.out.println("The posts you have not seen are: ");
         currentUser.getNewPosts();
     }

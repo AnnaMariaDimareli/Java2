@@ -121,7 +121,7 @@ public class User {
 	}
 
 	//Gives User object using hashmap
-	protected User getUserFromUsername(String username) {
+	protected static User getUserFromUsername(String username) {
 		return createdUsers.get(username);
 	}
 }

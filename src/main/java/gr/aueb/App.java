@@ -81,7 +81,7 @@ public class App {
                         if (currentUser instanceof Employer) {
                             runner.postCreator((Employer) currentUser);
                         } else {
-                            runner.readNewPosts(currentUser);
+                            runner.readNewPosts((Employee) currentUser);
                         }
                 }
             } while (selection != 3);
