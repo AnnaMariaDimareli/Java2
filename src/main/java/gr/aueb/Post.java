@@ -13,7 +13,7 @@ public class Post {
 
     private int likeCount = 0;
     private boolean available = false;
-    private final String creationDate=dt.toString();
+    private final String creationDate = dt.toString();
     private String postContent;
 
     //This constructor is only used for testing
@@ -52,8 +52,8 @@ public class Post {
         }
     }
 
-    /* if the employer wants to make the post available then calls setAvailable with argument YES
-     * if he wants to set it as unavailable then he calls setAvailable with argument NO
+    /* If the employer wants to make the post available then calls setAvailable with argument YES
+     * If he wants to set it as unavailable then he calls setAvailable with argument NO
      */
     public void setAvailable(String answer) {
         if (Objects.equals(answer, "YES")) {
@@ -90,7 +90,6 @@ public class Post {
     }
 
     @Override
-
     public String toString() {
         return String.format("This post was created on %s by %s\n %s", creationDate, creator, postContent);
     }
