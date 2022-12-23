@@ -65,7 +65,7 @@ public class Employer extends User {
 	//Used for informing the user about their UID and their user type
 	@Override
 	public String toString() {
-		return String.format(super.toString(), "and you are an employer-type user.");
+		return String.format(super.toString(), " You are an employer-type user.");
 	}
 
 }

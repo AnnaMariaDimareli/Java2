@@ -70,5 +70,11 @@ public class EmployerTest {
         uploadedPostsTest.remove(testPost2);
         assertEquals("Method does not delete post!", uploadedPostsTest.size(), testEmployer.sizeOfUploadedPosts());
     }
+
+    @Test
+    public void toStringTest() {
+        //It should match Employer's toString
+        assertEquals("Method is not workig properly!","Your username is markella12122. You are an employer-type user.",testEmployer.toString());
+    }
     
 }
