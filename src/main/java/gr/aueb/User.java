@@ -123,4 +123,8 @@ public class User {
 	protected ArrayList<Message> getGetUnseenMessages() {
 		return unseenMessages;
 	}
+
+	protected User getUserFromUsername(String username) {
+		return createdUsers.get(username);
+	}
 }
