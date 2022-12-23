@@ -13,7 +13,7 @@ public class Post {
     private int likeCount = 0;
     private boolean available = false;
     private final String creationDate = dt.toString();
-    private String postContent;
+    private final String postContent;
 
     //This constructor is only used for testing
     protected Post(Employer emp, String postContent) {
@@ -66,27 +66,6 @@ public class Post {
         }
     }
 
-    public void jobOfferingPost() {
-        System.out.print("Job Title : ");
-        String jobTitle = "Job Title : " + input.nextLine();
-        System.out.println();
-        System.out.print("Workplace(On-site , Hybrid , Remote) : ");
-        String workPlace = "Workplace type(On-site , Hybrid , Remote) : " + input.nextLine() + " ";
-        System.out.println();
-        System.out.print("Job Location : ");
-        String jobLocation = "Job Location : " + input.nextLine() + " ";
-        System.out.println();
-        System.out.println("Salary Range ");
-        System.out.print("   From: ");
-        String salaryRange = "Salary Range : " + Integer.toString(input.nextInt()) + "-"; 
-        System.out.print("   To: ");
-        salaryRange=salaryRange + Integer.toString(input.nextInt()) + " ";
-        System.out.println();
-        System.out.print("Description : ");
-        String description = "Description : " + input.next() + " ";
-        System.out.println();
-        postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
-    }
 
     @Override
     public String toString() {
