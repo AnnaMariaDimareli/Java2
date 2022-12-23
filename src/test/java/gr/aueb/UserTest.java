@@ -68,7 +68,7 @@ public class UserTest {
         myUnseenMessages.add(testMessage1);
         myUnseenMessages.add(testMessage3);
 
-        AssertEquals("Method not getting the unseen messages correctly", testUser.getNewMessages(), myUnseenMessages);
+        assertEquals("Method not getting the unseen messages correctly", testUser.getNewMessages(), myUnseenMessages);
     }
 
 }
