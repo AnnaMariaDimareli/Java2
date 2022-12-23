@@ -38,10 +38,32 @@ public class App {
             }
 
             do {
-                //print the Home Screen Menu
-                selection = runner.printUserHomeScreen(currentUser);
-            } while (selection != 1 && selection != 2 && selection != 3 && selection != 4 && selection != 5);
+                do {
+                    //print the Home Screen Menu
+                    selection = runner.printUserHomeScreen(currentUser);
+                } while (selection != 1 && selection != 2 && selection != 3 && selection != 4 && selection != 5);
+                switch (selection) {
+                    //initiate the process if selection is 1
+                    case 1:
 
+                        break;
+                    //initiate the process if selection is 2
+                    case 2:
+
+                        break;
+                    //terminate the app if selection is 3
+                    case 3:
+                        runner.exit();
+                        break;
+                    //initiate the process if selection is 4
+                    case 4:
+
+                        break;
+                    //initiate the process if selection is 5
+                    case 5:
+
+                }
+            } while (selection != 3);
 
         } while (true);
     }
