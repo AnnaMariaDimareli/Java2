@@ -2,6 +2,8 @@ package gr.aueb;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.sun.xml.internal.ws.api.message.Message;
+
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,14 +36,13 @@ public class User {
 		this.email = email;
 		this.dateOfBirth = dateOfBirth;
 		createdUsers.put(username,this);
-		System.out.println("You have created an account! \n");
 	}
 
 	//Method takes a username and checks if a user with that username exists
 	public static void checkUserExistence(String Username) throws GeneralSecurityException {
 		User checkedUser = createdUsers.get(Username);
 		if (checkedUser==null) {
-			throw new GeneralSecurityException("Username "+Username+" is incorrect \n");
+			throw new GeneralSecurityException("Username " + Username + " is incorrect \n");
 		}
 	}
 
@@ -53,12 +54,11 @@ public class User {
 		checkUserExistence(username);
 		User currentUser = createdUsers.get(username);
 		if (currentUser.getPasswordValidity(password)) {
-			System.out.println("Wellcome " +username + "!");
+			return currentUser;
 		} else {
-			System.out.println();
 			throw new GeneralSecurityException("Password `" + password + "` is incorrect for user " + username+"\n");
 		}
-		return currentUser;
+		return null;
 	}
 
 	public String getUsername() {
@@ -95,11 +95,11 @@ public class User {
 	}
 
 
-	//Shows user their messages and then empties the ArrayList that contains them
-	public void seeNewMessages() {
-		System.out.println("Your unseen messages are: ");
-		System.out.println(unseenMessages);
+	//Empties the ArrayList that contains the messages and returns them
+	public ArrayList<Message> seeNewMessages() {
+		ArrayList<Message> unseenMessagesCopy = unseenMessages.clone();
 		unseenMessages.clear();
+		return unseenMessagesCopy;
 	}
 
 	//Adds a new message directed towards the User
