@@ -210,7 +210,6 @@ public class ExecutingClass {
         Message message = new Message(receiver, currentUser, contents);
     }
 
-
     //Reads the unseen messages
     public void readNewMessages(User currentUser) {
         System.out.println("You have new Messages");
@@ -239,9 +238,9 @@ public class ExecutingClass {
         System.out.println();
         System.out.println("Salary Range ");
         System.out.print("   From: ");
-        String salaryRange = "Salary Range : " + Integer.toString(input.nextInt()) + "-";
+        String salaryRange = "Salary Range : " + input.nextInt() + "-";
         System.out.print("   To: ");
-        salaryRange=salaryRange + Integer.toString(input.nextInt()) + " ";
+        salaryRange=salaryRange + input.nextInt() + " ";
         System.out.println();
         System.out.print("Description : ");
         String description = "Description : " + input.next() + " ";
@@ -250,6 +249,7 @@ public class ExecutingClass {
         Post post = new Post(currentUser, postContent);
     }
 
+    //Menu with actions on what he can change from his data
     public int printUserChangeInfoScreen() {
         System.out.println("Input your choice to continue: \n" +
                 "1. Change Password \n" +
@@ -259,6 +259,7 @@ public class ExecutingClass {
         return input.nextInt();
     }
 
+    //Method implements the change password method of the User class to create a user-friendly dialog
     public void changePassword(User currentUser) {
         boolean flag;
         do {
@@ -279,6 +280,7 @@ public class ExecutingClass {
         }while(flag);
     }
 
+    //Method implements the change name method of the User class to create a user-friendly dialog
     public void changeName(User currentUser) {
         boolean flag;
         input.nextLine();
