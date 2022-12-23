@@ -66,7 +66,6 @@ public class UserTest {
         ArrayList<Message> myUnseenMessages = new ArrayList<>();
 
         myUnseenMessages.add(testMessage1);
-        myUnseenMessages.add(testMessage2);
         myUnseenMessages.add(testMessage3);
 
         AssertEquals("Method not getting the unseen messages correctly", testUser.getNewMessages(), myUnseenMessages);
