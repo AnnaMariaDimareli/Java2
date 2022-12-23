@@ -2,6 +2,7 @@ package gr.aueb;
 
 import org.junit.Test;
 
+import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -50,11 +51,15 @@ public class UserTest {
 
     @Test
     public void loginTest() {
-        assertEquals("Login Unsuccessful", testUser, testUser.login());
+        try {
+            assertEquals("Login Unsuccessful", testUser, User.login("panos1b","rdeolzcaq"));
+        } catch (GeneralSecurityException e) {
+            e.printStackTrace();
+        }
     }
 
     @Test
-    public void getNewMessagesTest() {
+    public void getNewMessagesTest() { //FIXME!
         Message testMessage1 = new Message(testUser, testUser, "Filakia Vicki");
         Message testMessage2 = new Message(testUser, testUser, "El telephone - Panagia Foureira");
         Message testMessage3 = new Message(testUser, testUser, "Psemaaaa oti mou pes htan psemaaaa");
