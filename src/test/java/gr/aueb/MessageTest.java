@@ -46,7 +46,7 @@ public class MessageTest {
     public void addUnseenMessageTest() {
         testMessage.addUnseenMessage();
 
-        ArrayList<Message> unseenMessages = testUser1.getGetUnseenMessages();
+        ArrayList<Message> unseenMessages = testUser1.getNewMessages();
         assertFalse("ArrayList of messages empty! Even though a message was added", unseenMessages.isEmpty()); //array should not be empty
         assertTrue("Message was not added to ArrayList", unseenMessages.contains(testMessage));//array should contain message
     }
