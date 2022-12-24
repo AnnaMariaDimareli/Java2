@@ -82,7 +82,7 @@ public class App {
                             runner.postCreator((Employer) currentUser);
                         } else {
                             if (runner.checkNewPosts((Employee) currentUser)) {
-                                runner.likeAPost();
+                                runner.likeAPost((Employee) currentUser);
                             }
                         }
                 }

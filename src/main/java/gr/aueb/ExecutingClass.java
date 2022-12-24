@@ -258,6 +258,7 @@ public class ExecutingClass {
         System.out.println();
         String postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
         Post post = new Post(currentUser, postContent);
+        post.setAvailable();
     }
 
     //Menu with actions on what he can change from his data
@@ -330,22 +331,20 @@ public class ExecutingClass {
         System.out.println("This window will close soon");
     }
 
-    public void likeAPost() {
+    public void likeAPost(Employee currentUser) {
         if (input.hasNext()) {input.nextLine();}
         int selection;
-        ArrayList<Post> currentLikedPosts =new ArrayList<>();
         likeAPostMenu();
         selection = input.nextInt();
         while (selection != -1) {
             Post postToLike;
             do {
                 postToLike = Post.getPostFromPostNumber(selection);
-                if (postToLike == null || currentLikedPosts.contains(postToLike)) {
+                if (postToLike == null || currentUser.getLikedPosts().contains(postToLike)) {
                     System.out.println("That post number is not correct or you have already liked it!");
                 }
-            } while (postToLike == null|| currentLikedPosts.contains(postToLike));
-            postToLike.like();
-            currentLikedPosts.add(postToLike);
+            } while (postToLike == null|| currentUser.getLikedPosts().contains(postToLike));
+            currentUser.addLikedPost(postToLike);
             System.out.println("Post was liked current like count is: "+postToLike.getLikeCount());
             System.out.println();
             likeAPostMenu();
