@@ -258,7 +258,7 @@ public class ExecutingClass {
         System.out.println();
         String postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
         Post post = new Post(currentUser, postContent);
-        post.setAvailable();
+        post.setAvailable(); //FIXME remove when issue #13 is fixed
     }
 
     //Menu with actions on what he can change from his data
