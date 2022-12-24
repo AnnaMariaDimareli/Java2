@@ -209,15 +209,20 @@ public class ExecutingClass {
         System.out.println("Give message contents: ");
         String contents = input.nextLine();
         Message message = new Message(receiver, currentUser, contents);
+        message.addUnseenMessage();
     }
 
     //Reads the unseen messages
     public void readNewMessages(User currentUser) {
-        System.out.println("You have new Messages"); //FIXME what if i dont have messages????
         ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
-        for (Message myUnseenMessage : myUnseenMessages) {
-            System.out.println(myUnseenMessage.toString());
-        }
+        if (myUnseenMessages.size() == 0 ) {
+            System.out.println("You don't have new Messages");
+        } else {
+            System.out.println("You have new Messages"); 
+            for (Message myUnseenMessage : myUnseenMessages) {
+                myUnseenMessage.showMessage();
+            }
+        }  
     }
 
     //Reads new posts
