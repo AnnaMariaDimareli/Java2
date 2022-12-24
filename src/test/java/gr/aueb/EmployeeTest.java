@@ -16,6 +16,22 @@ public class EmployeeTest {
             "Egglezou", "t8210039@aueb.gr", "21-02-2003");
     private Post testPost = new Post(testEmployer, "This is the content's of the post");
     private ArrayList<Post> likedPostsTest = new ArrayList<>();
+    private ArrayList<Post> unseenPostsTest = new ArrayList<>();
+
+    @Test
+    public void getNewPostsTest() {
+        //Method getNewPosts should contain everything unseenPostsTest contains
+        assertEquals("Method does not return new posts!", unseenPostsTest, testEmployee.getNewPosts());
+        unseenPostsTest.clear();
+    }
+
+    @Test
+    public void addNewPostTest() {
+        //Method addNewPost should add a post in ArrayList unseenPosts
+        testEmployee.unseenPosts(testPost);
+        unseenPostsTest.add(testPost);
+        assertEquals("Method does not add new posts!", unseenPostsTest, testEmployee.getNewPosts());
+    }
 
     @Test
     public void addLikedPostTest() {
