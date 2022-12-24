@@ -1,26 +1,39 @@
 package gr.aueb;
 
 import java.util.Date;
-import java.util.Objects;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Post {
 
     private static final Scanner input = new Scanner(System.in);
     private static final Date dt = new Date(System.currentTimeMillis());
+    private static final HashMap<Integer, Post> postNumberToPost = new HashMap<>();
+
+    private static int numberOfPosts;
+
     private final String creator;
-    private final Employer referenceToEmployer;
-    private int likeCount = 0;
-    private boolean available = false;
     private final String creationDate = dt.toString();
     private final String postContent;
+    private final Employer referenceToEmployer;
+    private final int postNumber = numberOfPosts;
+
+    private int likeCount = 0;
+    private boolean available = false;
+
 
     //This constructor is only used for testing
     protected Post(Employer emp, String postContent) {
+        numberOfPosts++;
         referenceToEmployer = emp;
         creator = referenceToEmployer.getName() + " " + emp.getSurname();
         this.postContent = postContent;
         referenceToEmployer.addDraftPosts(this);
+        postNumberToPost.put(postNumber,this);
+    }
+
+     public static Post getPostFromPostNumber(int postNumber) {
+        return postNumberToPost.get(postNumber);
     }
 
     public Employer getReferenceToEmployer() {
@@ -56,9 +69,8 @@ public class Post {
             referenceToEmployer.deleteDraftPost(this);
     }
 
-
     @Override
     public String toString() {
-        return String.format("This post was created on %s by %s\n %s", creationDate, creator, postContent);
+        return String.format( "Post number:%d\nCreated on %s by %s\n%s",postNumber, creationDate, creator, postContent);
     }
 }
