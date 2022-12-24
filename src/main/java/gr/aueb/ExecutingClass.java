@@ -215,7 +215,7 @@ public class ExecutingClass {
     //Reads the unseen messages
     public void readNewMessages(User currentUser) {
         ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
-        if (myUnseenMessages.size() == 0 ) {
+        if (myUnseenMessages.size() == 0) {
             System.out.println("You don't have new Messages");
         } else {
             System.out.println("You have new Messages"); 
