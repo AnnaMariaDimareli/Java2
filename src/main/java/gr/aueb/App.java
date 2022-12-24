@@ -27,7 +27,7 @@ public class App {
                 case 1:
                     currentUser = runner.signup();
                     break;
-                 //Initiate the login process if selection is 2
+                //Initiate the login process if selection is 2
                 //initiate the login process if selection is 2
                 case 2:
                     boolean flag;
@@ -59,8 +59,8 @@ public class App {
                     //Initiate the process if selection is 4
                     case 4:
                         do {
-                            localSelection=runner.printUserChangeInfoScreen();
-                        }while(localSelection != 1 && localSelection != 2 && localSelection != 3);
+                            localSelection = runner.printUserChangeInfoScreen();
+                        } while (localSelection != 1 && localSelection != 2 && localSelection != 3);
 
                         switch (localSelection) {
                             //initiate the process if selection is 1
@@ -81,7 +81,9 @@ public class App {
                         if (currentUser instanceof Employer) {
                             runner.postCreator((Employer) currentUser);
                         } else {
-                            runner.readNewPosts((Employee) currentUser);
+                            if (runner.checkNewPosts((Employee) currentUser)) {
+                                runner.likeAPost();
+                            }
                         }
                 }
             } while (selection != 3);

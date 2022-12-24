@@ -183,7 +183,7 @@ public class ExecutingClass {
 
     //Print the user's home screen menu/the actions he can make depending on his type
     public int printUserHomeScreen(User currentUser) {
-
+        System.out.println();
         System.out.println("Input your choice to continue: \n" +
                 "1. Send a new Message \n" +
                 "2. Read your new Messages \n" +
@@ -196,6 +196,7 @@ public class ExecutingClass {
         } else {
             System.out.println("5. Create a new Post");
         }
+        System.out.println();
         //Returns user's selection 
         return input.nextInt();
     }
@@ -212,7 +213,7 @@ public class ExecutingClass {
 
     //Reads the unseen messages
     public void readNewMessages(User currentUser) {
-        System.out.println("You have new Messages");
+        System.out.println("You have new Messages"); //FIXME what if i dont have messages????
         ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
         for (Message myUnseenMessage : myUnseenMessages) {
             System.out.println(myUnseenMessage.toString());
@@ -220,13 +221,23 @@ public class ExecutingClass {
     }
 
     //Reads new posts
-    public void readNewPosts(Employee currentUser) {
-        System.out.println("The posts you have not seen are: ");
-        currentUser.getNewPosts();
+    public boolean checkNewPosts(Employee currentUser) {
+        ArrayList<Post> newPosts =new ArrayList<>(currentUser.getNewPosts());
+        if(newPosts.isEmpty()){
+            System.out.println("No new posts");
+            return false;
+        } else {
+            System.out.println("The posts you have not seen are: ");
+            do {
+                System.out.println(newPosts.remove(0));
+            } while (!newPosts.isEmpty());
+            return true;
+        }
     }
 
     //Creates a post
     public void postCreator(Employer currentUser) {
+        if (input.hasNext()) {input.nextLine();}
         System.out.print("Job Title : ");
         String jobTitle = "Job Title : " + input.nextLine();
         System.out.println();
@@ -319,4 +330,31 @@ public class ExecutingClass {
         System.out.println("This window will close soon");
     }
 
+    public void likeAPost() {
+        if (input.hasNext()) {input.nextLine();}
+        int selection;
+        ArrayList<Post> currentLikedPosts =new ArrayList<>();
+        likeAPostMenu();
+        selection = input.nextInt();
+        while (selection != -1) {
+            Post postToLike;
+            do {
+                postToLike = Post.getPostFromPostNumber(selection);
+                if (postToLike == null || currentLikedPosts.contains(postToLike)) {
+                    System.out.println("That post number is not correct or you have already liked it!");
+                }
+            } while (postToLike == null|| currentLikedPosts.contains(postToLike));
+            postToLike.like();
+            currentLikedPosts.add(postToLike);
+            System.out.println("Post was liked current like count is: "+postToLike.getLikeCount());
+            System.out.println();
+            likeAPostMenu();
+            selection = input.nextInt();
+        }
+    }
+
+    private void likeAPostMenu() {
+        System.out.println("Input Post number to like\n" +
+                "or input -1 to finish \n");
+    }
 }
