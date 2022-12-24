@@ -49,6 +49,10 @@ public class EmployerTest {
         testPost2.setAvailable();
         uploadedPostsTest.add(testPost2);
         assertEquals("Method has not added the uploaded post!", testPost2, testEmployer.getUploadedPosts().get(0));
+        //Post should be added in employee's ArrayList
+        Employee testEmployee = new Employee("mark12", "helloworld", "Markella",
+            "Egglezou", "t8210039@aueb.gr", "21-02-2003");
+        assertEquals("Post is not added in unseenPosts ArrayList!", testPost2, testEmployee.getNewPosts().get(0));
     }
 
     @Test
