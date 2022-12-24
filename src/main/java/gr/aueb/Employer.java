@@ -26,7 +26,8 @@ public class Employer extends User {
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
 		ArrayList<Employee> currentEmployees = Employee.getEmployees();
-		for(Employee e : currentEmployees) { //Adds the new post to all employees unseen posts
+		for(Employee e : currentEmployees) { 
+			//Adds the new post to all employees unseen posts
 			e.addNewPost(x);
 		}
 	}
