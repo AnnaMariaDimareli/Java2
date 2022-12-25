@@ -34,7 +34,7 @@ public class PostTest {
     public void testToString() {
         final Date dt = new Date(System.currentTimeMillis());
         String creationDate = dt.toString();
-        String expectedOutput = ("This post was created on "+ creationDate + " by Simos Athanasiadis\n These are the contents of the post\nI love potatoes\nThis app is amazing");
+        String expectedOutput = ("Post number:"+post.getPostNumber()+"\nCreated on "+ creationDate + " by Simos Athanasiadis\nThese are the contents of the post\nI love potatoes\nThis app is amazing");
         assertEquals(expectedOutput, post.toString());
     }
     @Test

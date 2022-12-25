@@ -73,4 +73,8 @@ public class Post {
     public String toString() {
         return String.format( "Post number:%d\nCreated on %s by %s\n%s",postNumber, creationDate, creator, postContent);
     }
+
+    public int getPostNumber() {
+        return postNumber;
+    }
 }
