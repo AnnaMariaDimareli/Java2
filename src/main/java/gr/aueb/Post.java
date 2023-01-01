@@ -32,6 +32,7 @@ public class Post {
         postNumberToPost.put(postNumber,this);
     }
 
+    //Returns the post or null if it doesn't exist
      public static Post getPostFromPostNumber(int postNumber) {
         return postNumberToPost.get(postNumber);
     }
