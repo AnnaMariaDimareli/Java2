@@ -24,7 +24,7 @@ public class ExecutingClass {
                             "Are you looking for young aspiring employees? \n "+
                             "If your answer was positive, then we are here to help you!");
     }
-    
+
     //Prints main menu in command line
     public int printMainMenu() {
         System.out.println("Input your choice to continue: \n" +
@@ -64,7 +64,7 @@ public class ExecutingClass {
         //Asks for user's password and checks if it is acceptable
         System.out.println("Input your Email");
         String email = createEmail();
-        
+
         //Asks for user's date of birth, no check needed
         System.out.println("Input your Date of Birth");
         String dateOfBirth = input.nextLine();
@@ -177,7 +177,7 @@ public class ExecutingClass {
                 System.out.println(e.getMessage());
             }
         } while (currentUser == null);
-        
+
         return currentUser;
     }
 
@@ -203,6 +203,7 @@ public class ExecutingClass {
 
     //Sends a new Message
     public void sendNewMessage(User currentUser) {
+        input.nextLine();
         System.out.println("Give receiver username: ");
         String username = input.nextLine();
         User receiver = User.getUserFromUsername(username);
@@ -218,11 +219,11 @@ public class ExecutingClass {
         if (myUnseenMessages.size() == 0) {
             System.out.println("You don't have new Messages");
         } else {
-            System.out.println("You have new Messages"); 
+            System.out.println("You have new Messages");
             for (Message myUnseenMessage : myUnseenMessages) {
                 myUnseenMessage.showMessage();
             }
-        }  
+        }
     }
 
     //Reads new posts
@@ -242,7 +243,7 @@ public class ExecutingClass {
 
     //Creates a post
     public void postCreator(Employer currentUser) {
-        if (input.hasNext()) {input.nextLine();}
+        input.nextLine();//Clear scanner
         System.out.print("Job Title : ");
         String jobTitle = "Job Title : " + input.nextLine();
         System.out.println();
@@ -257,9 +258,10 @@ public class ExecutingClass {
         String salaryRange = "Salary Range : " + input.nextInt() + "-";
         System.out.print("   To: ");
         salaryRange=salaryRange + input.nextInt() + " ";
+        input.nextLine();//Clear scanner
         System.out.println();
         System.out.print("Description : ");
-        String description = "Description : " + input.next() + " ";
+        String description = "Description : " + input.nextLine() + " ";
         System.out.println();
         String postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
         Post post = new Post(currentUser, postContent);
@@ -337,24 +339,28 @@ public class ExecutingClass {
     }
 
     public void likeAPost(Employee currentUser) {
-        if (input.hasNext()) {input.nextLine();}
+        input.nextLine(); //Clear scanner
+
         int selection;
-        likeAPostMenu();
-        selection = input.nextInt();
-        while (selection != -1) {
-            Post postToLike;
-            do {
-                postToLike = Post.getPostFromPostNumber(selection);
-                if (postToLike == null || currentUser.getLikedPosts().contains(postToLike)) {
-                    System.out.println("That post number is not correct or you have already liked it!");
-                }
-            } while (postToLike == null|| currentUser.getLikedPosts().contains(postToLike));
-            currentUser.addLikedPost(postToLike);
-            System.out.println("Post was liked current like count is: "+postToLike.getLikeCount());
-            System.out.println();
-            likeAPostMenu();
-            selection = input.nextInt();
-        }
+        Post postToLike;
+
+        do {
+            likeAPostMenu(); //Prints the menu
+            selection = input.nextInt(); //Gets selection
+            postToLike = Post.getPostFromPostNumber(selection);// Gets Post or Null
+            if (selection == -1) { // This is where we exit the loop if the selection is -1
+                break;
+            } else if (postToLike == null) {
+                System.out.println("That post number is not correct \n");
+
+            } else if (currentUser.getLikedPosts().contains(postToLike)) { //checks if the post was liked already
+                System.out.println("You have already liked this Post! \n");
+            } else {
+                currentUser.addLikedPost(postToLike);
+                System.out.println("Post was liked current like count is: " + postToLike.getLikeCount());
+                System.out.println();
+            }
+        } while (true);// Loop exits only on break line! under no other condition
     }
 
     private void likeAPostMenu() {
