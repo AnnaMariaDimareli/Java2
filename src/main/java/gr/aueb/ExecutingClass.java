@@ -19,18 +19,18 @@ public class ExecutingClass {
 
     //Prints welcome message in command line
     public void welcome() {
-        System.out.println("Welcome to our brand new Application. \n "+
-                            "Are you interested in finding a new job? \n "+
-                            "Are you looking for young aspiring employees? \n "+
-                            "If your answer was positive, then we are here to help you!");
+        System.out.println("Welcome to our brand new Application. \n " +
+                "Are you interested in finding a new job? \n " +
+                "Are you looking for young aspiring employees? \n " +
+                "If your answer was positive, then we are here to help you!");
     }
 
     //Prints main menu in command line
     public int printMainMenu() {
         System.out.println("Input your choice to continue: \n" +
-                            "1.Sign up \n"+
-                            "2.Log in \n"+
-                            "3.Abort Mission \n");
+                "1.Sign up \n" +
+                "2.Log in \n" +
+                "3.Abort Mission \n");
         return input.nextInt();
 
     }
@@ -132,7 +132,7 @@ public class ExecutingClass {
             String repeatPassword = input.nextLine();
             //If it matches then the password is accepted and the method returns it
             flag = !Objects.equals(password, repeatPassword);
-             //Else the user is asked to input again
+            //Else the user is asked to input again
             if (flag) {
                 System.out.println("The passwords dont seem to match please repeat both inputs");
             }
@@ -192,9 +192,9 @@ public class ExecutingClass {
         //Employees can interact with posts, but not create        
         if (currentUser instanceof Employee) {
             System.out.println("5. Read new Posts");
-        //Employers can create new posts
+            //Employers can create new posts
         } else {
-            System.out.println("5. Create a new Post");
+            System.out.println("5. Post home menu (Upload, Browse, Delete)");
         }
         System.out.println();
         //Returns user's selection 
@@ -228,8 +228,8 @@ public class ExecutingClass {
 
     //Reads new posts
     public boolean checkNewPosts(Employee currentUser) {
-        ArrayList<Post> newPosts =new ArrayList<>(currentUser.getNewPosts());
-        if(newPosts.isEmpty()){
+        ArrayList<Post> newPosts = new ArrayList<>(currentUser.getNewPosts());
+        if (newPosts.isEmpty()) {
             System.out.println("No new posts");
             return false;
         } else {
@@ -257,15 +257,14 @@ public class ExecutingClass {
         System.out.print("   From: ");
         String salaryRange = "Salary Range : " + input.nextInt() + "-";
         System.out.print("   To: ");
-        salaryRange=salaryRange + input.nextInt() + " ";
+        salaryRange = salaryRange + input.nextInt() + " ";
         input.nextLine();//Clear scanner
         System.out.println();
         System.out.print("Description : ");
         String description = "Description : " + input.nextLine() + " ";
         System.out.println();
-        String postContent = String.format("%s\n%s\n%s\n%s\n%s\n " ,jobTitle ,workPlace ,jobLocation ,salaryRange ,description);
+        String postContent = String.format("%s\n%s\n%s\n%s\n%s\n ", jobTitle, workPlace, jobLocation, salaryRange, description);
         Post post = new Post(currentUser, postContent);
-        post.setAvailable(); //FIXME remove when issue #13 is fixed
     }
 
     //Menu with actions on what he can change from his data
@@ -293,10 +292,10 @@ public class ExecutingClass {
             try {
                 currentUser.setPassword(oldPassword, newPassword);
             } catch (GeneralSecurityException e) {
-                flag=true;
+                flag = true;
                 System.out.println(e.getMessage());
             }
-        }while(flag);
+        } while (flag);
     }
 
     //Method implements the change name method of the User class to create a user-friendly dialog
@@ -312,12 +311,12 @@ public class ExecutingClass {
             System.out.println("Please input your new name");
             newName = input.nextLine();
             try {
-                currentUser.setName(newName,password);
+                currentUser.setName(newName, password);
             } catch (GeneralSecurityException e) {
-                flag=true;
+                flag = true;
                 System.out.println(e.getMessage());
             }
-        }while(flag);
+        } while (flag);
     }
 
     //Exits the app
@@ -326,9 +325,8 @@ public class ExecutingClass {
         try {
             TimeUnit.SECONDS.sleep(30);
         } catch (InterruptedException ignored) {
-        } finally {
-            System.exit(0);
         }
+        System.exit(0);
     }
 
     //Prints some messages before exiting
@@ -338,6 +336,7 @@ public class ExecutingClass {
         System.out.println("This window will close soon");
     }
 
+    //Implements various methods in ordr to like a post
     public void likeAPost(Employee currentUser) {
         input.nextLine(); //Clear scanner
 
@@ -363,8 +362,24 @@ public class ExecutingClass {
         } while (true);// Loop exits only on break line! under no other condition
     }
 
+    //Prints Post liking menu
     private void likeAPostMenu() {
         System.out.println("Input Post number to like\n" +
                 "or input -1 to finish \n");
+    }
+    // Method print a menu for the Employer and returns the input
+    public int printEmployerPostManipulationScreen() {
+        System.out.println();
+        System.out.println("Input your choice to continue: \n" +
+                "1. See your Draft Posts and their size \n" +
+                "2. See Uploaded Posts and their size  \n" +
+                "3. Make a Draft Post available (Upload it) \n" +
+                "4. Delete a Draft Post \n" +
+                "5. Create a Draft Post \n" +
+                "6. Back to Home Screen \n"
+        );
+        System.out.println();
+        //Returns user's selection
+        return input.nextInt();
     }
 }
