@@ -336,7 +336,7 @@ public class ExecutingClass {
         System.out.println("This window will close soon");
     }
 
-    //Implements various methods in ordr to like a post
+    //Implements various methods in order to like a post
     public void likeAPost(Employee currentUser) {
         input.nextLine(); //Clear scanner
 
@@ -367,7 +367,8 @@ public class ExecutingClass {
         System.out.println("Input Post number to like\n" +
                 "or input -1 to finish \n");
     }
-    // Method print a menu for the Employer and returns the input
+    
+    // Method prints a menu for the Employer and returns the input
     public int printEmployerPostManipulationScreen() {
         System.out.println();
         System.out.println("Input your choice to continue: \n" +
