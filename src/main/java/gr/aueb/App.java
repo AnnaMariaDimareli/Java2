@@ -1,5 +1,7 @@
 package gr.aueb;
 
+import java.util.ArrayList;
+
 /**
  * App.java is our Main class
  * Here we have the command line interface we use to run our Social Media App
@@ -63,17 +65,17 @@ public class App {
                         } while (localSelection != 1 && localSelection != 2 && localSelection != 3);
 
                         switch (localSelection) {
-                            //initiate the process if selection is 1
+                            //Initiate the process if selection is 1
                             case 1:
                                 runner.changePassword(currentUser);
                                 System.out.println("Your password has changed!");
                                 break;
-                            //initiate the process if selection is 2
+                            //Initiate the process if selection is 2
                             case 2:
                                 runner.changeName(currentUser);
                                 System.out.println("Your Username has changed!");
                                 break;
-                            //exit if selection is 3
+                            //Exit if selection is 3
                         }
                         break;
                     //Initiate the process if selection is 5
@@ -88,27 +90,32 @@ public class App {
                             } while (localSelection != 1 && localSelection != 2 && localSelection != 3 && localSelection != 4 && localSelection != 5 && localSelection != 6);
 
                             switch (localSelection) {
-                                //initiate the process if selection is 1 (See draft Posts and size)
+                                //Initiate the process if selection is 1 (See draft Posts and size)
                                 case 1:
                                     // TODO see issue #13 case 1
                                     break;
-                                //initiate the process if selection is 2 (See uploaded Posts and size)
+                                //Initiate the process if selection is 2 (See uploaded Posts and size)
                                 case 2:
-                                    // TODO see issue #13 case 2
+                                    ArrayList<Post> uploadedPosts = new ArrayList<>();
+                                    uploadedPosts = ((Employer)currentUser).getUploadedPosts();
+                                    for (int i = 0; i < uploadedPosts.size(); i++) {
+                                        System.out.println(uploadedPosts.get(i));
+                                    }
+                                    System.out.println("Size of uploaded posts is " + ((Employer)currentUser).sizeOfUploadedPosts());
                                     break;
-                                //initiate the process if selection is 3 (Upload a Draft Post)
+                                //Initiate the process if selection is 3 (Upload a Draft Post)
                                 case 3:
                                     // TODO see issue #13 case 3
                                     break;
-                                //initiate the process if selection is 4 (Delete a Draft Post)
+                                //Initiate the process if selection is 4 (Delete a Draft Post)
                                 case 4:
                                     // TODO see issue #13 case 4
                                     break;
-                                //initiate the process if selection is 5 (Create a Draft Post)
+                                //Initiate the process if selection is 5 (Create a Draft Post)
                                 case 5:
                                     runner.postCreator((Employer) currentUser);
                                     break;
-                                //exit if selection is 6
+                                //Exit if selection is 6
                             }
 
                         } else {
