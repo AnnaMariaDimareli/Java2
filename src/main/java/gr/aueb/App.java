@@ -79,7 +79,38 @@ public class App {
                     //Initiate the process if selection is 5
                     case 5:
                         if (currentUser instanceof Employer) {
-                            runner.postCreator((Employer) currentUser);
+                            do {
+                                localSelection = runner.printEmployerPostManipulationHomeScreen();
+
+                                if (localSelection != 1 && localSelection != 2 && localSelection != 3 && localSelection != 4 && localSelection != 5 && localSelection != 6) {
+                                    System.out.println("Wrong selection please try again");
+                                }
+                            } while (localSelection != 1 && localSelection != 2 && localSelection != 3 && localSelection != 4 && localSelection != 5 && localSelection != 6);
+
+                            switch (localSelection) {
+                                //initiate the process if selection is 1 (See draft Posts and size)
+                                case 1:
+                                    // TODO see issue #13 case 1
+                                    break;
+                                //initiate the process if selection is 2 (See uploaded Posts and size)
+                                case 2:
+                                    // TODO see issue #13 case 2
+                                    break;
+                                //initiate the process if selection is 3 (Upload a Draft Post)
+                                case 3:
+                                    // TODO see issue #13 case 3
+                                    break;
+                                //initiate the process if selection is 4 (Delete a Draft Post)
+                                case 4:
+                                    // TODO see issue #13 case 4
+                                    break;
+                                //initiate the process if selection is 5 (Create a Draft Post)
+                                case 5:
+                                    runner.postCreator((Employer) currentUser);
+                                    break;
+                                //exit if selection is 6
+                            }
+
                         } else {
                             if (runner.checkNewPosts((Employee) currentUser)) {
                                 runner.likeAPost((Employee) currentUser);
