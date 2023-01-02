@@ -80,7 +80,7 @@ public class App {
                     case 5:
                         if (currentUser instanceof Employer) {
                             do {
-                                localSelection = runner.printEmployerPostManipulationHomeScreen();
+                                localSelection = runner.printEmployerPostManipulationScreen();
 
                                 if (localSelection != 1 && localSelection != 2 && localSelection != 3 && localSelection != 4 && localSelection != 5 && localSelection != 6) {
                                     System.out.println("Wrong selection please try again");
