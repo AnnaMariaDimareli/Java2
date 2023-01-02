@@ -41,40 +41,6 @@
             <plugins>
 
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven‐checkstyle‐plugin</artifactId>
-                    <version>2.13</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>spotbugs‐maven‐plugin</artifactId>
-                    <version>3.0.1‐SNAPSHOT</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-shade-plugin</artifactId>
-                    <version>3.2.4</version>
-                    <executions>
-                        <execution>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>shade</goal>
-                            </goals>
-                            <configuration>
-                                <transformers>
-                                    <transformer
-                                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                        <mainClass>gr.aueb.App</mainClass>
-                                    </transformer>
-                                </transformers>
-                            </configuration>
-                        </execution>
-                    </executions>
-                </plugin>
-
-                <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.0.2</version>
                 </plugin>
@@ -106,7 +72,7 @@
 
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>2.9</version>
                 </plugin>
 
             </plugins>
@@ -114,5 +80,21 @@
         </pluginManagement>
 
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
