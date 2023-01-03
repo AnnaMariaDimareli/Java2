@@ -77,7 +77,7 @@ public class MessageTest {
         assertEquals("Method is not returning NumberOfMessages!", 2 * counter + 2, Message.getNumberOfMessages());
     }
 
-    @After
+    @After // test needed here due to maven plugin bug
     public void Counter() {
         counter++;
     }
