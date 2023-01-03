@@ -1,8 +1,5 @@
 package gr.aueb;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
 /**
  * App.java is our Main class
  * Here we have the command line interface we use to run our Social Media App
@@ -23,21 +20,19 @@ public class App {
             do {
                 //Show user's choices
                 selection = runner.printMainMenu();
-            } while (selection != 1 && selection != 2 && selection != 3);
+            } while (integerNotContainedInRange(1, 3, selection));
 
             switch (selection) {
                 //Initiate the signup process if selection is 1
                 case 1:
                     currentUser = runner.signup();
                     break;
-                //Initiate the login process if selection is 2
                 //initiate the login process if selection is 2
                 case 2:
-                    boolean flag;
                     currentUser = runner.login();
                     break;
                 //Terminate the app if selection is 3
-                case 3:
+                default:
                     runner.exit();
             }
 
@@ -46,7 +41,10 @@ public class App {
                 do {
                     //Print the Home Screen Menu
                     selection = runner.printUserHomeScreen(currentUser);
-                } while (selection != 1 && selection != 2 && selection != 3 && selection != 4 && selection != 5);
+                    if (integerNotContainedInRange(1, 5, selection)) {
+                        System.out.println("Wrong selection please try again");
+                    }
+                } while (integerNotContainedInRange(1, 5, selection));
                 switch (selection) {
                     //Initiate the process if selection is 1
                     case 1:
@@ -63,7 +61,7 @@ public class App {
                     case 4:
                         do {
                             localSelection = runner.printUserChangeInfoScreen();
-                        } while (localSelection != 1 && localSelection != 2 && localSelection != 3);
+                        } while (integerNotContainedInRange(1, 3, localSelection));
 
                         switch (localSelection) {
                             //Initiate the process if selection is 1
@@ -83,12 +81,13 @@ public class App {
                     case 5:
                         if (currentUser instanceof Employer) {
                             do {
-                                localSelection = runner.printEmployerPostManipulationScreen();
+                                do {
+                                    localSelection = runner.printEmployerPostManipulationScreen();
 
-                                if (localSelection != 1 && localSelection != 2 && localSelection != 3 && localSelection != 4 && localSelection != 5 && localSelection != 6) {
-                                    System.out.println("Wrong selection please try again");
-                                }
-                            } while (localSelection != 1 && localSelection != 2 && localSelection != 3 && localSelection != 4 && localSelection != 5 && localSelection != 6);
+                                    if (integerNotContainedInRange(1, 6, localSelection)) {
+                                        System.out.println("Wrong selection please try again");
+                                    }
+                                } while (integerNotContainedInRange(1, 6, localSelection));
 
                             switch (localSelection) {
                                 //Initiate the process if selection is 1 (See draft Posts and size)
@@ -126,5 +125,14 @@ public class App {
             } while (selection != 3);
 
         } while (true);
+    }
+
+    //Checks if an integer is not contained in a CLOSED range. Includes from and to!
+    public static boolean integerNotContainedInRange(int from, int to, int x) {
+        boolean flag = false;
+        for (int i = from; i < to + 1; i++) { //check if an integer is contained in range
+            flag = flag || i == x;
+        }
+        return !flag; //return the opposite
     }
 }
