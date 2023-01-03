@@ -422,6 +422,12 @@ public class ExecutingClass {
                 "or input -1 to finish \n");
     }
 
+    //Prints Post uploading menu
+    private void deleteADraftPostMenu() {
+        System.out.println("Input draft post number to delete\n" +
+                "or input -1 to finish \n");
+    }
+
     //Prints all uploaded Posts
     public void printUploadedPosts(Employer emp) {
         ArrayList<Post> uploadedPosts = emp.getUploadedPosts();
@@ -434,4 +440,29 @@ public class ExecutingClass {
     public void printSizeOfUploadedPosts(Employer emp) {
         System.out.println("Size of uploaded posts is " + emp.sizeOfUploadedPosts());
     }
+
+    public void deletDraftPost(Employer emp) {
+        input.nextLine(); //Clear scanner
+        int selection;
+        Post draftPostToDelete;
+        do {
+            deleteADraftPostMenu(); //Prints the menu
+            System.out.println("Your draft posts are the following : ");
+            this.printMyDraftPosts(emp);
+            selection = input.nextInt();
+            draftPostToDelete = Post.getPostFromPostNumber(selection);
+            if (selection == -1) { // This is where we exit the loop if the selection is -1
+                break;
+            } else if (draftPostToDelete == null) {
+                System.out.println("That post number is not correct \n");
+            } else if (!(emp.getDraftPosts().contains(draftPostToDelete))) { //checks if the Employer emp is the creator of the post
+                System.out.println("You don't have permission to delete this post! \n");
+            } else {
+                emp.deleteDraftPost(draftPostToDelete);
+                System.out.println("The post has been deleted!");
+                System.out.println();
+            }
+        } while (true);// Loop exits only on break line! under no other condition
+    }
+        
 }

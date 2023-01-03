@@ -1,6 +1,7 @@
 package gr.aueb;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * App.java is our Main class
@@ -93,7 +94,8 @@ public class App {
                                 //Initiate the process if selection is 1 (See draft Posts and size)
                                 case 1:
                                     System.out.println("The size of the draft posts is " + (((Employer)currentUser).sizeOfDraftPosts()));
-                                    System.out.println("You can find your draft posts below: /n" + runner.printMyDraftPosts((Employer)currentUser));
+                                    System.out.println("You can find your draft posts below: ");
+                                    runner.printMyDraftPosts((Employer)currentUser);
                                     break;
                                 //Initiate the process if selection is 2 (See uploaded Posts and size)
                                 case 2:
@@ -106,7 +108,7 @@ public class App {
                                     break;
                                 //Initiate the process if selection is 4 (Delete a Draft Post)
                                 case 4:
-                                    // TODO see issue #13 case 4
+                                    runner.deletDraftPost((Employer)currentUser);
                                     break;
                                 //Initiate the process if selection is 5 (Create a Draft Post)
                                 case 5:
