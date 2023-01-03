@@ -92,17 +92,13 @@ public class App {
                             switch (localSelection) {
                                 //Initiate the process if selection is 1 (See draft Posts and size)
                                 case 1:
-                                    System.out.println("The size of the draft posts is " + ((Employer) currentUser.sizeOfDraftPosts);
-                                    System.out.println("You can find your draft posts below: /n" + runner.printMyDraftPosts((Employer) currentUser));
+                                    System.out.println("The size of the draft posts is " + (((Employer)currentUser).sizeOfDraftPosts()));
+                                    System.out.println("You can find your draft posts below: /n" + runner.printMyDraftPosts((Employer)currentUser));
                                     break;
                                 //Initiate the process if selection is 2 (See uploaded Posts and size)
                                 case 2:
-                                    ArrayList<Post> uploadedPosts = new ArrayList<>();
-                                    uploadedPosts = ((Employer)currentUser).getUploadedPosts();
-                                    for (int i = 0; i < uploadedPosts.size(); i++) {
-                                        System.out.println(uploadedPosts.get(i));
-                                    }
-                                    System.out.println("Size of uploaded posts is " + ((Employer)currentUser).sizeOfUploadedPosts());
+                                    runner.printUploadedPosts((Employer)currentUser);
+                                    runner.printSizeOfUploadedPosts((Employer)currentUser);
                                     break;
                                 //Initiate the process if selection is 3 (Upload a Draft Post)
                                 case 3:

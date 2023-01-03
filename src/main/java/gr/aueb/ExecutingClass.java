@@ -421,4 +421,17 @@ public class ExecutingClass {
         System.out.println("Input Post number to upload\n" +
                 "or input -1 to finish \n");
     }
+
+    //Prints all uploaded Posts
+    public void printUploadedPosts(Employer emp) {
+        ArrayList<Post> uploadedPosts = emp.getUploadedPosts();
+        for (Post i : uploadedPosts) {
+            System.out.println(i);
+        }
+    }
+
+    //Prints size of uploaded Posts
+    public void printSizeOfUploadedPosts(Employer emp) {
+        System.out.println("Size of uploaded posts is " + emp.sizeOfUploadedPosts());
+    }
 }
