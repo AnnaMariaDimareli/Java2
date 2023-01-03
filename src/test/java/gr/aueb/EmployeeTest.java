@@ -28,7 +28,7 @@ public class EmployeeTest {
     @Test
     public void addNewPostTest() {
         //Method addNewPost should add a post in ArrayList unseenPosts
-        testEmployee.unseenPosts(testPost);
+        testEmployee.addNewPost(testPost);
         unseenPostsTest.add(testPost);
         assertEquals("Method does not add new posts!", unseenPostsTest, testEmployee.getNewPosts());
     }
