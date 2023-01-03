@@ -106,7 +106,7 @@ public class App {
                                     break;
                                 //Initiate the process if selection is 3 (Upload a Draft Post)
                                 case 3:
-                                    // TODO see issue #13 case 3
+                                    runner.uploadAPost((Employer) currentUser);
                                     break;
                                 //Initiate the process if selection is 4 (Delete a Draft Post)
                                 case 4:

@@ -390,4 +390,35 @@ public class ExecutingClass {
             System.out.println(runMe);
         }
     }
+
+    //Implements various methods in order to upload a post
+    public void uploadAPost(Employer currentUser) {
+        input.nextLine(); //Clear scanner
+
+        int selection;
+        Post postToUpload;
+
+        do {
+            uploadAPostMenu(); //Prints the menu
+            selection = input.nextInt(); //Gets selection
+            postToUpload = Post.getPostFromPostNumber(selection);// Gets Post or Null
+            if (selection == -1) { // This is where we exit the loop if the selection is -1
+                break;
+            } else if (postToUpload == null) {
+                System.out.println("That post number is not correct \n");
+            } else if (!(currentUser.getDraftPosts().contains(postToUpload))) { //checks if the currentUser is the creator of the post
+                System.out.println("You don't have permission to upload this post! \n");
+            } else {
+                postToUpload.setAvailable();
+                System.out.println("The post has been uploaded!");
+                System.out.println();
+            }
+        } while (true);// Loop exits only on break line! under no other condition
+    }
+
+    //Prints Post uploading menu
+    private void uploadAPostMenu() {
+        System.out.println("Input Post number to upload\n" +
+                "or input -1 to finish \n");
+    }
 }
