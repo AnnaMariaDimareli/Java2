@@ -89,33 +89,33 @@ public class App {
                                     }
                                 } while (integerNotContainedInRange(1, 6, localSelection));
 
-                            switch (localSelection) {
-                                //Initiate the process if selection is 1 (See draft Posts and size)
-                                case 1:
-                                    System.out.println("The size of the draft posts is " + (((Employer)currentUser).sizeOfDraftPosts()));
-                                    System.out.println("You can find your draft posts below: ");
-                                    runner.printMyDraftPosts((Employer)currentUser);
-                                    break;
-                                //Initiate the process if selection is 2 (See uploaded Posts and size)
-                                case 2:
-                                    runner.printUploadedPosts((Employer)currentUser);
-                                    runner.printSizeOfUploadedPosts((Employer)currentUser);
-                                    break;
-                                //Initiate the process if selection is 3 (Upload a Draft Post)
-                                case 3:
-                                    runner.uploadAPost((Employer) currentUser);
-                                    break;
-                                //Initiate the process if selection is 4 (Delete a Draft Post)
-                                case 4:
-                                    runner.deletDraftPost((Employer)currentUser);
-                                    break;
-                                //Initiate the process if selection is 5 (Create a Draft Post)
-                                case 5:
-                                    runner.postCreator((Employer) currentUser);
-                                    break;
-                                //Exit if selection is 6
-                            }
-
+                                switch (localSelection) {
+                                    //Initiate the process if selection is 1 (See draft Posts and size)
+                                    case 1:
+                                        runner.printSizeOfDraftPosts((Employer) currentUser);
+                                        runner.printDraftPosts((Employer) currentUser);
+                                        break;
+                                    //Initiate the process if selection is 2 (See uploaded Posts and size)
+                                    case 2:
+                                        runner.printSizeOfUploadedPosts((Employer) currentUser);
+                                        runner.printUploadedPosts((Employer) currentUser);
+                                        break;
+                                    //Initiate the process if selection is 3 (Upload a Draft Post)
+                                    case 3:
+                                        runner.uploadAPost((Employer) currentUser);
+                                        break;
+                                    //Initiate the process if selection is 4 (Delete a Draft Post)
+                                    case 4:
+                                        runner.deleteDraftPost((Employer) currentUser);
+                                        break;
+                                    //Initiate the process if selection is 5 (Create a Draft Post)
+                                    case 5:
+                                        runner.postCreator((Employer) currentUser);
+                                        break;
+                                    default:
+                                    //Exit if selection is 6
+                                }
+                            } while (localSelection != 6);
                         } else {
                             if (runner.checkNewPosts((Employee) currentUser)) {
                                 runner.likeAPost((Employee) currentUser);
