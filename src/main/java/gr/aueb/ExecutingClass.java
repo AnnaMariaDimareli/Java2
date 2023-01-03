@@ -383,4 +383,11 @@ public class ExecutingClass {
         //Returns user's selection
         return input.nextInt();
     }
+
+    public void printMyDraftPosts(Employer employer) {
+        ArrayList<Post> myDraftPosts = employer.getDraftPosts();
+        for (Post runMe:myDraftPosts) {
+            System.out.println(runMe);
+        }
+    }
 }

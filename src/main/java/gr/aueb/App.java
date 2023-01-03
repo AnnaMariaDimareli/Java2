@@ -92,7 +92,8 @@ public class App {
                             switch (localSelection) {
                                 //Initiate the process if selection is 1 (See draft Posts and size)
                                 case 1:
-                                    // TODO see issue #13 case 1
+                                    System.out.println("The size of the draft posts is " + ((Employer) currentUser.sizeOfDraftPosts);
+                                    System.out.println("You can find your draft posts below: /n" + runner.printMyDraftPosts((Employer) currentUser));
                                     break;
                                 //Initiate the process if selection is 2 (See uploaded Posts and size)
                                 case 2:
