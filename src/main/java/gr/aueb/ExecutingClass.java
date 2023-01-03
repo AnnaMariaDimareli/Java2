@@ -263,8 +263,8 @@ public class ExecutingClass {
         System.out.print("Description : ");
         String description = "Description : " + input.nextLine() + " ";
         System.out.println();
-        String postContent = String.format("%s\n%s\n%s\n%s\n%s\n ", jobTitle, workPlace, jobLocation, salaryRange, description);
-        Post post = new Post(currentUser, postContent);
+        String postContent = String.format("%s%n%s%n%s%n%s%n%s%n ", jobTitle, workPlace, jobLocation, salaryRange, description);
+        new Post(currentUser, postContent);
     }
 
     //Menu with actions on what he can change from his data
@@ -384,9 +384,10 @@ public class ExecutingClass {
         return input.nextInt();
     }
 
-    public void printMyDraftPosts(Employer employer) {
+    public void printDraftPosts(Employer employer) {
+        System.out.println("You can find your draft posts below: \n");
         ArrayList<Post> myDraftPosts = employer.getDraftPosts();
-        for (Post runMe:myDraftPosts) {
+        for (Post runMe : myDraftPosts) {
             System.out.println(runMe);
         }
     }
@@ -422,7 +423,7 @@ public class ExecutingClass {
                 "or input -1 to finish \n");
     }
 
-    //Prints Post uploading menu
+    //Prints Post uploading menu FIXME what da dog doing?
     private void deleteADraftPostMenu() {
         System.out.println("Input draft post number to delete\n" +
                 "or input -1 to finish \n");
@@ -430,6 +431,7 @@ public class ExecutingClass {
 
     //Prints all uploaded Posts
     public void printUploadedPosts(Employer emp) {
+        System.out.println("You can find your uploaded posts below: \n");
         ArrayList<Post> uploadedPosts = emp.getUploadedPosts();
         for (Post i : uploadedPosts) {
             System.out.println(i);
@@ -438,17 +440,23 @@ public class ExecutingClass {
 
     //Prints size of uploaded Posts
     public void printSizeOfUploadedPosts(Employer emp) {
-        System.out.println("Size of uploaded posts is " + emp.sizeOfUploadedPosts());
+        System.out.println("The size of your uploaded posts is " + emp.sizeOfUploadedPosts());
     }
 
-    public void deletDraftPost(Employer emp) {
+    //Prints size of Draft Posts
+    public void printSizeOfDraftPosts(Employer emp) {
+        System.out.println("The size of your draft posts is " + (emp.sizeOfDraftPosts()));
+    }
+
+    //FIXME what da dog doing?
+    public void deleteDraftPost(Employer emp) {
         input.nextLine(); //Clear scanner
         int selection;
         Post draftPostToDelete;
         do {
             deleteADraftPostMenu(); //Prints the menu
             System.out.println("Your draft posts are the following : ");
-            this.printMyDraftPosts(emp);
+            this.printDraftPosts(emp);
             selection = input.nextInt();
             draftPostToDelete = Post.getPostFromPostNumber(selection);
             if (selection == -1) { // This is where we exit the loop if the selection is -1
