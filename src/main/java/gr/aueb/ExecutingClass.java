@@ -15,7 +15,7 @@ public class ExecutingClass {
      * It should not be viewed as stand-alone class
      */
 
-    Scanner input = new Scanner(System.in);
+    private final Scanner input = new Scanner(System.in);
 
     //Prints welcome message in command line
     public void welcome() {
