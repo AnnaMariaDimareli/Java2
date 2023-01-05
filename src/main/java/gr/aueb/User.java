@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class User {
-
+	
 	/* Username and Password are the UID's (the username is unique)
 	 * The rest are required for creating the account
 	 */
@@ -25,36 +25,43 @@ public class User {
 	//HashMap of users
 	private static HashMap<String, User> createdUsers = new HashMap<>();
 
-	// Constructor used to create object User (only useful when used through the two subclasses)
-	public User(String username, String password, String name, String surname, String email, String dateOfBirth) {
+	// Constructor used to create object User
+	//(only useful when used through the two subclasses)
+	public User(String username, String password, String name,
+		String surname, String email, String dateOfBirth) {
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.surname = surname;
 		this.email = email;
 		this.dateOfBirth = dateOfBirth;
-		createdUsers.put(username,this);
+		createdUsers.put(username, this);
 	}
 
 	//Method takes a username and checks if a user with that username exists
-	public static void checkUserExistence(String Username) throws GeneralSecurityException {
+	public static void checkUserExistence(String Username) 
+		throws GeneralSecurityException {
 		User checkedUser = createdUsers.get(Username);
-		if (checkedUser==null) {
-			throw new GeneralSecurityException("Username " + Username + " is incorrect \n");
+		if (checkedUser == null) {
+			throw new GeneralSecurityException("Username " + Username
+				+ " is incorrect \n");
 		}
 	}
 
-	//When called upon with a set of credentials this method will return the object which relates to the user
+	//When called upon with a set of credentials this method will return 
+	//the object which relates to the user
 	//If no such user exists it will return null
 	//If an incorrect password is given it will throw a GeneralSecurityException
 	@NotNull
-	public static User login(String username, String password) throws GeneralSecurityException {
+	public static User login(String username, String password)
+		throws GeneralSecurityException {
 		checkUserExistence(username);
 		User currentUser = createdUsers.get(username);
 		if (currentUser.getPasswordValidity(password)) {
 			return currentUser;
 		} else {
-			throw new GeneralSecurityException("Password `" + password + "` is incorrect for user " + username+"\n");
+			throw new GeneralSecurityException("Password `" + password
+				+ "` is incorrect for user " + username + "\n");
 		}
 	}
 
@@ -67,20 +74,24 @@ public class User {
 		return Objects.equals(password, this.password);
 	}
 
-	public void setPassword(String oldPassword, String newPassword) throws GeneralSecurityException {
+	public void setPassword(String oldPassword, String newPassword) 
+		throws GeneralSecurityException {
 		if (getPasswordValidity(oldPassword)) {
 			password = newPassword;
 		} else {
-			throw new GeneralSecurityException("Password `" + oldPassword + "` is incorrect for user " + username);
+			throw new GeneralSecurityException("Password `" + oldPassword
+				+ "` is incorrect for user " + username);
 		}
 	}
 
 	//Validates password and then changes the name
-	public void setName(String newName, String givenPassword) throws GeneralSecurityException {
+	public void setName(String newName, String givenPassword) 
+		throws GeneralSecurityException {
 		if (getPasswordValidity(givenPassword)) {
 			name = newName;
 		} else {
-			throw new GeneralSecurityException("Password `" + givenPassword + "` is incorrect for user " + username);
+			throw new GeneralSecurityException("Password `" + givenPassword
+				+ "` is incorrect for user " + username);
 		}
 
 	}

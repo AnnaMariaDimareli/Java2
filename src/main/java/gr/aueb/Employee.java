@@ -1,21 +1,22 @@
 package gr.aueb;
 
-
 import java.util.ArrayList;
 
 public class Employee extends User {
-
+	
 	private static ArrayList<Employee> employees = new ArrayList<>();
 	private ArrayList<Post> likedPosts = new ArrayList<>();
 	private ArrayList<Post> unseenPosts = new ArrayList<>();
 
 	/**
-	 * Employee-type users like posts of Employer-type users for job positions
+	 * Employee-type users like posts of Employer-type users concerning 
+	 * vacancies in job positions
 	 * Then an automated message of interest is sent to Employer-type users
 	 */
 
 	//Creates Employee type User through superclass constructor
-	public Employee(String username, String password, String name, String surname, String email, String dateOfBirth) {
+	public Employee(String username, String password, String name,
+		String surname, String email, String dateOfBirth) {
 		super(username, password, name, surname, email, dateOfBirth);
 		employees.add(this);
 	}
@@ -41,9 +42,10 @@ public class Employee extends User {
 	public void addLikedPost(Post likedPost) {
 		likedPosts.add(likedPost);
 		likedPost.like(); //Post's like count increased
-		super.addNewMessage(new Message(likedPost.getReferenceToEmployer(),this,
-				"Thank you for your interest in our job offering. You can send your cv to " +
-						likedPost.getCreator() + " email: " + likedPost.getReferenceToEmployer().getEmail())); // Automated message sent
+		super.addNewMessage(new Message(likedPost.getReferenceToEmployer(),
+			this, "Thank you for your interest in our job offering. You " 
+			+ "can send your cv to " +  likedPost.getCreator() + " email: " 
+			+ likedPost.getReferenceToEmployer().getEmail())); // Automated message sent
 	}
 
 	//Shows how many posts have been liked by the user

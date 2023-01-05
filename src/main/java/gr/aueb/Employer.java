@@ -3,10 +3,10 @@ package gr.aueb;
 import java.util.ArrayList;
 
 public class Employer extends User {
-
+	
 	//ArrayList containing uploaded post-type objects
 	private final ArrayList<Post> uploadedPosts = new ArrayList<>();
-	
+
 	//ArrayList containing draft post-type objects
 	private final ArrayList<Post> draftPosts = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class Employer extends User {
 	public void addUploadedPosts(Post x) {
 		uploadedPosts.add(x);
 		ArrayList<Employee> currentEmployees = Employee.getEmployees();
-		for(Employee e : currentEmployees) { 
+		for(Employee e : currentEmployees) {
 			//Adds the new post to all employees unseen posts
 			e.addNewPost(x);
 		}
