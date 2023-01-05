@@ -73,6 +73,7 @@ public class UserTest {
 
     @Test
     public void getUserFromUsernameTest() {
-        assertEquals("Method does not get the right user!",this,testUser.getUserFromUsername("panos1b"));
+        assertEquals("Method does not get the right user!",testUser,User.getUserFromUsername("panos1b"));
+        assertNull("Method returns non existent user!",User.getUserFromUsername("what da dog doing"));
     }
 }
