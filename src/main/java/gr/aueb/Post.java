@@ -56,7 +56,7 @@ public class Post {
         return creator;
     }
 
-    //This method returns if the post is available FIXME maybe this method is useless
+    //This method returns if the post is available
     public Boolean getAvailable() {
         return available;
     }
