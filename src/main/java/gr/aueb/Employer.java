@@ -3,7 +3,7 @@ package gr.aueb;
 import java.util.ArrayList;
 
 public class Employer extends User {
-	
+
 	//ArrayList containing uploaded post-type objects
 	private final ArrayList<Post> uploadedPosts = new ArrayList<>();
 
@@ -17,16 +17,17 @@ public class Employer extends User {
 	 */
 
 	//Creates User through superclass constructor
-	public Employer(String username, String password, String name,
-					String surname, String email, String dateOfBirth) {
+	public Employer(final String username, final String password,
+		final String name, final String surname, final String email,
+		final String dateOfBirth) {
 		super(username, password, name, surname, email, dateOfBirth);
 	}
 
 	//Uploads a post
-	public void addUploadedPosts(Post x) {
+	public void addUploadedPosts(final Post x) {
 		uploadedPosts.add(x);
 		ArrayList<Employee> currentEmployees = Employee.getEmployees();
-		for(Employee e : currentEmployees) {
+		for (Employee e : currentEmployees) {
 			//Adds the new post to all employees unseen posts
 			e.addNewPost(x);
 		}
@@ -39,16 +40,18 @@ public class Employer extends User {
 
 	//Returns the users posts
 	public ArrayList<Post> getUploadedPosts() {
-		return uploadedPosts;
+		ArrayList<Post> up = new ArrayList<>();
+		up.addAll(uploadedPosts);
+		return up;
 	}
 
 	//Stores a draft post
-	public void addDraftPosts(Post x) {
+	public void addDraftPosts(final Post x) {
 		draftPosts.add(x);
 	}
 
 	//Deletes a draft post
-	public void deleteDraftPost(Post postForDeletion) {
+	public void deleteDraftPost(final Post postForDeletion) {
 		draftPosts.remove(postForDeletion);
 	}
 
@@ -59,7 +62,9 @@ public class Employer extends User {
 
 	//Returns the users draft posts
 	public ArrayList<Post> getDraftPosts() {
-		return draftPosts;
+		ArrayList<Post> dp = new ArrayList<>();
+		dp.addAll(draftPosts);
+		return dp;
 	}
 
 	//Used for informing the user about their UID and their user type
