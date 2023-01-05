@@ -1,8 +1,10 @@
 package gr.aueb;
 
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
 import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 
 public class EmployerTest {
 
@@ -10,9 +12,8 @@ public class EmployerTest {
     private final Employer testEmployer = new Employer("markella12122", "helloworld", "Markella",
         "Egglezou", "t8210039@aueb.gr", "21-02-2003");
     private Post testPost1;
-    private Post testPost2;
-	private ArrayList<Post> uploadedPostsTest = new ArrayList<>();
-    private ArrayList<Post> draftPostsTest = new ArrayList<>();
+    private final ArrayList<Post> uploadedPostsTest = new ArrayList<>();
+    private final ArrayList<Post> draftPostsTest = new ArrayList<>();
 
     @Test
     public void addDraftPostsTest() {
@@ -44,14 +45,14 @@ public class EmployerTest {
 
     @Test
     public void addUploadedPostsTest() {
+        Employee testEmployee = new Employee("mark12", "helloworld", "Markella",
+                "Egglezou", "t8210039@aueb.gr", "21-02-2003");
         //Post should be added in ArrayList
-        testPost2 = new Post(testEmployer,"This is the content's of the post");
+        Post testPost2 = new Post(testEmployer, "This is the content's of the post");
         testPost2.setAvailable();
         uploadedPostsTest.add(testPost2);
         assertEquals("Method has not added the uploaded post!", testPost2, testEmployer.getUploadedPosts().get(0));
         //Post should be added in employee's ArrayList
-        Employee testEmployee = new Employee("mark12", "helloworld", "Markella",
-            "Egglezou", "t8210039@aueb.gr", "21-02-2003");
         assertEquals("Post is not added in unseenPosts ArrayList!", testPost2, testEmployee.getNewPosts().get(0));
     }
 
