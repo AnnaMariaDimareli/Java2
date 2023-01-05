@@ -43,6 +43,21 @@
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
                     <version>3.0.2</version>
+                    <executions> <!-- this part until </executions> (tag close) is added because while executing `mvn site` Maven tries and fails to load META-INF class in org.jetbrains.annotations jar !-->
+                        <execution>
+                            <phase>site</phase>
+                            <configuration>
+                                <filters>
+                                    <filter>
+                                        <artifact>*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/maven/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <plugin>
@@ -87,6 +102,15 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.0.0</version>
+                <configuration>
+                            <encoding>UTF-8</encoding>
+                            <suppressionsLocation>
+                                checkstyle-suppressions.xml
+                            </suppressionsLocation>
+                            <suppressionsFileExpression>
+                                checkstyle.suppressions.file
+                            </suppressionsFileExpression>
+                </configuration>
             </plugin>
 
             <plugin>
