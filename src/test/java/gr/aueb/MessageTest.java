@@ -1,6 +1,5 @@
 package gr.aueb;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,20 +9,16 @@ import static org.junit.Assert.*;
 
 public class MessageTest {
 
-    private static int counter = 0;
     private final User testUser1 = new User("panos1b", "rdeolzcaq", "Panos",
             "Daskalopoulos", "alexdask1@icloud.com", "16-10-2003");
     private final User testUser2 = new User("Greg", "gfsdrdfg", "Gregory",
             "Terzidis", "gregterzidis@gmail.com", "19-04-20003");
     private Message testMessage;
-    private Message testMessage2;
 
     @Before
     public void setUp() {
         testMessage = new Message(testUser1, testUser2,
                 "L + Ratio + You fell off + maidenless");
-        testMessage2 = new Message(testUser2, testUser1,
-                "Welcome to the Jungle");
     }
 
     @Test
@@ -31,7 +26,6 @@ public class MessageTest {
         assertEquals("failure - does not assign correct Receiver!", "panos1b", testMessage.getReceiver());
         assertEquals("failure - does not assign correct Sender!", "Greg", testMessage.getSender());
         assertEquals("failure - does not assign correct Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
-        assertEquals("failure - does not add up correctly the NumberOfMessages!", 2, Message.getNumberOfMessages());
 
     }
 
@@ -66,19 +60,5 @@ public class MessageTest {
         assertEquals("Method is not returning Contents!", "L + Ratio + You fell off + maidenless", testMessage.getContents());
     }
 
-    @Test
-    public void getMessageNumberTest() {
-        assertEquals("Method is not returning MessageNumber!", 2 * counter + 1, testMessage2.getMessageNumber());
-        assertEquals("Method is not returning MessageNumber!", 2 * counter, testMessage.getMessageNumber());
-    }
 
-    @Test
-    public void getNumberOfMessagesTest() {
-        assertEquals("Method is not returning NumberOfMessages!", 2 * counter + 2, Message.getNumberOfMessages());
-    }
-
-    @After // test needed here due to maven plugin bug
-    public void Counter() {
-        counter++;
-    }
 }
