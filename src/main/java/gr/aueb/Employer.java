@@ -22,7 +22,7 @@ public class Employer extends User {
 	}
 
 	//Uploads a post
-	public void addUploadedPosts(final Post x) {
+	public final void addUploadedPosts(final Post x) {
 		uploadedPosts.add(x);
 		ArrayList<Employee> currentEmployees = Employee.getEmployees();
 		for (Employee e : currentEmployees) {
@@ -32,34 +32,34 @@ public class Employer extends User {
 	}
 
 	//Returns how many posts have been created by the user
-	public int sizeOfUploadedPosts() {
+	public final int sizeOfUploadedPosts() {
 		return uploadedPosts.size();
 	}
 
 	//Returns the users posts
-	public ArrayList<Post> getUploadedPosts() {
+	public final ArrayList<Post> getUploadedPosts() {
 		ArrayList<Post> up = new ArrayList<>();
 		up.addAll(uploadedPosts);
 		return up;
 	}
 
 	//Stores a draft post
-	public void addDraftPosts(final Post x) {
+	public final void addDraftPosts(final Post x) {
 		draftPosts.add(x);
 	}
 
 	//Deletes a draft post
-	public void deleteDraftPost(final Post postForDeletion) {
+	public final void deleteDraftPost(final Post postForDeletion) {
 		draftPosts.remove(postForDeletion);
 	}
 
 	//Returns how many draft posts have been created by the user
-	public int sizeOfDraftPosts() {
+	public final int sizeOfDraftPosts() {
 		return draftPosts.size();
 	}
 
 	//Returns the users draft posts
-	public ArrayList<Post> getDraftPosts() {
+	public final ArrayList<Post> getDraftPosts() {
 		ArrayList<Post> dp = new ArrayList<>();
 		dp.addAll(draftPosts);
 		return dp;
@@ -67,7 +67,7 @@ public class Employer extends User {
 
 	//Used for informing the user about their UID and their user type
 	@Override
-	public String toString() {
+	public final String toString() {
 		return (super.toString() + " You are an employer-type user.");
 	}
 

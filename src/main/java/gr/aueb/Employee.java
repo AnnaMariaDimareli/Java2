@@ -22,14 +22,14 @@ public class Employee extends User {
 	}
 
 	//Empties the ArrayList that contains the posts and returns them
-	public ArrayList<Post> getNewPosts() {
+	public final ArrayList<Post> getNewPosts() {
 		ArrayList<Post> unseenPostsCopy = new ArrayList<>(unseenPosts);
 		unseenPosts.clear();
 		return unseenPostsCopy;
 	}
 
 	//Adds a new post
-	public void addNewPost(final Post post) {
+	public final void addNewPost(final Post post) {
 		unseenPosts.add(post);
 	}
 
@@ -41,7 +41,7 @@ public class Employee extends User {
 	}
 
 	//Likes a post
-	public void addLikedPost(final Post likedPost) {
+	public final void addLikedPost(final Post likedPost) {
 		likedPosts.add(likedPost);
 		likedPost.like(); //Post's like count increased
 		super.addNewMessage(
@@ -54,12 +54,12 @@ public class Employee extends User {
 	}
 
 	//Shows how many posts have been liked by the user
-	public int sizeOfLikedPosts() {
+	public final int sizeOfLikedPosts() {
 		return likedPosts.size();
 	}
 
     //Shows the user's likes
-	public ArrayList<Post> getLikedPosts() {
+	public final ArrayList<Post> getLikedPosts() {
 		ArrayList<Post> lp = new ArrayList<>();
 		lp.addAll(likedPosts);
 		return lp;
@@ -67,7 +67,7 @@ public class Employee extends User {
 
 	//Used for informing the user about their UID and their user type
 	@Override
-	public String toString() {
+	public final String toString() {
 		return (super.toString() + " You are an employee-type user.");
 	}
 

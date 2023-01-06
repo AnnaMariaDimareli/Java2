@@ -66,16 +66,16 @@ public class User {
 		}
 	}
 
-	public String getUsername() {
+	public final String getUsername() {
 		return username;
 	}
 
 	//Checks if password given is valid (used for logging in)
-	public boolean getPasswordValidity(final String pass) {
+	public final boolean getPasswordValidity(final String pass) {
 		return Objects.equals(pass, password);
 	}
 
-	public void setPassword(final String oldPassword,
+	public final void setPassword(final String oldPassword,
 		final String newPassword) throws GeneralSecurityException {
 		if (getPasswordValidity(oldPassword)) {
 			password = newPassword;
@@ -87,8 +87,8 @@ public class User {
 	}
 
 	//Validates password and then changes the name
-	public void setName(final String newName, final String givenPassword)
-		throws GeneralSecurityException {
+	public final void setName(final String newName,
+		final String givenPassword) throws GeneralSecurityException {
 		if (getPasswordValidity(givenPassword)) {
 			name = newName;
 		} else {
@@ -98,24 +98,24 @@ public class User {
 		}
 	}
 
-	public String getName() {
+	public final String getName() {
 		return name;
 	}
 
-	public String getSurname() {
+	public final String getSurname() {
 		return surname;
 	}
 
-	public String getEmail() {
+	public final String getEmail() {
 		return email;
 	}
 
-	public String getDateOfBirth() {
+	public final String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
 	//Empties the ArrayList that contains the messages and returns them
-	public ArrayList<Message> getNewMessages() {
+	public final ArrayList<Message> getNewMessages() {
 		ArrayList<Message> unseenMessagesCopy
 			= new ArrayList<>(unseenMessages);
 		unseenMessages.clear();
@@ -123,13 +123,13 @@ public class User {
 	}
 
 	//Adds a new message directed towards the User
-	public void addNewMessage(final Message directedMessage) {
+	public final void addNewMessage(final Message directedMessage) {
 		unseenMessages.add(directedMessage);
 	}
 
 	//Informs user of their UID
 	@Override
-	public String toString() {
+	public final String toString() {
 		return String.format("Your username is %s.", username);
 	}
 
