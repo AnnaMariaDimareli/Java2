@@ -129,7 +129,7 @@ public class User {
 
 	//Informs user of their UID
 	@Override
-	public final String toString() {
+	public String toString() {
 		return String.format("Your username is %s.", username);
 	}
 
