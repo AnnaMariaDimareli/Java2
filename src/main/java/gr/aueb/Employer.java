@@ -3,10 +3,8 @@ package gr.aueb;
 import java.util.ArrayList;
 
 public class Employer extends User {
-
 	//ArrayList containing uploaded post-type objects
 	private final ArrayList<Post> uploadedPosts = new ArrayList<>();
-
 	//ArrayList containing draft post-type objects
 	private final ArrayList<Post> draftPosts = new ArrayList<>();
 

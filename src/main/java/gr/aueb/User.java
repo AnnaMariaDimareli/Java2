@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.Objects;
 
 public class User {
-
 	/* Username and Password are the UID's (the username is unique)
 	 * The rest are required for creating the account
 	 */

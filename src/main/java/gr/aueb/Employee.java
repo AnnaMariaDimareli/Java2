@@ -3,7 +3,6 @@ package gr.aueb;
 import java.util.ArrayList;
 
 public class Employee extends User {
-
 	private static ArrayList<Employee> employees = new ArrayList<>();
 	private ArrayList<Post> likedPosts = new ArrayList<>();
 	private ArrayList<Post> unseenPosts = new ArrayList<>();
