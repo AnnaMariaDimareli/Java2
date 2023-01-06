@@ -2,6 +2,7 @@ package gr.aueb;
 
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -253,12 +254,24 @@ public class ExecutingClass {
         System.out.print("Job Location : ");
         String jobLocation = "Job Location : " + input.nextLine() + " ";
         System.out.println();
-        System.out.println("Salary Range ");
-        System.out.print("   From: ");
-        String salaryRange = "Salary Range : " + input.nextInt() + "-";
-        System.out.print("   To: ");
-        salaryRange = salaryRange + input.nextInt() + " ";
-        input.nextLine();//Clear scanner
+        boolean flag = true;
+        String salaryRange = null;
+        while (flag) {
+            try {
+                System.out.println("Salary Range ");
+                System.out.print("   From: ");
+                salaryRange = "Salary Range : " + input.nextInt() + "-";
+                System.out.print("   To: ");
+                salaryRange = salaryRange + input.nextInt() + " ";
+                input.nextLine();//Clear scanner
+                flag = false;
+            } catch (InputMismatchException e1) {
+                System.out.println("Hmm something went wrong. Please insert an integer value to " +
+                "keep the post creation process going");
+            } catch (Exception e) {
+                System.out.println("Hmm something went wrong. Please try again to insert an integer value");
+            }
+        }
         System.out.println();
         System.out.print("Description : ");
         String description = "Description : " + input.nextLine() + " ";
@@ -396,12 +409,21 @@ public class ExecutingClass {
     public void uploadAPost(Employer currentUser) {
         input.nextLine(); //Clear scanner
 
-        int selection;
+        int selection = 0;
         Post postToUpload;
 
         do {
-            uploadAPostMenu(); //Prints the menu
-            selection = input.nextInt(); //Gets selection
+            boolean flag = true;
+            while (flag) {
+                try {
+                    uploadAPostMenu(); //Prints the menu
+                    selection = input.nextInt(); //Gets selection
+                    flag = false;
+                } catch (Exception e) {
+                    System.out.println("Something went wrong. You have to select an integer value " +
+                    "to keep the process going");
+                }
+            }
             postToUpload = Post.getPostFromPostNumber(selection);// Gets Post or Null
             if (selection == -1) { // This is where we exit the loop if the selection is -1
                 break;
@@ -451,13 +473,21 @@ public class ExecutingClass {
     //FIXME what da dog doing?
     public void deleteDraftPost(Employer emp) {
         input.nextLine(); //Clear scanner
-        int selection;
+        int selection = 0;
         Post draftPostToDelete;
         do {
-            deleteADraftPostMenu(); //Prints the menu
-            System.out.println("Your draft posts are the following : ");
-            this.printDraftPosts(emp);
-            selection = input.nextInt();
+            boolean flag = true;
+            while (flag) {
+                try {
+                    deleteADraftPostMenu(); //Prints the menu
+                    System.out.println("Your draft posts are the following : ");
+                    this.printDraftPosts(emp);
+                    selection = input.nextInt();
+                } catch (Exception e) {
+                    System.out.println("Something went wrong. You have to select an integer value " +
+                    "to keep the process going");
+                }
+            }
             draftPostToDelete = Post.getPostFromPostNumber(selection);
             if (selection == -1) { // This is where we exit the loop if the selection is -1
                 break;
