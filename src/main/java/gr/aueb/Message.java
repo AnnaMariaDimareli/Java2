@@ -8,39 +8,41 @@ public class Message {
     private final User sender;
     private final String contents;
 
-    public Message(User receiver, User sender, String contents) {
-            this.receiver = receiver;
-            this.sender = sender;
+    public Message(final User rec, final User sen, final String cont) {
+            receiver = rec;
+            sender = sen;
             numberOfMessages++;
-            this.contents = contents;
+            contents = cont;
     }
 
-    public String toString() {
-            return  "The receiver is " + this.getReceiver() + ",  the sender is " + this.getSender() + " and the message is " + this.getContents();
+    public final String toString() {
+            return  "The receiver is " + this.getReceiver() + 
+                    ",  the sender is " + this.getSender() + 
+                    " and the message is " + this.getContents();
     }
 
-    public void showMessage() {
+    public final void showMessage() {
             System.out.println(this.getSender());
             System.out.println(this.getContents());
     }
 
-    public void addUnseenMessage() {
+    public final void addUnseenMessage() {
             receiver.addNewMessage(this);
     }
 
-    public String getSender() {
+    public final String getSender() {
             return sender.getUsername();
     }
 
-    public String getReceiver() {
+    public final String getReceiver() {
             return receiver.getUsername();
     }
 
-    public int getMessageNumber() {
+    public final int getMessageNumber() {
             return messageNumber;
     }
 
-    public String getContents() {
+    public final String getContents() {
             return contents;
     }
     public static int getNumberOfMessages() {
