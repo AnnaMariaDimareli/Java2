@@ -263,18 +263,18 @@ public class ExecutingClass {
                 salaryRange = "Salary Range : " + input.nextInt() + "-";
                 System.out.print("   To: ");
                 salaryRange = salaryRange + input.nextInt() + " ";
-                input.nextLine();//Clear scanner
                 flag = false;
             } catch (InputMismatchException e1) {
                 System.out.println("Hmm something went wrong. Please insert an integer value to " +
                 "keep the post creation process going");
+                input.nextLine();//Clear scanner
             } catch (Exception e) {
                 System.out.println("Hmm something went wrong. Please try again to insert an integer value");
             }
         }
         System.out.println();
         System.out.print("Description : ");
-        String description = "Description : " + input.nextLine() + " ";
+        String description = "Description : " + input.next() + " ";
         System.out.println();
         String postContent = String.format("%s%n%s%n%s%n%s%n%s%n ", jobTitle, workPlace, jobLocation, salaryRange, description);
         new Post(currentUser, postContent);
@@ -422,6 +422,7 @@ public class ExecutingClass {
                 } catch (Exception e) {
                     System.out.println("Something went wrong. You have to select an integer value " +
                     "to keep the process going");
+                    input.nextLine();
                 }
             }
             postToUpload = Post.getPostFromPostNumber(selection);// Gets Post or Null
@@ -483,9 +484,11 @@ public class ExecutingClass {
                     System.out.println("Your draft posts are the following : ");
                     this.printDraftPosts(emp);
                     selection = input.nextInt();
+                    flag = false;
                 } catch (Exception e) {
                     System.out.println("Something went wrong. You have to select an integer value " +
                     "to keep the process going");
+                    input.nextLine();
                 }
             }
             draftPostToDelete = Post.getPostFromPostNumber(selection);
