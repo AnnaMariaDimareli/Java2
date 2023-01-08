@@ -5,9 +5,9 @@ import static org.junit.Assert.*;
 import java.util.Date;
 
 public class PostTest {
-    private Employer employer = new Employer("simosathan9", "jhnksxj", "Simos",
+    private final Employer employer = new Employer("simosathan9", "jhnksxj", "Simos",
             "Athanasiadis", "simosathan03@gmail.com", "9-11-2003");
-    private Post post = new Post(employer,"These are the contents of the post\nI love potatoes\nThis app is amazing");
+    private final Post post = new Post(employer,"These are the contents of the post\nI love potatoes\nThis app is amazing");
 
     @Test
     public void testGetReferenceToEmployer() {
@@ -34,7 +34,7 @@ public class PostTest {
     public void testToString() {
         final Date dt = new Date(System.currentTimeMillis());
         String creationDate = dt.toString();
-        String expectedOutput = ("Post number:"+post.getPostNumber()+"\nCreated on "+ creationDate + " by Simos Athanasiadis\nThese are the contents of the post\nI love potatoes\nThis app is amazing");
+        String expectedOutput = String.format("Post number:"+post.getPostNumber()+"%nCreated on "+ creationDate + " by Simos Athanasiadis%nThese are the contents of the post\nI love potatoes\nThis app is amazing");
         assertEquals(expectedOutput, post.toString());
     }
     @Test
