@@ -3,9 +3,9 @@ package gr.aueb;
 import java.util.ArrayList;
 
 public class Employee extends User {
-    private static ArrayList<Employee> employees = new ArrayList<>();
-    private ArrayList<Post> likedPosts = new ArrayList<>();
-    private ArrayList<Post> unseenPosts = new ArrayList<>();
+    private static final ArrayList<Employee> employees = new ArrayList<>();
+    private final ArrayList<Post> likedPosts = new ArrayList<>();
+    private final ArrayList<Post> unseenPosts = new ArrayList<>();
 
     /**
      * Employee-type users like posts of Employer-type users concerning
