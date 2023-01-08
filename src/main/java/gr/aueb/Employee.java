@@ -23,9 +23,7 @@ public class Employee extends User {
 
     //Returns all employees
     public static ArrayList<Employee> getEmployees() {
-        ArrayList<Employee> emp = new ArrayList<>();
-        emp.addAll(employees);
-        return emp;
+        return new ArrayList<>(employees);
     }
 
     //Empties the ArrayList that contains the posts and returns them
@@ -60,9 +58,7 @@ public class Employee extends User {
 
     //Shows the user's likes
     public final ArrayList<Post> getLikedPosts() {
-        ArrayList<Post> lp = new ArrayList<>();
-        lp.addAll(likedPosts);
-        return lp;
+        return new ArrayList<>(likedPosts);
     }
 
     //Used for informing the user about their UID and their user type
