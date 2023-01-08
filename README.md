@@ -7,7 +7,7 @@ Run `mvn clean compile assembly:single`
 
 ## Running
 
-Run `java -jar "../target/our-social-media-app-1.0-jar-with-dependencies.jar"`.
+Run `java -jar "../target/our-social-media-app-1.0-jar-with-dependencies.jar"`
 
 ## Usage
 1. A Welcome Message and the Main Menu is printed in the command line after running
