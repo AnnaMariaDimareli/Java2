@@ -446,7 +446,7 @@ public class ExecutingClass {
                 "or input -1 to finish \n");
     }
 
-    //Prints Post uploading menu FIXME what da dog doing?
+    //Prints Draft Posts to be deleted menu
     private void deleteADraftPostMenu() {
         System.out.println("Input draft post number to delete\n" +
                 "or input -1 to finish \n");
