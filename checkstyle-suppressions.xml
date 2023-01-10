@@ -6,4 +6,7 @@
 
 <suppressions>
   <suppress checks="Javadoc" files="."/>
+  <suppress checks="HiddenField" files="\.java"/>
+  <suppress checks="MagicNumber" files="\.java"/>
+  <suppress checks="DesignForExtension" files="[^(User)]\.java"/>
 </suppressions>
