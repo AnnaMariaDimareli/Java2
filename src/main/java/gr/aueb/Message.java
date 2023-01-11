@@ -1,8 +1,8 @@
 package gr.aueb;
 
 public class Message {
-    /* Message.java is the class responsible for the communication between the users.
-     * It is used to create and show messages. 
+    /* Message.java is responsible for the communication between the users.
+     * It is used to create and show messages.
      */
 
     private static int numberOfMessages;
