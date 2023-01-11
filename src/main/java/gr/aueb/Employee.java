@@ -15,8 +15,8 @@ public class Employee extends User {
 
     //Creates Employee type User through superclass constructor
     public Employee(final String username, final String password,
-                    final String name, final String surname, final String email,
-                    final String dateOfBirth) {
+                    final String name, final String surname,
+                    final String email, final String dateOfBirth) {
         super(username, password, name, surname, email, dateOfBirth);
         employees.add(this);
     }
@@ -43,11 +43,12 @@ public class Employee extends User {
         likedPosts.add(likedPost);
         likedPost.like(); //Post's like count increased
         super.addNewMessage(
-                new Message(likedPost.getReferenceToEmployer(),
-                        this, "Thank you for your interest in our job offering."
-                        + " You can send your cv to " + likedPost.getCreator()
-                        + " email: "
-                        + likedPost.getReferenceToEmployer().getEmail()));
+                new Message(likedPost.getReferenceToEmployer(), this,
+                        "Thank you for your interest in our job offering"
+                                + "." + " You can send your cv to "
+                                + likedPost.getCreator() + " email: "
+                                + likedPost.getReferenceToEmployer()
+                                .getEmail()));
         // Automated message sent
     }
 
@@ -68,3 +69,4 @@ public class Employee extends User {
     }
 
 }
+

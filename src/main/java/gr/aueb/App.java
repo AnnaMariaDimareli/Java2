@@ -2,7 +2,8 @@ package gr.aueb;
 
 /**
  * App.java is our Main class
- * Here we have the command line interface we use to run our Social Media App
+ * Here we have the command line interface we use to run our Social
+ * Media App
  */
 
 public class App {
@@ -42,7 +43,8 @@ public class App {
                     //Print the Home Screen Menu
                     selection = runner.printUserHomeScreen(currentUser);
                     if (integerNotContainedInRange(1, 5, selection)) {
-                        System.out.println("Wrong selection please try again");
+                        System.out.println(
+                                "Wrong selection please try again");
                     }
                 } while (integerNotContainedInRange(1, 5, selection));
                 switch (selection) {
@@ -60,19 +62,23 @@ public class App {
                     //Initiate the process if selection is 4
                     case 4:
                         do {
-                            localSelection = runner.printUserChangeInfoScreen();
-                        } while (integerNotContainedInRange(1, 3, localSelection));
+                            localSelection =
+                                    runner.printUserChangeInfoScreen();
+                        } while (integerNotContainedInRange(1, 3,
+                                localSelection));
 
                         switch (localSelection) {
                             //Initiate the process if selection is 1
                             case 1:
                                 runner.changePassword(currentUser);
-                                System.out.println("Your password has changed!");
+                                System.out.println(
+                                        "Your password has changed!");
                                 break;
                             //Initiate the process if selection is 2
                             case 2:
                                 runner.changeName(currentUser);
-                                System.out.println("Your Username has changed!");
+                                System.out.println(
+                                        "Your Username has changed!");
                                 break;
                             //Exit if selection is 3
                         }
@@ -82,42 +88,61 @@ public class App {
                         if (currentUser instanceof Employer) {
                             do {
                                 do {
-                                    localSelection = runner.printEmployerPostManipulationScreen();
+                                    localSelection =
+                                            runner.printEmployerPostManipulationScreen();
 
-                                    if (integerNotContainedInRange(1, 6, localSelection)) {
-                                        System.out.println("Wrong selection please try again");
+                                    if (integerNotContainedInRange(1, 6,
+                                            localSelection)) {
+                                        System.out.println(
+                                                "Wrong selection please "
+                                                        + "try again");
                                     }
-                                } while (integerNotContainedInRange(1, 6, localSelection));
+                                } while (integerNotContainedInRange(1, 6,
+                                        localSelection));
 
                                 switch (localSelection) {
-                                    //Initiate the process if selection is 1 (See draft Posts and size)
+                                    //Initiate the process if selection
+                                    // is 1 (Se
+                                    // e draft Posts and size)
                                     case 1:
-                                        runner.printSizeOfDraftPosts((Employer) currentUser);
-                                        runner.printDraftPosts((Employer) currentUser);
+                                        runner.printSizeOfDraftPosts(
+                                                (Employer) currentUser);
+                                        runner.printDraftPosts(
+                                                (Employer) currentUser);
                                         break;
-                                    //Initiate the process if selection is 2 (See uploaded Posts and size)
+                                    //Initiate the process if selection
+                                    // is 2 (See uploaded Posts and size)
                                     case 2:
-                                        runner.printSizeOfUploadedPosts((Employer) currentUser);
-                                        runner.printUploadedPosts((Employer) currentUser);
+                                        runner.printSizeOfUploadedPosts(
+                                                (Employer) currentUser);
+                                        runner.printUploadedPosts(
+                                                (Employer) currentUser);
                                         break;
-                                    //Initiate the process if selection is 3 (Upload a Draft Post)
+                                    //Initiate the process if selection
+                                    // is 3 (Upload a Draft Post)
                                     case 3:
-                                        runner.uploadAPost((Employer) currentUser);
+                                        runner.uploadAPost(
+                                                (Employer) currentUser);
                                         break;
-                                    //Initiate the process if selection is 4 (Delete a Draft Post)
+                                    //Initiate the process if selection
+                                    // is 4 (Delete a Draft Post)
                                     case 4:
-                                        runner.deleteDraftPost((Employer) currentUser);
+                                        runner.deleteDraftPost(
+                                                (Employer) currentUser);
                                         break;
-                                    //Initiate the process if selection is 5 (Create a Draft Post)
+                                    //Initiate the process if selection
+                                    // is 5 (Create a Draft Post)
                                     case 5:
-                                        runner.postCreator((Employer) currentUser);
+                                        runner.postCreator(
+                                                (Employer) currentUser);
                                         break;
                                     default:
-                                    //Exit if selection is 6
+                                        //Exit if selection is 6
                                 }
                             } while (localSelection != 6);
                         } else {
-                            if (runner.checkNewPosts((Employee) currentUser)) {
+                            if (runner.checkNewPosts(
+                                    (Employee) currentUser)) {
                                 runner.likeAPost((Employee) currentUser);
                             }
                         }
@@ -127,10 +152,13 @@ public class App {
         } while (true);
     }
 
-    //Checks if an integer is not contained in a CLOSED range. Includes from and to!
-    public static boolean integerNotContainedInRange(int from, int to, int x) {
+    //Checks if an integer is not contained in a CLOSED range. Includes
+    // from and to!
+    public static boolean integerNotContainedInRange(int from, int to,
+                                                     int x) {
         boolean flag = false;
-        for (int i = from; i < to + 1; i++) { //check if an integer is contained in range
+        for (int i = from; i < to + 1;
+             i++) { //check if an integer is contained in range
             flag = flag || i == x;
         }
         return !flag; //return the opposite

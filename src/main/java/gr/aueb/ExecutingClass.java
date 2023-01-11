@@ -20,18 +20,18 @@ public class ExecutingClass {
 
     //Prints welcome message in command line
     public void welcome() {
-        System.out.println("Welcome to our brand new Application. \n " +
-                "Are you interested in finding a new job? \n " +
-                "Are you looking for young aspiring employees? \n " +
-                "If your answer was positive, then we are here to help you!");
+        System.out.println("Welcome to our brand new Application. \n "
+                + "Are you interested in finding a new job? \n "
+                + "Are you looking for young aspiring employees? \n "
+                + "If your answer was positive, then we are here to help "
+                + "you!");
     }
 
     //Prints main menu in command line
     public int printMainMenu() {
-        System.out.println("Input your choice to continue: \n" +
-                "1.Sign up \n" +
-                "2.Log in \n" +
-                "3.Abort Mission \n");
+        System.out.println(
+                "Input your choice to continue: \n" + "1.Sign up \n"
+                        + "2.Log in \n" + "3.Abort Mission \n");
         return input.nextInt();
 
     }
@@ -39,11 +39,13 @@ public class ExecutingClass {
     //Sign-up process
     public User signup() {
         input.nextLine(); //Clear console
-        System.out.println("Thanks for your interest in signing up \n " +
-                "We just need some basic info \n");
+        System.out.println("Thanks for your interest in signing up \n "
+                + "We just need some basic info \n");
 
         //Asks for the user type and checks if the input is correct
-        System.out.println("First of all, what type of user are you; (Employee or Employer)");
+        System.out.println(
+                "First of all, what type of user are you; (Employee or "
+                        + "Employer)");
         String userType = selectTypeOfUser();
 
         //If the input above is acceptable, asks for username
@@ -71,19 +73,25 @@ public class ExecutingClass {
         String dateOfBirth = input.nextLine();
 
         //Checks the user type
-        //Depending on the type it creates the right object subclass (Employee-Employer)
+        //Depending on the type it creates the right object subclass
+        // (Employee-Employer)
         User currentUser;
         if (userType.equals("Employer")) {
-            currentUser = new Employer(username, password, name, surname, email, dateOfBirth);
+            currentUser =
+                    new Employer(username, password, name, surname, email,
+                            dateOfBirth);
         } else {
-            currentUser = new Employee(username, password, name, surname, email, dateOfBirth);
+            currentUser =
+                    new Employee(username, password, name, surname, email,
+                            dateOfBirth);
         }
 
         //Returns the new user
         return currentUser;
     }
 
-    //Checks if the user's input type is acceptable and returns the chosen type
+    //Checks if the user's input type is acceptable and returns the
+    // chosen type
     public String selectTypeOfUser() {
 
         boolean flag;
@@ -91,14 +99,16 @@ public class ExecutingClass {
         do {
             type = input.nextLine();
 
-            flag = Objects.equals(type, "Employer") || Objects.equals(type, "Employee");
+            flag = Objects.equals(type, "Employer") || Objects.equals(type,
+                    "Employee");
 
             if (!flag) {
                 System.out.println("Hmm... That's a wrong section!");
                 System.out.println("Type Employer or Employee!");
             }
         } while (!flag);
-        //The loop ends when the user gives an acceptable type (Employee or Employer)
+        //The loop ends when the user gives an acceptable type (Employee
+        // or Employer)
         return type;
     }
 
@@ -116,7 +126,8 @@ public class ExecutingClass {
                 flag = false;
             }
             if (flag) {
-                System.out.println("That username is taken please try again!");
+                System.out.println(
+                        "That username is taken please try again!");
             }
         } while (flag);
         return username;
@@ -131,11 +142,14 @@ public class ExecutingClass {
             //The user inputs the password twice 
             System.out.println("please repeat the password inputed");
             String repeatPassword = input.nextLine();
-            //If it matches then the password is accepted and the method returns it
+            //If it matches then the password is accepted and the method
+            // returns it
             flag = !Objects.equals(password, repeatPassword);
             //Else the user is asked to input again
             if (flag) {
-                System.out.println("The passwords dont seem to match please repeat both inputs");
+                System.out.println(
+                        "The passwords dont seem to match please repeat "
+                                + "both inputs");
             }
         } while (flag);
         return password;
@@ -147,13 +161,18 @@ public class ExecutingClass {
         String email;
         do {
             email = input.nextLine();
-            //TODO consider using regex in accordance with RFC 5322 Official Standard. Ask if its ok!
+            //TODO consider using regex in accordance with RFC 5322
+            // Official Standard. Ask if its ok!
             String emailPattern = "^(.+)@(.+)\\.(.+)$";
             Pattern pattern = Pattern.compile(emailPattern);
             Matcher matcher = pattern.matcher(email);
             flag = matcher.matches();
             if (!flag) {
-                System.out.println("That email doesn't seem right! make sure its formatted as [...]@[domain].[topLevenDomain] you entered: " + email);
+                System.out.println(
+                        "That email doesn't seem right! make sure its "
+                                + "formatted as [...]@[domain]"
+                                + ".[topLevenDomain] you entered: "
+                                + email);
             }
         } while (!flag);
         return email;
@@ -162,7 +181,8 @@ public class ExecutingClass {
     //Login process
     public User login() {
         input.nextLine(); //Clear console
-        System.out.println("Lets get you logged in. We will just need some info!");
+        System.out.println(
+                "Lets get you logged in. We will just need some info!");
         User currentUser;
         do {
             currentUser = null;
@@ -182,20 +202,21 @@ public class ExecutingClass {
         return currentUser;
     }
 
-    //Print the user's home screen menu/the actions he can make depending on his type
+    //Print the user's home screen menu/the actions he can make
+    // depending on his type
     public int printUserHomeScreen(User currentUser) {
         System.out.println();
-        System.out.println("Input your choice to continue: \n" +
-                "1. Send a new Message \n" +
-                "2. Read your new Messages \n" +
-                "3. Log out \n" +
-                "4. Change your profile info");
+        System.out.println("Input your choice to continue: \n"
+                + "1. Send a new Message \n"
+                + "2. Read your new Messages \n" + "3. Log out \n"
+                + "4. Change your profile info");
         //Employees can interact with posts, but not create        
         if (currentUser instanceof Employee) {
             System.out.println("5. Read new Posts");
             //Employers can create new posts
         } else {
-            System.out.println("5. Post home menu (Upload, Browse, Delete)");
+            System.out.println(
+                    "5. Post home menu (Upload, Browse, Delete)");
         }
         System.out.println();
         //Returns user's selection 
@@ -207,20 +228,21 @@ public class ExecutingClass {
         input.nextLine();
         boolean flag = true;
         while (flag) {
-        try {
-        System.out.println("Give receiver username: ");
-        String username = input.nextLine();
-        User receiver = User.getUserFromUsername(username);
-        System.out.println("Give message contents: ");
-        String contents = input.nextLine();
-        Message message = new Message(receiver, currentUser, contents);
-        message.addUnseenMessage();
-        flag = false;
-        } catch (NullPointerException e) {
-            System.out.println("The receiver that you want to"
-            +"send the message does not exist");
+            try {
+                System.out.println("Give receiver username: ");
+                String username = input.nextLine();
+                User receiver = User.getUserFromUsername(username);
+                System.out.println("Give message contents: ");
+                String contents = input.nextLine();
+                Message message =
+                        new Message(receiver, currentUser, contents);
+                message.addUnseenMessage();
+                flag = false;
+            } catch (NullPointerException e) {
+                System.out.println("The receiver that you want to"
+                        + "send the message does not exist");
+            }
         }
-    }
     }
 
     //Reads the unseen messages
@@ -238,7 +260,8 @@ public class ExecutingClass {
 
     //Reads new posts
     public boolean checkNewPosts(Employee currentUser) {
-        ArrayList<Post> newPosts = new ArrayList<>(currentUser.getNewPosts());
+        ArrayList<Post> newPosts =
+                new ArrayList<>(currentUser.getNewPosts());
         if (newPosts.isEmpty()) {
             System.out.println("No new posts");
             return false;
@@ -258,7 +281,8 @@ public class ExecutingClass {
         String jobTitle = "Job Title : " + input.nextLine();
         System.out.println();
         System.out.print("Workplace(On-site , Hybrid , Remote) : ");
-        String workPlace = "Workplace type(On-site , Hybrid , Remote) : " + input.nextLine() + " ";
+        String workPlace = "Workplace type(On-site , Hybrid , Remote) : "
+                + input.nextLine() + " ";
         System.out.println();
         System.out.print("Job Location : ");
         String jobLocation = "Job Location : " + input.nextLine() + " ";
@@ -274,32 +298,37 @@ public class ExecutingClass {
                 salaryRange = salaryRange + input.nextInt() + " ";
                 flag = false;
             } catch (InputMismatchException e1) {
-                System.out.println("Hmm something went wrong. Please insert an integer value to " +
-                "keep the post creation process going");
+                System.out.println(
+                        "Hmm something went wrong. Please insert an "
+                                + "integer value to "
+                                + "keep the post creation process going");
                 input.nextLine();//Clear scanner
             } catch (Exception e) {
-                System.out.println("Hmm something went wrong. Please try again to insert an integer value");
+                System.out.println(
+                        "Hmm something went wrong. Please try again to "
+                                + "insert an integer value");
             }
         }
         System.out.println();
         System.out.print("Description : ");
         String description = "Description : " + input.next() + " ";
         System.out.println();
-        String postContent = String.format("%s%n%s%n%s%n%s%n%s%n ", jobTitle, workPlace, jobLocation, salaryRange, description);
+        String postContent =
+                String.format("%s%n%s%n%s%n%s%n%s%n ", jobTitle, workPlace,
+                        jobLocation, salaryRange, description);
         new Post(currentUser, postContent);
     }
 
     //Menu with actions on what he can change from his data
     public int printUserChangeInfoScreen() {
-        System.out.println("Input your choice to continue: \n" +
-                "1. Change Password \n" +
-                "2. Change your Name \n" +
-                "3. Cancel  \n"
-        );
+        System.out.println("Input your choice to continue: \n"
+                + "1. Change Password \n" + "2. Change your Name \n"
+                + "3. Cancel  \n");
         return input.nextInt();
     }
 
-    //Method implements the change password method of the User class to create a user-friendly dialog
+    //Method implements the change password method of the User class to
+    // create a user-friendly dialog
     public void changePassword(User currentUser) {
         boolean flag;
         do {
@@ -320,7 +349,8 @@ public class ExecutingClass {
         } while (flag);
     }
 
-    //Method implements the change name method of the User class to create a user-friendly dialog
+    //Method implements the change name method of the User class to
+    // create a user-friendly dialog
     public void changeName(User currentUser) {
         boolean flag;
         input.nextLine();
@@ -368,39 +398,42 @@ public class ExecutingClass {
         do {
             likeAPostMenu(); //Prints the menu
             selection = input.nextInt(); //Gets selection
-            postToLike = Post.getPostFromPostNumber(selection);// Gets Post or Null
-            if (selection == -1) { // This is where we exit the loop if the selection is -1
+            postToLike = Post.getPostFromPostNumber(
+                    selection);// Gets Post or Null
+            if (selection == -1) { // This is where we exit the loop if the
+                // selection is -1
                 break;
             } else if (postToLike == null) {
                 System.out.println("That post number is not correct \n");
 
-            } else if (currentUser.getLikedPosts().contains(postToLike)) { //checks if the post was liked already
+            } else if (currentUser.getLikedPosts().contains(
+                    postToLike)) { //checks if the post was liked already
                 System.out.println("You have already liked this Post! \n");
             } else {
                 currentUser.addLikedPost(postToLike);
-                System.out.println("Post was liked current like count is: " + postToLike.getLikeCount());
+                System.out.println("Post was liked current like count is: "
+                        + postToLike.getLikeCount());
                 System.out.println();
             }
-        } while (true);// Loop exits only on break line! under no other condition
+        } while (true);// Loop exits only on break line! under no other
+        // condition
     }
 
     //Prints Post liking menu
     private void likeAPostMenu() {
-        System.out.println("Input Post number to like\n" +
-                "or input -1 to finish \n");
+        System.out.println("Input Post number to like\n"
+                + "or input -1 to finish \n");
     }
-    
+
     // Method prints a menu for the Employer and returns the input
     public int printEmployerPostManipulationScreen() {
         System.out.println();
-        System.out.println("Input your choice to continue: \n" +
-                "1. See your Draft Posts and their size \n" +
-                "2. See Uploaded Posts and their size  \n" +
-                "3. Make a Draft Post available (Upload it) \n" +
-                "4. Delete a Draft Post \n" +
-                "5. Create a Draft Post \n" +
-                "6. Back to Home Screen \n"
-        );
+        System.out.println("Input your choice to continue: \n"
+                + "1. See your Draft Posts and their size \n"
+                + "2. See Uploaded Posts and their size  \n"
+                + "3. Make a Draft Post available (Upload it) \n"
+                + "4. Delete a Draft Post \n" + "5. Create a Draft Post \n"
+                + "6. Back to Home Screen \n");
         System.out.println();
         //Returns user's selection
         return input.nextInt();
@@ -429,36 +462,45 @@ public class ExecutingClass {
                     selection = input.nextInt(); //Gets selection
                     flag = false;
                 } catch (Exception e) {
-                    System.out.println("Something went wrong. You have to select an integer value " +
-                    "to keep the process going");
+                    System.out.println(
+                            "Something went wrong. You have to select an"
+                                    + " integer value "
+                                    + "to keep the process going");
                     input.nextLine();
                 }
             }
-            postToUpload = Post.getPostFromPostNumber(selection);// Gets Post or Null
-            if (selection == -1) { // This is where we exit the loop if the selection is -1
+            postToUpload = Post.getPostFromPostNumber(
+                    selection);// Gets Post or Null
+            if (selection == -1) { // This is where we exit the loop if the
+                // selection is -1
                 break;
             } else if (postToUpload == null) {
                 System.out.println("That post number is not correct \n");
-            } else if (!(currentUser.getDraftPosts().contains(postToUpload))) { //checks if the currentUser is the creator of the post
-                System.out.println("You don't have permission to upload this post! \n");
+            } else if (!(currentUser.getDraftPosts().contains(
+                    postToUpload))) { //checks if the currentUser is the
+                // creator of the post
+                System.out.println(
+                        "You don't have permission to upload this post! "
+                                + "\n");
             } else {
                 postToUpload.setAvailable();
                 System.out.println("The post has been uploaded!");
                 System.out.println();
             }
-        } while (true);// Loop exits only on break line! under no other condition
+        } while (true);// Loop exits only on break line! under no other
+        // condition
     }
 
     //Prints Post uploading menu
     private void uploadAPostMenu() {
-        System.out.println("Input Post number to upload\n" +
-                "or input -1 to finish \n");
+        System.out.println("Input Post number to upload\n"
+                + "or input -1 to finish \n");
     }
 
     //Prints Draft Posts to be deleted menu
     private void deleteADraftPostMenu() {
-        System.out.println("Input draft post number to delete\n" +
-                "or input -1 to finish \n");
+        System.out.println("Input draft post number to delete\n"
+                + "or input -1 to finish \n");
     }
 
     //Prints all uploaded Posts
@@ -472,12 +514,14 @@ public class ExecutingClass {
 
     //Prints size of uploaded Posts
     public void printSizeOfUploadedPosts(Employer emp) {
-        System.out.println("The size of your uploaded posts is " + emp.sizeOfUploadedPosts());
+        System.out.println("The size of your uploaded posts is "
+                + emp.sizeOfUploadedPosts());
     }
 
     //Prints size of Draft Posts
     public void printSizeOfDraftPosts(Employer emp) {
-        System.out.println("The size of your draft posts is " + (emp.sizeOfDraftPosts()));
+        System.out.println("The size of your draft posts is "
+                + (emp.sizeOfDraftPosts()));
     }
 
     //FIXME what da dog doing?
@@ -490,29 +534,39 @@ public class ExecutingClass {
             while (flag) {
                 try {
                     deleteADraftPostMenu(); //Prints the menu
-                    System.out.println("Your draft posts are the following : ");
+                    System.out.println(
+                            "Your draft posts are the following : ");
                     this.printDraftPosts(emp);
                     selection = input.nextInt();
                     flag = false;
                 } catch (Exception e) {
-                    System.out.println("Something went wrong. You have to select an integer value " +
-                    "to keep the process going");
+                    System.out.println(
+                            "Something went wrong. You have to select an"
+                                    + " integer value "
+                                    + "to keep the process going");
                     input.nextLine();
                 }
             }
             draftPostToDelete = Post.getPostFromPostNumber(selection);
-            if (selection == -1) { // This is where we exit the loop if the selection is -1
+            if (selection == -1) { // This is where we exit the loop if the
+                // selection is -1
                 break;
             } else if (draftPostToDelete == null) {
                 System.out.println("That post number is not correct \n");
-            } else if (!(emp.getDraftPosts().contains(draftPostToDelete))) { //checks if the Employer emp is the creator of the post
-                System.out.println("You don't have permission to delete this post! \n");
+            } else if (!(emp.getDraftPosts().contains(
+                    draftPostToDelete))) { //checks if the Employer emp
+                // is the creator of the post
+                System.out.println(
+                        "You don't have permission to delete this post! "
+                                + "\n");
             } else {
                 emp.deleteDraftPost(draftPostToDelete);
                 System.out.println("The post has been deleted!");
                 System.out.println();
             }
-        } while (true);// Loop exits only on break line! under no other condition
+        } while (true);// Loop exits only on break line! under no other
+        // condition
     }
-        
+
 }
+

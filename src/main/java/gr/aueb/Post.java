@@ -6,7 +6,8 @@ import java.util.HashMap;
 public class Post {
 
     private static final Date dt = new Date(System.currentTimeMillis());
-    private static final HashMap<Integer, Post> postNumberToPost = new HashMap<>();
+    private static final HashMap<Integer, Post> postNumberToPost =
+            new HashMap<>();
 
     private static int numberOfPosts;
 
@@ -31,7 +32,7 @@ public class Post {
     }
 
     //Returns the post or null if it doesn't exist
-     public static Post getPostFromPostNumber(final int postNumber) {
+    public static Post getPostFromPostNumber(final int postNumber) {
         return postNumberToPost.get(postNumber);
     }
 
@@ -70,16 +71,16 @@ public class Post {
     unavailable then he calls setAvailable with argument NO
      */
     public final void setAvailable() {
-            available = true;
-            referenceToEmployer.addUploadedPosts(this);
-            referenceToEmployer.deleteDraftPost(this);
+        available = true;
+        referenceToEmployer.addUploadedPosts(this);
+        referenceToEmployer.deleteDraftPost(this);
     }
 
     @Override
     public final String toString() {
-        return String.format("Post number:%d%n"
-        + "Created on %s"
-        + " by %s%n%s", postNumber, creationDate, creator, postContent);
+        return String.format(
+                "Post number:%d%n" + "Created on %s" + " by %s%n%s",
+                postNumber, creationDate, creator, postContent);
     }
 
     public final int getPostNumber() {
