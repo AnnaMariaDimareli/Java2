@@ -129,7 +129,7 @@ public class ExecutingClass {
             //Creates new password
             password = input.nextLine();
             //The user inputs the password twice 
-            System.out.println("please repeat the password imputed");
+            System.out.println("please repeat the password inputed");
             String repeatPassword = input.nextLine();
             //If it matches then the password is accepted and the method returns it
             flag = !Objects.equals(password, repeatPassword);
@@ -205,6 +205,9 @@ public class ExecutingClass {
     //Sends a new Message
     public void sendNewMessage(User currentUser) {
         input.nextLine();
+        boolean flag = true;
+        while (flag) {
+        try {
         System.out.println("Give receiver username: ");
         String username = input.nextLine();
         User receiver = User.getUserFromUsername(username);
@@ -212,6 +215,12 @@ public class ExecutingClass {
         String contents = input.nextLine();
         Message message = new Message(receiver, currentUser, contents);
         message.addUnseenMessage();
+        flag = false;
+        } catch (NullPointerException e) {
+            System.out.println("The receiver that you want to"
+            +"send the message does not exist");
+        }
+    }
     }
 
     //Reads the unseen messages
