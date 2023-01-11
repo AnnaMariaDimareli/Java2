@@ -16,8 +16,8 @@ public class Message {
     }
 
     public final String toString() {
-            return  "The receiver is " + this.getReceiver() 
-                    + ",  the sender is " + this.getSender() 
+            return  "The receiver is " + this.getReceiver()
+                    + ",  the sender is " + this.getSender()
                     + " and the message is " + this.getContents();
     }
 
