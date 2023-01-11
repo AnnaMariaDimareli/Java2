@@ -31,7 +31,7 @@ public class ExecutingClass {
     public int printMainMenu() {
         System.out.println(
                 "Input your choice to continue: \n" + "1.Sign up \n"
-                        + "2.Log in \n" + "3.Abort Mission \n");
+                        + "2.Log in \n" + "3.Exit Application \n");
         return input.nextInt();
 
     }
@@ -76,7 +76,7 @@ public class ExecutingClass {
         //Depending on the type it creates the right object subclass
         // (Employee-Employer)
         User currentUser;
-        if (userType.equals("Employer")) {
+        if (userType.equals("employer")) {
             currentUser =
                     new Employer(username, password, name, surname, email,
                             dateOfBirth);
@@ -98,9 +98,9 @@ public class ExecutingClass {
         String type;
         do {
             type = input.nextLine();
-
-            flag = Objects.equals(type, "Employer") || Objects.equals(type,
-                    "Employee");
+            type = type.toLowerCase();
+            flag = Objects.equals(type, "employer") || Objects.equals(type,
+                    "employee");
 
             if (!flag) {
                 System.out.println("Hmm... That's a wrong section!");
