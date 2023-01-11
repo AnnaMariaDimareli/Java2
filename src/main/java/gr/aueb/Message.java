@@ -1,6 +1,9 @@
 package gr.aueb;
 
 public class Message {
+    /* Message.java is the class responsible for the communication between the users.
+     * It is used to create and show messages. 
+     */
 
     private static int numberOfMessages;
     private final int messageNumber = numberOfMessages;
@@ -8,6 +11,7 @@ public class Message {
     private final User sender;
     private final String contents;
 
+    //Constructor used for creating a Message object
     public Message(final User rec, final User sen, final String cont) {
             receiver = rec;
             sender = sen;
@@ -15,17 +19,20 @@ public class Message {
             contents = cont;
     }
 
+    //Informs about the receiver, sender and contents of a message
     public final String toString() {
             return  "The receiver is " + this.getReceiver()
                     + ",  the sender is " + this.getSender()
                     + " and the message is " + this.getContents();
     }
 
+    //Shows a message in a more appealing fashion
     public final void showMessage() {
             System.out.println(this.getSender());
             System.out.println(this.getContents());
     }
 
+    //Adds the message to the unseen messages of the receiver
     public final void addUnseenMessage() {
             receiver.addNewMessage(this);
     }
