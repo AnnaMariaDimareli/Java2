@@ -161,9 +161,9 @@ public class ExecutingClass {
         String email;
         do {
             email = input.nextLine();
-            //TODO consider using regex in accordance with RFC 5322
-            // Official Standard. Ask if its ok!
-            String emailPattern = "^(.+)@(.+)\\.(.+)$";
+            //regex in accordance with RFC 5322
+            String emailPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]"
+                    + "+@[a-zA-Z0-9.-]+$";
             Pattern pattern = Pattern.compile(emailPattern);
             Matcher matcher = pattern.matcher(email);
             flag = matcher.matches();
