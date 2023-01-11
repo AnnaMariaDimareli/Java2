@@ -129,7 +129,7 @@ public class ExecutingClass {
             //Creates new password
             password = input.nextLine();
             //The user inputs the password twice 
-            System.out.println("please repeat the password imputed");
+            System.out.println("please repeat the password inputed");
             String repeatPassword = input.nextLine();
             //If it matches then the password is accepted and the method returns it
             flag = !Objects.equals(password, repeatPassword);
