@@ -311,7 +311,8 @@ public class ExecutingClass {
         }
         System.out.println();
         System.out.print("Description : ");
-        String description = "Description : " + input.next() + " ";
+        input.nextLine();
+        String description = "Description : " + input.nextLine() + " ";
         System.out.println();
         String postContent =
                 String.format("%s%n%s%n%s%n%s%n%s%n ", jobTitle, workPlace,
@@ -524,7 +525,7 @@ public class ExecutingClass {
                 + (emp.sizeOfDraftPosts()));
     }
 
-    //FIXME what da dog doing?
+    //Implements functionality to delete a draft post
     public void deleteDraftPost(Employer emp) {
         input.nextLine(); //Clear scanner
         int selection = 0;
