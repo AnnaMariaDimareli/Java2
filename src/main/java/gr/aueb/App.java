@@ -6,8 +6,8 @@ package gr.aueb;
  * Media App
  */
 
-public class App {
-    public static void main(String[] args) {
+public final class App {
+    public static void main(final String[] args) {
         //No user created yet
         User currentUser = null;
         ExecutingClass runner = new ExecutingClass();
@@ -80,6 +80,7 @@ public class App {
                                 System.out.println(
                                         "Your Username has changed!");
                                 break;
+                            default:
                             //Exit if selection is 3
                         }
                         break;
@@ -89,7 +90,9 @@ public class App {
                             do {
                                 do {
                                     localSelection =
-                                            runner.printEmployerPostManipulationScreen();
+                                            runner.
+                                            printEmployerPostManipulationScreen(
+                                            ); //line legth was an issue
 
                                     if (integerNotContainedInRange(1, 6,
                                             localSelection)) {
@@ -154,8 +157,9 @@ public class App {
 
     //Checks if an integer is not contained in a CLOSED range. Includes
     // from and to!
-    public static boolean integerNotContainedInRange(int from, int to,
-                                                     int x) {
+    public static boolean integerNotContainedInRange(final int from,
+                                                     final int to,
+                                                     final int x) {
         boolean flag = false;
         for (int i = from; i < to + 1;
              i++) { //check if an integer is contained in range
