@@ -37,12 +37,12 @@ public class User {
 
     //Method takes a username and checks if a user with that username
     // exists
-    public static void checkUserExistence(final String Username)
+    public static void checkUserExistence(final String username)
             throws GeneralSecurityException {
-        User checkedUser = createdUsers.get(Username);
+        User checkedUser = createdUsers.get(username);
         if (checkedUser == null) {
             throw new GeneralSecurityException(
-                    "Username " + Username + " is incorrect \n");
+                    "Username " + username + " is incorrect \n");
         }
     }
 
