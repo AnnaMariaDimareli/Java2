@@ -1,12 +1,14 @@
 <?xml version="1.0"?>
 
 <!DOCTYPE suppressions PUBLIC
-     "-//Puppy Crawl//DTD Suppressions 1.0//EN"
-     "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+        "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+        "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
 
 <suppressions>
-  <suppress checks="Javadoc" files="."/>
-  <suppress checks="HiddenField" files="\.java"/>
-  <suppress checks="MagicNumber" files="\.java"/>
-  <suppress checks="DesignForExtension" files="[^(User)]\.java"/>
+    <suppress checks="Javadoc" files="."/> <!-- inline Comments, README.md and CONTRIBUTING.md give all info needed, Javadoc was optional and is not used-->
+    <suppress checks="HiddenField" files="\.java"/> <!-- Shadowing was done always on purpose and subsequently this was used-->
+    <suppress checks="MagicNumber" files="\.java"/> <!-- Magic numbers used actually correspond to options printed, not usefully-->
+    <suppress checks="DesignForExtension" files="[^(User)]\.java"/> <!-- This error doesn't affect our code, only USer is extended-->
+    <suppress checks="HideUtilityClassConstructor" files="."/> <!-- This error doesn't effect our code-->
+    <suppress checks="ConstantName" files="."/> <!-- final objects were constantly flagged even though they were not constants -->
 </suppressions>
