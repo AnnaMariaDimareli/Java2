@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ExecutingClass {
+public final class ExecutingClass {
     /**
      * This class helps with the layout of App.java
      * Its considered an integral part of it.
@@ -139,7 +139,7 @@ public class ExecutingClass {
         do {
             //Creates new password
             password = input.nextLine();
-            //The user inputs the password twice 
+            //The user inputs the password twice
             System.out.println("please repeat the password inputed");
             String repeatPassword = input.nextLine();
             //If it matches then the password is accepted and the method
@@ -204,13 +204,13 @@ public class ExecutingClass {
 
     //Print the user's home screen menu/the actions he can make
     // depending on his type
-    public int printUserHomeScreen(User currentUser) {
+    public int printUserHomeScreen(final User currentUser) {
         System.out.println();
         System.out.println("Input your choice to continue: \n"
                 + "1. Send a new Message \n"
                 + "2. Read your new Messages \n" + "3. Log out \n"
                 + "4. Change your profile info");
-        //Employees can interact with posts, but not create        
+        //Employees can interact with posts, but not create
         if (currentUser instanceof Employee) {
             System.out.println("5. Read new Posts");
             //Employers can create new posts
@@ -219,12 +219,12 @@ public class ExecutingClass {
                     "5. Post home menu (Upload, Browse, Delete)");
         }
         System.out.println();
-        //Returns user's selection 
+        //Returns user's selection
         return input.nextInt();
     }
 
     //Sends a new Message
-    public void sendNewMessage(User currentUser) {
+    public void sendNewMessage(final User currentUser) {
         input.nextLine();
         boolean flag = true;
         while (flag) {
@@ -246,7 +246,7 @@ public class ExecutingClass {
     }
 
     //Reads the unseen messages
-    public void readNewMessages(User currentUser) {
+    public void readNewMessages(final User currentUser) {
         ArrayList<Message> myUnseenMessages = currentUser.getNewMessages();
         if (myUnseenMessages.size() == 0) {
             System.out.println("You don't have new Messages");
@@ -259,7 +259,7 @@ public class ExecutingClass {
     }
 
     //Reads new posts
-    public boolean checkNewPosts(Employee currentUser) {
+    public boolean checkNewPosts(final Employee currentUser) {
         ArrayList<Post> newPosts =
                 new ArrayList<>(currentUser.getNewPosts());
         if (newPosts.isEmpty()) {
@@ -275,8 +275,8 @@ public class ExecutingClass {
     }
 
     //Creates a post
-    public void postCreator(Employer currentUser) {
-        input.nextLine();//Clear scanner
+    public void postCreator(final Employer currentUser) {
+        input.nextLine(); //Clear scanner
         System.out.print("Job Title : ");
         String jobTitle = "Job Title : " + input.nextLine();
         System.out.println();
@@ -302,7 +302,7 @@ public class ExecutingClass {
                         "Hmm something went wrong. Please insert an "
                                 + "integer value to "
                                 + "keep the post creation process going");
-                input.nextLine();//Clear scanner
+                input.nextLine(); //Clear scanner
             } catch (Exception e) {
                 System.out.println(
                         "Hmm something went wrong. Please try again to "
@@ -330,7 +330,7 @@ public class ExecutingClass {
 
     //Method implements the change password method of the User class to
     // create a user-friendly dialog
-    public void changePassword(User currentUser) {
+    public void changePassword(final User currentUser) {
         boolean flag;
         do {
             flag = false;
@@ -352,7 +352,7 @@ public class ExecutingClass {
 
     //Method implements the change name method of the User class to
     // create a user-friendly dialog
-    public void changeName(User currentUser) {
+    public void changeName(final User currentUser) {
         boolean flag;
         input.nextLine();
         do {
@@ -390,7 +390,7 @@ public class ExecutingClass {
     }
 
     //Implements various methods in order to like a post
-    public void likeAPost(Employee currentUser) {
+    public void likeAPost(final Employee currentUser) {
         input.nextLine(); //Clear scanner
 
         int selection;
@@ -400,7 +400,7 @@ public class ExecutingClass {
             likeAPostMenu(); //Prints the menu
             selection = input.nextInt(); //Gets selection
             postToLike = Post.getPostFromPostNumber(
-                    selection);// Gets Post or Null
+                    selection); // Gets Post or Null
             if (selection == -1) { // This is where we exit the loop if the
                 // selection is -1
                 break;
@@ -416,7 +416,7 @@ public class ExecutingClass {
                         + postToLike.getLikeCount());
                 System.out.println();
             }
-        } while (true);// Loop exits only on break line! under no other
+        } while (true); // Loop exits only on break line! under no other
         // condition
     }
 
@@ -440,7 +440,7 @@ public class ExecutingClass {
         return input.nextInt();
     }
 
-    public void printDraftPosts(Employer employer) {
+    public void printDraftPosts(final Employer employer) {
         System.out.println("You can find your draft posts below: \n");
         ArrayList<Post> myDraftPosts = employer.getDraftPosts();
         for (Post runMe : myDraftPosts) {
@@ -449,7 +449,7 @@ public class ExecutingClass {
     }
 
     //Implements various methods in order to upload a post
-    public void uploadAPost(Employer currentUser) {
+    public void uploadAPost(final Employer currentUser) {
         input.nextLine(); //Clear scanner
 
         int selection = 0;
@@ -471,7 +471,7 @@ public class ExecutingClass {
                 }
             }
             postToUpload = Post.getPostFromPostNumber(
-                    selection);// Gets Post or Null
+                    selection); // Gets Post or Null
             if (selection == -1) { // This is where we exit the loop if the
                 // selection is -1
                 break;
@@ -488,7 +488,7 @@ public class ExecutingClass {
                 System.out.println("The post has been uploaded!");
                 System.out.println();
             }
-        } while (true);// Loop exits only on break line! under no other
+        } while (true); // Loop exits only on break line! under no other
         // condition
     }
 
@@ -505,7 +505,7 @@ public class ExecutingClass {
     }
 
     //Prints all uploaded Posts
-    public void printUploadedPosts(Employer emp) {
+    public void printUploadedPosts(final Employer emp) {
         System.out.println("You can find your uploaded posts below: \n");
         ArrayList<Post> uploadedPosts = emp.getUploadedPosts();
         for (Post i : uploadedPosts) {
@@ -514,19 +514,19 @@ public class ExecutingClass {
     }
 
     //Prints size of uploaded Posts
-    public void printSizeOfUploadedPosts(Employer emp) {
+    public void printSizeOfUploadedPosts(final Employer emp) {
         System.out.println("The size of your uploaded posts is "
                 + emp.sizeOfUploadedPosts());
     }
 
     //Prints size of Draft Posts
-    public void printSizeOfDraftPosts(Employer emp) {
+    public void printSizeOfDraftPosts(final Employer emp) {
         System.out.println("The size of your draft posts is "
                 + (emp.sizeOfDraftPosts()));
     }
 
     //Implements functionality to delete a draft post
-    public void deleteDraftPost(Employer emp) {
+    public void deleteDraftPost(final Employer emp) {
         input.nextLine(); //Clear scanner
         int selection = 0;
         Post draftPostToDelete;
@@ -565,7 +565,7 @@ public class ExecutingClass {
                 System.out.println("The post has been deleted!");
                 System.out.println();
             }
-        } while (true);// Loop exits only on break line! under no other
+        } while (true); // Loop exits only on break line! under no other
         // condition
     }
 
