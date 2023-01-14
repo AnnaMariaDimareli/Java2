@@ -6,7 +6,6 @@ public class Message {
      */
 
     private static int numberOfMessages;
-    private final int messageNumber = numberOfMessages;
     private final User receiver;
     private final User sender;
     private final String contents;
@@ -17,10 +16,6 @@ public class Message {
         sender = sen;
         numberOfMessages++;
         contents = cont;
-    }
-
-    public static int getNumberOfMessages() {
-        return numberOfMessages;
     }
 
     //Informs about the receiver, sender and contents of a message
@@ -47,10 +42,6 @@ public class Message {
 
     public final String getReceiver() {
         return receiver.getUsername();
-    }
-
-    public final int getMessageNumber() {
-        return messageNumber;
     }
 
     public final String getContents() {
