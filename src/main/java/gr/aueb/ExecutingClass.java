@@ -545,9 +545,6 @@ public final class ExecutingClass {
             while (flag) {
                 try {
                     deleteADraftPostMenu(); //Prints the menu
-                    System.out.println(
-                            "Your draft posts are the following : ");
-                    this.printDraftPosts(emp);
                     selection = input.nextInt();
                     flag = false;
                 } catch (Exception e) {
