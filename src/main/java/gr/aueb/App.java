@@ -78,7 +78,7 @@ public final class App {
                             case 2:
                                 runner.changeName(currentUser);
                                 System.out.println(
-                                        "Your Username has changed!");
+                                        "Your Name has changed!");
                                 break;
                             default:
                             //Exit if selection is 3
