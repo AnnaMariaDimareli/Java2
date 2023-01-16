@@ -20,3 +20,7 @@ Run `java -jar "./target/our-social-media-app-1.0-jar-with-dependencies.jar"`
 ## Contributing
 - Feel free to contribute your ideas or suggestions by opening an issue
 - Make sure to keep in mind what is stated in [CONTRIBUTING.md](https://github.com/AnnaMariaDimareli/Java2/blob/main/CONTRIBUTING.md)
+
+## Licensing
+- This project is licensed under the EUPL 1.2
+- More info about the licence can be found in [LICENSE.md](https://github.com/AnnaMariaDimareli/Java2/blob/main/LICENSE.md)
